@@ -1,29 +1,19 @@
+# frozen_string_literal: true
+
 require "singleton"
 
 module SleeperRb
   class NflState
     include Singleton
-    include SleeperRb::Request
+    include SleeperRb::Utilities::Request
+    include SleeperRb::Utilities::Cache
 
-    def initialize
-      retrieve_values!
-    end
-
-    def refresh
-      retrieve_values!
-      self
-    end
-
-    attr_reader :week, :season_type, :season, :league_season
+    lazy_attr_reader :week, :season_type, :season, :league_season
 
     private
 
     def retrieve_values!
-      object = execute_request(URI("#{BASE_URL}/state/nfl"))
-      @week = object["week"]
-      @season_type = object["season_type"]
-      @season = object["season"]
-      @league_season = object["league_season"]
+      execute_request(URI("#{BASE_URL}/state/nfl"))
     end
   end
 end
