@@ -1,6 +1,6 @@
-[![Build Status](https://app.travis-ci.com/sjweil9/sleeper_rb.svg?branch=main)](https://app.travis-ci.com/sjweil9/sleeper_rb)
-
 # SleeperRb
+[![Gem Version](https://badge.fury.io/rb/simplecov-small-badge.svg)](https://badge.fury.io/rb/simplecov-small-badge)
+[![Build Status](https://app.travis-ci.com/sjweil9/sleeper_rb.svg?branch=main)](https://app.travis-ci.com/sjweil9/sleeper_rb)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sleeper_rb`. To experiment with that code, run `bin/console` for an interactive prompt.
 
