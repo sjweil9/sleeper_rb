@@ -17,6 +17,7 @@ module SleeperRb
         when 200 then JSON.parse(response.body)
         when 400 then raise BadRequest
         when 404 then raise NotFound
+        when 429 then raise RateLimitExceeded
         else raise ServerError
         end
       end

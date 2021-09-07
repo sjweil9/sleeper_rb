@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.describe SleeperRb::Utilities::Request do
-  describe "execute_request" do
+  describe "#execute_request" do
     RESPONSE = Struct.new(:code, :body)
     let(:response_200) { RESPONSE.new("200", { foo: "bar" }.to_json) }
-    let(:response_404) { RESPONSE.new("404", "") }
-    let(:response_400) { RESPONSE.new("400", "") }
-    let(:response_500) { RESPONSE.new("500", "") }
+    let(:response_404) { RESPONSE.new("404") }
+    let(:response_400) { RESPONSE.new("400") }
+    let(:response_429) { RESPONSE.new("429") }
+    let(:response_500) { RESPONSE.new("500") }
 
     let(:uri) { URI(url) }
     let(:url) { SleeperRb::Utilities::Request::BASE_URL }
@@ -35,6 +36,13 @@ RSpec.describe SleeperRb::Utilities::Request do
       it "should raise BadRequest" do
         expect(Net::HTTP).to receive(:get_response).with(uri).and_return(response_400)
         expect { subject.send(:execute_request, url) }.to raise_error(SleeperRb::BadRequest)
+      end
+    end
+
+    context "when response is 429" do
+      it "should raise RateLimitExceeded" do
+        expect(Net::HTTP).to receive(:get_response).with(uri).and_return(response_429)
+        expect { subject.send(:execute_request, url) }.to raise_error(SleeperRb::RateLimitExceeded)
       end
     end
 

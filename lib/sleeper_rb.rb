@@ -7,4 +7,5 @@ module SleeperRb
   class BadRequest < StandardError; end
   class NotFound < StandardError; end
   class ServerError < StandardError; end
+  class RateLimitExceeded < StandardError; end
 end

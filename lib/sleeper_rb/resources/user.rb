@@ -6,7 +6,7 @@ module SleeperRb
       include SleeperRb::Utilities::Request
       include SleeperRb::Utilities::Cache
 
-      lazy_attr_reader :user_id, :username, :display_name, :avatar
+      cached_attr :user_id, :username, :display_name, :avatar
 
       def initialize(user_id: nil, username: nil)
         raise ArgumentError, "must provide either user_id or username" unless user_id || username

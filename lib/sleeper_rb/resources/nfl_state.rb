@@ -9,7 +9,8 @@ module SleeperRb
       include SleeperRb::Utilities::Request
       include SleeperRb::Utilities::Cache
 
-      lazy_attr_reader :week, :season_type, :season, :league_season
+      cached_attr :week, :season_type, :season, :league_season, :season_start_date, :previous_season,
+                  :leg, :league_create_season, :display_week
 
       private
 

@@ -7,12 +7,12 @@ RSpec.describe SleeperRb::Utilities::Cache do
     end
   end
 
-  before { subject.lazy_attr_reader(:foo) }
+  before { subject.cached_attr(:foo) }
   let(:instance) { subject.new }
 
-  describe "::lazy_attr_reader" do
+  describe "::cached_attr" do
     it "extends as a class method" do
-      expect(subject).to respond_to(:lazy_attr_reader)
+      expect(subject).to respond_to(:cached_attr)
     end
 
     context "when ivar is defined" do

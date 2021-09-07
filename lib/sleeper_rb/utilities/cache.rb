@@ -4,7 +4,7 @@ module SleeperRb
   module Utilities
     module Cache
       module ClassMethods
-        def lazy_attr_reader(*attrs)
+        def cached_attr(*attrs)
           attrs.each do |attr|
             define_method(attr) do
               ivar = :"@#{attr}"
