@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "sleeper_rb"
+require "webmock/rspec"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

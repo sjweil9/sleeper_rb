@@ -13,10 +13,10 @@ module SleeperRb
       def execute_request(url)
         response = Net::HTTP.get_response(URI(url))
 
-        case response.code
-        when "200" then JSON.parse(response.body)
-        when "400" then raise BadRequest
-        when "404" then raise NotFound
+        case response.code.to_i
+        when 200 then JSON.parse(response.body)
+        when 400 then raise BadRequest
+        when 404 then raise NotFound
         else raise ServerError
         end
       end

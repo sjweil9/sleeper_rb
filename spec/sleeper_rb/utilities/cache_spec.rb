@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe SleeperRb::Utilities::Cache do
   subject do
     Class.new do
