@@ -33,7 +33,8 @@ RSpec.describe SleeperRb::Resources::NflState do
 
   describe "#retrieve_values!" do
     it "should set all proper values" do
-      %i[season_type season_start_date season previous_season week leg league_season league_create_season display_week].each do |key|
+      %i[season_type season_start_date season previous_season week leg league_season league_create_season
+         display_week].each do |key|
         expect(subject.send(key)).to eq(send(key))
       end
     end

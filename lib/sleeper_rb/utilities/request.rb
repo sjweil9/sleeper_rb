@@ -6,7 +6,7 @@ require "json"
 module SleeperRb
   module Utilities
     module Request
-      BASE_URL = "https://api.sleeper.app/v1".freeze
+      BASE_URL = "https://api.sleeper.app/v1"
 
       private
 

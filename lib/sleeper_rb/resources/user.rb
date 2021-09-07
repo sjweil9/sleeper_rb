@@ -10,6 +10,7 @@ module SleeperRb
 
       def initialize(user_id: nil, username: nil)
         raise ArgumentError, "must provide either user_id or username" unless user_id || username
+
         @user_id = user_id if user_id
         @username = username if username
       end

@@ -13,7 +13,7 @@ RSpec.describe SleeperRb::Resources::User do
   let(:username) { "foobar" }
   let(:user_id) { "469586445502246912" }
   let(:avatar) { "c8de9e651b19331f6eae4f9f26164107" }
-  let(:bad_id) { "219082094128012321"}
+  let(:bad_id) { "219082094128012321" }
 
   let(:user_response) do
     {

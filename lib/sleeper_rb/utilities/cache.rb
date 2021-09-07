@@ -8,7 +8,12 @@ module SleeperRb
           attrs.each do |attr|
             define_method(attr) do
               ivar = :"@#{attr}"
-              instance_variable_defined?(ivar) ? instance_variable_get(ivar) : instance_variable_set(ivar, values[attr.to_s])
+              if instance_variable_defined?(ivar)
+                instance_variable_get(ivar)
+              else
+                instance_variable_set(ivar,
+                                      values[attr.to_s])
+              end
             end
           end
         end
