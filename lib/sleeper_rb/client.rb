@@ -37,5 +37,15 @@ module SleeperRb
     def avatar(avatar_id)
       Resources::Avatar.new(avatar_id)
     end
+
+    ##
+    # Returns a League found by the alphanumeric ID.
+    #
+    # @param league_id [String] The ID for the League
+    #
+    # @return {SleeperRb::Resources::League}[rdoc-ref:SleeperRb::Resources::League] The League instance
+    def league(league_id)
+      Resources::League.new(league_id: league_id)
+    end
   end
 end

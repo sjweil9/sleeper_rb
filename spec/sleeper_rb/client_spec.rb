@@ -30,4 +30,12 @@ RSpec.describe SleeperRb::Client do
       expect(result.avatar_id).to eq("ABC123")
     end
   end
+
+  describe "#league" do
+    it "returns a League instance by ID" do
+      result = subject.league("ABC123")
+      expect(result).to be_an_instance_of(SleeperRb::Resources::League)
+      expect(result.league_id).to eq("ABC123")
+    end
+  end
 end

@@ -13,7 +13,7 @@ module SleeperRb
         name league_id draft_id avatar
       ].freeze
 
-      cached_attr *FIELDS
+      cached_attr(*FIELDS)
 
       def initialize(opts)
         opts.slice(*FIELDS).each do |key, val|

@@ -28,6 +28,11 @@ module SleeperRb
         @leagues[season.to_s] ||= retrieve_leagues!(season)
       end
 
+      def refresh
+        @leagues = nil
+        super
+      end
+
       private
 
       def retrieve_values!
