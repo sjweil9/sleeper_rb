@@ -16,6 +16,8 @@ module SleeperRb
       cached_attr(*FIELDS)
 
       def initialize(opts)
+        raise ArgumentError, "must provide league_id" unless opts[:league_id]
+
         opts.slice(*FIELDS).each do |key, val|
           instance_variable_set(:"@#{key}", val)
         end

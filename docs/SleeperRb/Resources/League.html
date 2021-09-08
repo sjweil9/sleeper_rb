@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class SleeperRb::Resources::Avatar - RDoc Documentation</title>
+<title>class SleeperRb::Resources::League - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
@@ -98,14 +98,14 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-SleeperRb::Resources::Avatar">
-  <h1 id="class-SleeperRb::Resources::Avatar" class="class">
-    class SleeperRb::Resources::Avatar
+<main role="main" aria-labelledby="class-SleeperRb::Resources::League">
+  <h1 id="class-SleeperRb::Resources::League" class="class">
+    class SleeperRb::Resources::League
   </h1>
 
   <section class="description">
     
-<p>The <a href="Avatar.html"><code>Avatar</code></a> class allows access to full-size or thumbnail URLs for user avatars.</p>
+<p>This class represents a Fantasy Football <a href="League.html"><code>League</code></a> and is the access point for associated resources.</p>
 
   </section>
 
@@ -115,6 +115,20 @@
 
     
 
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="FIELDS">FIELDS
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
     
 
     
@@ -130,7 +144,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(avatar_id)</span>
+            class="method-args">(opts)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -139,17 +153,19 @@
 
         <div class="method-description">
           
-          <p>Initializes an avatar using an avatar_id.</p>
-
-<p>@param avatar_id [String] The alphanumeric ID for the avatar</p>
+          
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/avatar.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">avatar_id</span>)
-  <span class="ruby-ivar">@avatar_id</span> = <span class="ruby-identifier">avatar_id</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">opts</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;must provide league_id&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:league_id</span>]
+
+  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-operator">*</span><span class="ruby-constant">FIELDS</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value">:&quot;@#{key}&quot;</span>, <span class="ruby-identifier">val</span>)
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
