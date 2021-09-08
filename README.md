@@ -3,7 +3,7 @@
 [![Build Status](https://app.travis-ci.com/sjweil9/sleeper_rb.svg?branch=main)](https://app.travis-ci.com/sjweil9/sleeper_rb)
 
 `SleeperRb` provides an object-oriented interface for the [Sleeper Fantasy
-FootbalL API](https://docs.sleeper.app/#introduction). The Sleeper API is a
+Football API](https://docs.sleeper.app/#introduction). The Sleeper API is a
 read-only, no-authentication API for accessing information on Sleeper Fantasy
 Football leagues.
 
