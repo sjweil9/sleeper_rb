@@ -20,13 +20,13 @@ module SleeperRb
       private
 
       def retrieve_values!
-        uri = "https://sleepercdn.com/avatars/#{id}"
-        full_url = download_file(uri, "#{id}-full")
-        thumb_uri = "https://sleepercdn.com/avatars/thumbs/#{id}"
-        thumb_url = download_file(thumb_uri, "#{id}-thumb")
+        full_url = "#{CDN_BASE_URL}/avatars/#{id}"
+        full_file = download_file(full_url, "#{id}-full")
+        thumb_url = "#{CDN_BASE_URL}/avatars/thumbs/#{id}"
+        thumb_file = download_file(thumb_url, "#{id}-thumb")
         {
-          full_size: full_url,
-          thumbnail: thumb_url
+          full_size: full_file,
+          thumbnail: thumb_file
         }
       end
     end

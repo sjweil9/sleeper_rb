@@ -10,6 +10,7 @@ module SleeperRb
     # This module encapsulates the logic for handling the response when querying from the Sleeper API.
     module Request
       BASE_URL = "https://api.sleeper.app/v1"
+      CDN_BASE_URL = "https://sleepercdn.com"
 
       private
 

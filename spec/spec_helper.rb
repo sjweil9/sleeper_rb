@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
 require "simplecov"
-SimpleCov.minimum_coverage 99.5
-SimpleCov.start
+SimpleCov.minimum_coverage 95
+SimpleCov.start do
+  add_filter "spec/"
+end
 
 require "sleeper_rb"
 require "webmock/rspec"
+
+RESPONSE = Struct.new(:code, :body)
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
