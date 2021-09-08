@@ -4,6 +4,8 @@ require "singleton"
 
 module SleeperRb
   module Resources
+    ##
+    # The NflState resource represents the current state of the NFL (week number, year, etc) as defined by Sleeper.
     class NflState
       include Singleton
       include SleeperRb::Utilities::Request

@@ -2,8 +2,17 @@
 
 module SleeperRb
   module Utilities
+    ##
+    # This module encapsulates the logic for caching and refreshing values retrieved from the Sleeper API.
     module Cache
+      ##
+      # Methods to be extended into the class when included.
       module ClassMethods
+        ##
+        # Creates a memoized attribute reader for the named attributes.
+        #
+        # = Example
+        # +cached_attr :display_name, :username+
         def cached_attr(*attrs)
           attrs.each do |attr|
             define_method(attr) do
@@ -22,6 +31,8 @@ module SleeperRb
         base.extend ClassMethods
       end
 
+      ##
+      # Refreshes all memoized values set by cached_attr.
       def refresh
         @values = retrieve_values!
         self

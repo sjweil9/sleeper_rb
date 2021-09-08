@@ -5,6 +5,8 @@ require "json"
 
 module SleeperRb
   module Utilities
+    ##
+    # This module encapsulates the logic for handling the response when querying from the Sleeper API.
     module Request
       BASE_URL = "https://api.sleeper.app/v1"
 
