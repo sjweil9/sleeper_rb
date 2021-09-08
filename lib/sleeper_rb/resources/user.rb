@@ -12,7 +12,9 @@ module SleeperRb
 
       ##
       # Initializes a user, with either username or user_id.
+      #
       # @param username [String] The current username
+      # 
       # @param user_id [String] The numerical user_id
       def initialize(user_id: nil, username: nil)
         raise ArgumentError, "must provide either user_id or username" unless user_id || username

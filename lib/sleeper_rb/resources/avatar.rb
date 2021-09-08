@@ -12,6 +12,7 @@ module SleeperRb
 
       ##
       # Initializes an avatar using an avatar_id.
+      #
       # @param avatar_id [String] The alphanumeric ID for the avatar
       def initialize(avatar_id)
         @id = avatar_id
