@@ -52,6 +52,10 @@ user.refresh.display_name
 => "newbar"
 ```
 
+Check the [complete
+documentation](https://sjweil9.github.io/sleeper_rb/SleeperRb/Client.html) to
+see all possible resources that can be accessed.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
