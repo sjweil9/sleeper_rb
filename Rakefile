@@ -9,4 +9,13 @@ require "rubocop/rake_task"
 
 RuboCop::RakeTask.new
 
-task default: %i[spec rubocop]
+require "rdoc/task"
+
+RDoc::Task.new(
+  rdoc: "rdoc",
+  clobber_rdoc: "rdoc:clean",
+  rerdoc: "rdoc:force"
+)
+
+task default: %i[spec rubocop rdoc]
+
