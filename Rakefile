@@ -18,4 +18,3 @@ RDoc::Task.new(
 )
 
 task default: %i[spec rubocop rdoc]
-
