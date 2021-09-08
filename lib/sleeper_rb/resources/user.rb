@@ -28,7 +28,7 @@ module SleeperRb
       #
       # @param season [String] The year in which the leagues were played
       #
-      # @return [Array<SleeperRb::Resources::League>]
+      # @return [{Array<SleeperRb::Resources::League>}[rdoc-ref:SleeperRb::Resources::League]]
       def leagues(season)
         @leagues ||= {}
         @leagues[season.to_s] ||= retrieve_leagues!(season)
