@@ -23,11 +23,21 @@ module SleeperRb
         @username = username if username
       end
 
+      ##
+      # Retrieves leagues for the user for the given season.
+      #
+      # @param season [String] The year in which the leagues were played
+      #
+      # @return [Array<SleeperRb::Resources::League>]
       def leagues(season)
         @leagues ||= {}
         @leagues[season.to_s] ||= retrieve_leagues!(season)
       end
 
+      ##
+      # Clears leagues for the user and returns itself.
+      #
+      # @return [self]
       def refresh
         @leagues = nil
         super

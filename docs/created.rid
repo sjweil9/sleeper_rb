@@ -1,4 +1,4 @@
-Tue, 07 Sep 2021 23:40:22 -0500
+Tue, 07 Sep 2021 23:43:11 -0500
 ./LICENSE.txt	Thu, 02 Sep 2021 21:12:37 -0500
 ./Rakefile	Tue, 07 Sep 2021 21:23:20 -0500
 ./CODE_OF_CONDUCT.md	Thu, 02 Sep 2021 21:12:37 -0500
@@ -6,7 +6,7 @@ Tue, 07 Sep 2021 23:40:22 -0500
 ./lib/sleeper_rb/resources/all.rb	Tue, 07 Sep 2021 23:28:28 -0500
 ./lib/sleeper_rb/resources/avatar.rb	Tue, 07 Sep 2021 23:07:18 -0500
 ./lib/sleeper_rb/resources/league.rb	Tue, 07 Sep 2021 23:36:37 -0500
-./lib/sleeper_rb/resources/user.rb	Tue, 07 Sep 2021 23:17:07 -0500
+./lib/sleeper_rb/resources/user.rb	Tue, 07 Sep 2021 23:43:00 -0500
 ./lib/sleeper_rb/resources/nfl_state.rb	Tue, 07 Sep 2021 19:42:55 -0500
 ./lib/sleeper_rb/version.rb	Thu, 02 Sep 2021 21:12:37 -0500
 ./lib/sleeper_rb/utilities/request.rb	Tue, 07 Sep 2021 22:36:27 -0500
