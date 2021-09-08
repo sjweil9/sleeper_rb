@@ -75,6 +75,8 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-avatar">#avatar</a>
+    
     <li ><a href="#method-i-nfl_state">#nfl_state</a>
     
     <li ><a href="#method-i-user">#user</a>
@@ -113,6 +115,43 @@
        </header>
 
     
+      <div id="method-i-avatar" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">avatar</span><span
+            class="method-args">(avatar_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns an avatar found by the alphanumeric ID.</p>
+
+<p>@param avatar_id [String] The ID for the avatar</p>
+
+<p>@return <a href="Resources/Avatar.html"><code>SleeperRb::Resources::Avatar</code></a> The Avatar instance</p>
+          
+          
+
+          
+          <div class="method-source-code" id="avatar-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/client.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">avatar</span>(<span class="ruby-identifier">avatar_id</span>)
+  <span class="ruby-constant">Resources</span><span class="ruby-operator">::</span><span class="ruby-constant">Avatar</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">avatar_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-nfl_state" class="method-detail ">
         
         <div class="method-heading">
@@ -134,7 +173,7 @@
 
           
           <div class="method-source-code" id="nfl_state-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/client.rb, line 16</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/client.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nfl_state</span>
   <span class="ruby-constant">Resources</span><span class="ruby-operator">::</span><span class="ruby-constant">NflState</span>.<span class="ruby-identifier">instance</span>
 <span class="ruby-keyword">end</span></pre>
@@ -173,7 +212,7 @@
 
           
           <div class="method-source-code" id="user-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/client.rb, line 28</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/client.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">user</span>(<span class="ruby-value">username:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">user_id:</span> <span class="ruby-keyword">nil</span>)
   <span class="ruby-constant">Resources</span><span class="ruby-operator">::</span><span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">username:</span> <span class="ruby-identifier">username</span>, <span class="ruby-value">user_id:</span> <span class="ruby-identifier">user_id</span>)
 <span class="ruby-keyword">end</span></pre>

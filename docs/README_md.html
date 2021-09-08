@@ -109,11 +109,9 @@
 
 <h1 id="label-SleeperRb"><a href="SleeperRb.html"><code>SleeperRb</code></a><span><a href="#label-SleeperRb">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p><a href="https://badge.fury.io/rb/simplecov-small-badge"><img src="https://badge.fury.io/rb/simplecov-small-badge.svg"></a> <a href="https://app.travis-ci.com/sjweil9/sleeper_rb"><img src="https://app.travis-ci.com/sjweil9/sleeper_rb.svg?branch=main"></a></p>
+<p><a href="https://badge.fury.io/rb/sleeper_rb"><img src="https://badge.fury.io/rb/sleeper_rb.svg"></a> <a href="https://app.travis-ci.com/sjweil9/sleeper_rb"><img src="https://app.travis-ci.com/sjweil9/sleeper_rb.svg?branch=main"></a></p>
 
-<p>Welcome to your new gem! In this directory, you&#39;ll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file <code>lib/sleeper_rb</code>. To experiment with that code, run <code>bin/console</code> for an interactive prompt.</p>
-
-<p>TODO: Delete this and the text above, and describe your gem</p>
+<p><code>SleeperRb</code> provides an object-oriented interface for the <a href="https://docs.sleeper.app/#introduction">Sleeper Fantasy FootbalL API</a>. The Sleeper API is a read-only, no-authentication API for accessing information on Sleeper Fantasy Football leagues.</p>
 
 <h2 id="label-Installation">Installation<span><a href="#label-Installation">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
@@ -132,17 +130,32 @@
 
 <h2 id="label-Usage">Usage<span><a href="#label-Usage">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
-<p>TODO: Write usage instructions here</p>
+<p>Initialize a <code>SleeperRb::Client</code> and use that to start any queries.</p>
+
+<pre class="ruby"><span class="ruby-identifier">client</span> = <span class="ruby-constant">SleeperRb</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>
+</pre>
+
+<p>Request resources from the client. The results will always be cached until you call <code>refresh</code>.</p>
+
+<pre class="ruby"><span class="ruby-identifier">user</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">user</span>(<span class="ruby-value">username:</span> <span class="ruby-string">&quot;foo&quot;</span>)
+<span class="ruby-operator">=&gt;</span>
+</pre>
+
+<p>From a given resource access its attributes or associated resources. No actual web requests will be made until one of the attributes is accessed.</p>
+
+<pre class="ruby"><span class="ruby-identifier">user</span>.<span class="ruby-identifier">user_id</span>
+<span class="ruby-operator">=&gt;</span>
+</pre>
+
+<p>Check the <a href="https://sjweil9.github.io/sleeper_rb/SleeperRb/Client.html">complete documentation</a> to see all possible resources that can be accessed.</p>
 
 <h2 id="label-Development">Development<span><a href="#label-Development">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>After checking out the repo, run <code>bin/setup</code> to install dependencies. Then, run <code>rake spec</code> to run the tests. You can also run <code>bin/console</code> for an interactive prompt that will allow you to experiment.</p>
 
-<p>To install this gem onto your local machine, run <code>bundle exec rake install</code>. To release a new version, update the version number in <code>version.rb</code>, and then run <code>bundle exec rake release</code>, which will create a git tag for the version, push git commits and the created tag, and push the <code>.gem</code> file to <a href="https://rubygems.org">rubygems.org</a>.</p>
-
 <h2 id="label-Contributing">Contributing<span><a href="#label-Contributing">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
-<p>Bug reports and pull requests are welcome on GitHub at <a href="https://github.com/[USERNAME]/sleeper_rb">github.com/[USERNAME]/sleeper_rb</a>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the {code of conduct}[https://github.com/[USERNAME]/sleeper_rb/blob/master/CODE_OF_CONDUCT.md].</p>
+<p>Bug reports and pull requests are welcome on GitHub at <a href="https://github.com/sjweil9/sleeper_rb">github.com/sjweil9/sleeper_rb</a>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the {code of conduct}[https://github.com/[USERNAME]/sleeper_rb/blob/master/CODE_OF_CONDUCT.md].</p>
 
 <h2 id="label-License">License<span><a href="#label-License">&para;</a> <a href="#top">&uarr;</a></span></h2>
 

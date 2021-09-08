@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>module SleeperRb::Utilities::Cache - RDoc Documentation</title>
+<title>class SleeperRb::Resources::Avatar - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
@@ -23,7 +23,7 @@
 
 
 
-<body id="top" role="document" class="module">
+<body id="top" role="document" class="class">
 <nav role="navigation">
   <div id="project-navigation">
     <div id="home-section" role="region" title="Quick navigation" class="nav-section">
@@ -59,29 +59,38 @@
 
   <div id="class-metadata">
     
-    
-    
-    <div id="extends-section" class="nav-section">
-  <h3>Extended With Modules</h3>
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="../../Object.html">Object</a>
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
 
   <ul class="link-list">
-    
   
-    <li><a class="extend" href="Cache/ClassMethods.html">SleeperRb::Utilities::Cache::ClassMethods</a>
+  
+    <li><a class="include" href="../Utilities/Request.html">SleeperRb::Utilities::Request</a>
+  
+  
+  
+    <li><a class="include" href="../Utilities/Cache.html">SleeperRb::Utilities::Cache</a>
   
   
   </ul>
 </div>
 
+    
     <!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-c-included">::included</a>
-    
-    <li ><a href="#method-i-refresh">#refresh</a>
+    <li ><a href="#method-c-new">::new</a>
     
   </ul>
 </div>
@@ -89,14 +98,14 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="module-SleeperRb::Utilities::Cache">
-  <h1 id="module-SleeperRb::Utilities::Cache" class="module">
-    module SleeperRb::Utilities::Cache
+<main role="main" aria-labelledby="class-SleeperRb::Resources::Avatar">
+  <h1 id="class-SleeperRb::Resources::Avatar" class="class">
+    class SleeperRb::Resources::Avatar
   </h1>
 
   <section class="description">
     
-<p>This module encapsulates the logic for caching and refreshing values retrieved from the Sleeper API.</p>
+<p>The <a href="Avatar.html"><code>Avatar</code></a> class allows access to full-size or thumbnail URLs for user avatars.</p>
 
   </section>
 
@@ -117,11 +126,11 @@
        </header>
 
     
-      <div id="method-c-included" class="method-detail ">
+      <div id="method-c-new" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">included</span><span
-            class="method-args">(base)</span>
+          <span class="method-name">new</span><span
+            class="method-args">(avatar_id)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -130,57 +139,15 @@
 
         <div class="method-description">
           
-          
-          
-          
-
-          
-          <div class="method-source-code" id="included-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 30</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">included</span>(<span class="ruby-identifier">base</span>)
-  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">ClassMethods</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-    </section>
-  
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Public Instance Methods</h3>
-       </header>
-
-    
-      <div id="method-i-refresh" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">refresh</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Refreshes all memoized values set by cached_attr.</p>
+          <p>Initializes an avatar using an avatar_id. @param avatar_id [String] The alphanumeric ID for the avatar</p>
           
           
 
           
-          <div class="method-source-code" id="refresh-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">refresh</span>
-  <span class="ruby-ivar">@values</span> = <span class="ruby-identifier">retrieve_values!</span>
-  <span class="ruby-keyword">self</span>
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/avatar.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">avatar_id</span>)
+  <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">avatar_id</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
