@@ -2,9 +2,7 @@
 
 require_relative "utilities/request"
 require_relative "utilities/cache"
-require_relative "resources/nfl_state"
-require_relative "resources/user"
-require_relative "resources/avatar"
+require_relative "resources/all"
 
 module SleeperRb
   ##

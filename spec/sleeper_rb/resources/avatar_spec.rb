@@ -16,7 +16,7 @@ RSpec.describe SleeperRb::Resources::Avatar do
   describe "#retrieve_values!" do
     it "should set all proper values" do
       allow_any_instance_of(Net::HTTP).to receive(:get).and_return(file_response)
-      expect(subject.id).to eq(avatar_id)
+      expect(subject.avatar_id).to eq(avatar_id)
       expect(subject.full_size).to be_an_instance_of(Tempfile)
       expect(subject.thumbnail).to be_an_instance_of(Tempfile)
     end

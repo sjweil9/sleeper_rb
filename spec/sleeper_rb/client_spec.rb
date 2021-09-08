@@ -27,7 +27,7 @@ RSpec.describe SleeperRb::Client do
     it "returns an Avatar instance by ID" do
       result = subject.avatar("ABC123")
       expect(result).to be_an_instance_of(SleeperRb::Resources::Avatar)
-      expect(result.id).to eq("ABC123")
+      expect(result.avatar_id).to eq("ABC123")
     end
   end
 end
