@@ -2,9 +2,10 @@
 [![Gem Version](https://badge.fury.io/rb/simplecov-small-badge.svg)](https://badge.fury.io/rb/simplecov-small-badge)
 [![Build Status](https://app.travis-ci.com/sjweil9/sleeper_rb.svg?branch=main)](https://app.travis-ci.com/sjweil9/sleeper_rb)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sleeper_rb`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+`SleeperRb` provides an object-oriented interface for the [Sleeper Fantasy
+FootbalL API](https://docs.sleeper.app/#introduction). The Sleeper API is a
+read-only, no-authentication API for accessing information on Sleeper Fantasy
+Football leagues.
 
 ## Installation
 
@@ -24,17 +25,40 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Initialize a `SleeperRb::Client` and use that to start any queries.
+
+```ruby
+client = SleeperRb::Client.new
+```
+
+Request resources from the client. The results will always be cached until you
+call `refresh`.
+
+```ruby
+user = client.user(username: "foo")
+=> #<SleeperRb::Resources::User:0x000056084a0c3d40 @username="foo">
+```
+
+From a given resource access its attributes or associated resources. No actual
+web requests will be made until one of the attributes is accessed.
+
+```ruby
+user.user_id
+=> 37440957478939283
+user.display_name
+=> "foobar"
+# explicitly trigger a refresh to get, for example, an updated display_name
+user.refresh.display_name
+=> "newbar"
+```
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sleeper_rb. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/sleeper_rb/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/sjweil9/sleeper_rb. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/sleeper_rb/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
