@@ -25,7 +25,9 @@ module SleeperRb
 
       def retrieve_values!
         uri = URI("#{BASE_URL}/user/#{@user_id || @username}")
-        execute_request(uri)
+        response = execute_request(uri)
+        response[:avatar] = Resources::Avatar.new(response.delete(:avatar))
+        response
       end
     end
   end

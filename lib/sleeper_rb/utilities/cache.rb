@@ -20,7 +20,7 @@ module SleeperRb
               if instance_variable_defined?(ivar)
                 instance_variable_get(ivar)
               else
-                instance_variable_set(ivar, values[attr.to_s])
+                instance_variable_set(ivar, values[attr.to_sym])
               end
             end
           end

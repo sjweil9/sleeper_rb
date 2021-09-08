@@ -4,6 +4,7 @@ require_relative "utilities/request"
 require_relative "utilities/cache"
 require_relative "resources/nfl_state"
 require_relative "resources/user"
+require_relative "resources/avatar"
 
 module SleeperRb
   ##
@@ -27,6 +28,16 @@ module SleeperRb
     # @return {SleeperRb::Resources::User}[rdoc-ref:SleeperRb::Resources::User] The User instance
     def user(username: nil, user_id: nil)
       Resources::User.new(username: username, user_id: user_id)
+    end
+
+    ##
+    # Returns an avatar found by the alphanumeric ID.
+    #
+    # @param avatar_id [String] The ID for the avatar
+    #
+    # @return {SleeperRb::Resources::Avatar}[rdoc-ref:SleeperRb::Resources::Avatar] The Avatar instance
+    def avatar(avatar_id)
+      Resources::Avatar.new(avatar_id)
     end
   end
 end

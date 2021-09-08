@@ -2,6 +2,7 @@
 
 require "net/http"
 require "json"
+require "tempfile"
 
 module SleeperRb
   module Utilities
@@ -16,11 +17,23 @@ module SleeperRb
         response = Net::HTTP.get_response(URI(url))
 
         case response.code.to_i
-        when 200 then JSON.parse(response.body)
+        when 200 then JSON.parse(response.body, symbolize_names: true)
         when 400 then raise BadRequest
         when 404 then raise NotFound
         when 429 then raise RateLimitExceeded
         else raise ServerError
+        end
+      end
+
+      def download_file(url, filename)
+        uri = URI(url)
+        Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+          resp = http.get(uri.path)
+          file = Tempfile.new(filename)
+          file.binmode
+          file.write(resp.body)
+          file.flush
+          file
         end
       end
     end

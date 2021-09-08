@@ -48,7 +48,8 @@ RSpec.describe SleeperRb::Resources::User do
         expect(Net::HTTP).to receive(:get_response).with(username_url).once.and_call_original
         expect(subject.username).to eq(username)
         expect(subject.user_id).to eq(user_id)
-        expect(subject.avatar).to eq(avatar)
+        expect(subject.avatar).to be_an_instance_of(SleeperRb::Resources::Avatar)
+        expect(subject.avatar.id).to eq(avatar)
         expect(subject.display_name).to eq(username)
       end
     end
@@ -60,7 +61,8 @@ RSpec.describe SleeperRb::Resources::User do
         expect(Net::HTTP).to receive(:get_response).with(user_id_url).once.and_call_original
         expect(subject.username).to eq(username)
         expect(subject.user_id).to eq(user_id)
-        expect(subject.avatar).to eq(avatar)
+        expect(subject.avatar).to be_an_instance_of(SleeperRb::Resources::Avatar)
+        expect(subject.avatar.id).to eq(avatar)
         expect(subject.display_name).to eq(username)
       end
     end

@@ -29,7 +29,7 @@ RSpec.describe SleeperRb::Utilities::Cache do
     context "when ivar is not defined" do
       it "sets the ivar from values" do
         expect(instance).to receive(:values).and_call_original
-        instance.instance_variable_set(:@values, { "foo" => 123 })
+        instance.instance_variable_set(:@values, { foo: 123 })
         expect(instance.foo).to eq(123)
         expect(instance.instance_variable_get(:@foo)).to eq(123)
       end
