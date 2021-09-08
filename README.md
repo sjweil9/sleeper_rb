@@ -1,5 +1,5 @@
 # SleeperRb
-[![Gem Version](https://badge.fury.io/rb/simplecov-small-badge.svg)](https://badge.fury.io/rb/simplecov-small-badge)
+[![Gem Version](https://badge.fury.io/rb/sleeper_rb.svg)](https://badge.fury.io/rb/sleeper_rb)
 [![Build Status](https://app.travis-ci.com/sjweil9/sleeper_rb.svg?branch=main)](https://app.travis-ci.com/sjweil9/sleeper_rb)
 
 `SleeperRb` provides an object-oriented interface for the [Sleeper Fantasy
