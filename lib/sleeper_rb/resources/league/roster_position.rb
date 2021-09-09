@@ -4,7 +4,7 @@ module SleeperRb
   module Resources
     class League
       ##
-      # A string representing a roster position (QB/RB/TE/K/DST/WR)
+      # A string representing a roster position (QB/RB/TE/K/DST/WR/FLEX/BN/IR)
       class RosterPosition
         attr_reader :position
 
@@ -12,7 +12,9 @@ module SleeperRb
           @position = position
         end
 
-        %w[qb rb wr te k dst flex bn].each do |position_key|
+        VALID_ROSTER_POSITIONS = %w[qb rb wr te k dst flex bn ir super_flex].freeze
+
+        VALID_ROSTER_POSITIONS.each do |position_key|
           define_method("#{position_key}?") { position == position_key.upcase }
         end
       end
