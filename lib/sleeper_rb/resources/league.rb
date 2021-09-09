@@ -27,7 +27,9 @@ module SleeperRb
 
       def retrieve_values!
         uri = URI("#{BASE_URL}/league/#{league_id}")
-        execute_request(uri)
+        response = execute_request(uri)
+        response[:scoring_settings] = ScoringSettings.new(response.delete(:scoring_settings))
+        response
       end
     end
   end
