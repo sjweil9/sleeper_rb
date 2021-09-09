@@ -16,7 +16,7 @@ module SleeperRb
           playoff_type
         ].freeze
 
-        attr_reader *FIELDS
+        attr_reader(*FIELDS)
 
         def initialize(opts)
           opts.slice(*FIELDS).each do |key, val|

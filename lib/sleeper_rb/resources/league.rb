@@ -18,13 +18,16 @@ module SleeperRb
       ].freeze
 
       TRANSLATED_FIELDS = {
-        scoring_settings: lambda { |settings| ScoringSettings.new(settings) },
-        roster_positions: lambda { |positions| positions.map { |pos| RosterPosition.new(pos) } },
-        settings: lambda { |settings| Settings.new(settings) }
-      }
+        scoring_settings: ->(settings) { ScoringSettings.new(settings) },
+        roster_positions: ->(positions) { positions.map { |pos| RosterPosition.new(pos) } },
+        settings: ->(settings) { Settings.new(settings) }
+      }.freeze
 
       cached_attr(*FIELDS)
 
+      ##
+      # Create a new League instance with at least league_id. Any other valid provided attributes
+      # will be cached as instance variables.
       def initialize(opts)
         raise ArgumentError, "must provide league_id" unless opts[:league_id]
 

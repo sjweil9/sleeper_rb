@@ -9,7 +9,7 @@ module SleeperRb
         attr_reader :position
 
         def initialize(position)
-          @position = position
+          @position = position.upcase
         end
 
         VALID_ROSTER_POSITIONS = %w[qb rb wr te k dst flex bn ir super_flex].freeze

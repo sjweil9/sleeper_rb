@@ -315,4 +315,13 @@ RSpec.describe SleeperRb::Resources::User do
       expect(leagues.last.league_id).to eq(league_two_id)
     end
   end
+
+  describe "#refresh" do
+    subject { described_class.new(user_id: user_id) }
+
+    it "should set @leagues to nil" do
+      subject.instance_variable_set(:@leagues, {})
+      expect(subject.refresh.instance_variable_get(:@leagues)).to be_nil
+    end
+  end
 end
