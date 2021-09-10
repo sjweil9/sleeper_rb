@@ -101,7 +101,7 @@
     
     <li ><a href="#method-c-find">::find</a>
     
-    <li ><a href="#method-i-full_name">#full_name</a>
+    <li ><a href="#method-c-refresh">::refresh</a>
     
   </ul>
 </div>
@@ -116,6 +116,8 @@
 
   <section class="description">
     
+<p>A specific NFL player with general information about roster position, physical attributes, team, etc.</p>
+
   </section>
 
   
@@ -156,10 +158,10 @@
 
           
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 12</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>
-  <span class="ruby-ivar">@all</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">player_hashes</span>.<span class="ruby-identifier">reduce</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">array</span>, (<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)<span class="ruby-operator">|</span>
-    <span class="ruby-identifier">array</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new</span>(<span class="ruby-identifier">value</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">player_id:</span> <span class="ruby-identifier">key</span>))
+  <span class="ruby-ivar">@all</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">player_hashes</span>.<span class="ruby-identifier">reduce</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">array</span>, (<span class="ruby-identifier">_player_id</span>, <span class="ruby-identifier">player_hash</span>)<span class="ruby-operator">|</span>
+    <span class="ruby-identifier">array</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new</span>(<span class="ruby-identifier">player_hash</span>)
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -187,15 +189,17 @@
           
           <p>Retrieves a particular <a href="Player.html"><code>Player</code></a> by ID.</p>
 
-<p>@return [SleeperRb::Resources::Player] The <a href="Player.html"><code>Player</code></a> instance</p>
+<p>@return [<a href="Player.html"><code>SleeperRb::Resources::Player</code></a>] The <a href="Player.html"><code>Player</code></a> instance</p>
           
           
 
           
           <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 22</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">find</span>(<span class="ruby-identifier">player_id</span>)
-  <span class="ruby-identifier">new</span>(<span class="ruby-identifier">player_hashes</span>[<span class="ruby-identifier">player_id</span>].<span class="ruby-identifier">merge</span>(<span class="ruby-value">player_id:</span> <span class="ruby-identifier">player_id</span>))
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">player_hashes</span>[<span class="ruby-identifier">player_id</span>.<span class="ruby-identifier">to_sym</span>]
+
+  <span class="ruby-identifier">new</span>(<span class="ruby-identifier">player_hashes</span>[<span class="ruby-identifier">player_id</span>.<span class="ruby-identifier">to_sym</span>])
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -207,18 +211,10 @@
       </div>
 
     
-    </section>
-  
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Public Instance Methods</h3>
-       </header>
-
-    
-      <div id="method-i-full_name" class="method-detail ">
+      <div id="method-c-refresh" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">full_name</span><span
+          <span class="method-name">refresh</span><span
             class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -228,15 +224,17 @@
 
         <div class="method-description">
           
-          <p>@return [String] Combined first and last name</p>
+          
           
           
 
           
-          <div class="method-source-code" id="full_name-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 47</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">full_name</span>
-  [<span class="ruby-identifier">first_name</span>, <span class="ruby-identifier">last_name</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot; &quot;</span>)
+          <div class="method-source-code" id="refresh-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">refresh</span>
+  <span class="ruby-ivar">@all</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@player_hashes</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

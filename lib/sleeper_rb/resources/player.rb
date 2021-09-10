@@ -14,8 +14,8 @@ module SleeperRb
         #
         # @return [Array<{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]>]
         def all
-          @all ||= player_hashes.reduce([]) do |array, (key, value)|
-            array << new(value.merge(player_id: key))
+          @all ||= player_hashes.reduce([]) do |array, (_player_id, player_hash)|
+            array << new(player_hash)
           end
         end
 
@@ -26,7 +26,7 @@ module SleeperRb
         def find(player_id)
           return unless player_hashes[player_id.to_sym]
 
-          new(player_hashes[player_id.to_sym].merge(player_id: player_id))
+          new(player_hashes[player_id.to_sym])
         end
 
         def refresh
@@ -48,17 +48,13 @@ module SleeperRb
       end
 
       cached_attr :hashtag, :depth_chart_position, :status, :sport, :number, :injury_start_date, :weight,
-                  :practice_participation, :sportradar_id, :team, :last_name, :college, :fantasy_data_id,
-                  :injury_status, :player_id, :height, :age, :stats_id, :birth_country, :espn_id, :first_name,
-                  :depth_chart_order, :years_exp, :rotowire_id, :rotoworld_id, :yahoo_id,
-                  fantasy_positions: ->(array) { array&.map { |pos| League::RosterPosition.new(pos) } },
-                  position: ->(pos) { pos ? League::RosterPosition.new(pos) : nil }
-
-      ##
-      # @return [String] Combined first and last name
-      def full_name
-        [first_name, last_name].join(" ")
-      end
+                  :practice_participation, :sportradar_id, :team, :last_name, :college, :fantasy_data_id, :full_name,
+                  :injury_status, :player_id, :height, :age, :stats_id, :birth_country, :espn_id, :first_name, :active,
+                  :depth_chart_order, :years_exp, :rotowire_id, :rotoworld_id, :yahoo_id, :pandascore_id, :news_updated,
+                  :birth_city, :birth_date, :injury_notes, :gsis_id, :birth_state, :swish_id, :high_school, :metadata,
+                  :injury_body_part, :practice_description, 
+                  fantasy_positions: ->(array) { array&.map { |pos| SleeperRb::Utilities::RosterPosition.new(pos) } },
+                  position: ->(pos) { pos ? SleeperRb::Utilities::RosterPosition.new(pos) : nil }
 
       private
 

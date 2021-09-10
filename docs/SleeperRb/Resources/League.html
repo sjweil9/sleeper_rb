@@ -152,9 +152,10 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 32</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">opts</span> = {})
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:league_id</span>]
+
   <span class="ruby-keyword">super</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -194,7 +195,7 @@
 
           
           <div class="method-source-code" id="rosters-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 28</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rosters</span>
   <span class="ruby-ivar">@rosters</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">retrieve_rosters!</span>
 <span class="ruby-keyword">end</span></pre>

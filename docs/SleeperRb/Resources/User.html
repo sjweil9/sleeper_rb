@@ -161,6 +161,7 @@
             <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">opts</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;must provide either user_id or username&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:user_id</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:username</span>]
+
   <span class="ruby-keyword">super</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -204,7 +205,7 @@
 
           
           <div class="method-source-code" id="leagues-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 31</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">leagues</span>(<span class="ruby-identifier">season</span>)
   <span class="ruby-ivar">@leagues</span> <span class="ruby-operator">||=</span> {}
   <span class="ruby-ivar">@leagues</span>[<span class="ruby-identifier">season</span>.<span class="ruby-identifier">to_s</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">retrieve_leagues!</span>(<span class="ruby-identifier">season</span>)
@@ -245,7 +246,7 @@
 
           
           <div class="method-source-code" id="refresh-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 40</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">refresh</span>
   <span class="ruby-ivar">@leagues</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">super</span>

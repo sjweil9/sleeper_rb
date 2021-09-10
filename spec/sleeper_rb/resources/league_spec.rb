@@ -32,7 +32,7 @@ RSpec.describe SleeperRb::Resources::League do
         end
         expect(subject.scoring_settings).to be_an_instance_of(SleeperRb::Resources::League::ScoringSettings)
         expect(subject.settings).to be_an_instance_of(SleeperRb::Resources::League::Settings)
-        expect(subject.roster_positions).to all be_an_instance_of(SleeperRb::Resources::League::RosterPosition)
+        expect(subject.roster_positions).to all be_an_instance_of(SleeperRb::Utilities::RosterPosition)
         expect(subject.avatar).to be_an_instance_of(SleeperRb::Resources::Avatar)
         expect(subject.avatar.avatar_id).to eq("ABC123CYZ")
       end

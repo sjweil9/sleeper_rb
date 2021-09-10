@@ -2,6 +2,7 @@
 
 require_relative "utilities/request"
 require_relative "utilities/cache"
+require_relative "utilities/roster_position"
 require_relative "resources/all"
 
 module SleeperRb
