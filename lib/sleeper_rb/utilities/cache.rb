@@ -15,25 +15,30 @@ module SleeperRb
         # +cached_attr :display_name, :username, foo: lambda { |x| x + 3 }+
         def cached_attr(*attrs)
           attrs.each do |attr|
-            field_name = attr.is_a?(Hash) ? attr.keys.first : attr
-            translator = attr.is_a?(Hash) ? attr.values.first : lambda { |x| x }
-            cached_attrs[field_name.to_sym] = translator
-            define_method(field_name) do
-              ivar = :"@#{field_name}"
-              if instance_variable_defined?(ivar)
-                instance_variable_get(ivar)
-              elsif attr.is_a?(Hash)
-                translator = attr.values.first
-                instance_variable_set(ivar, translator.call(values[field_name.to_sym]))
-              else
-                instance_variable_set(ivar, values[field_name.to_sym])
+            if attr.is_a?(Hash)
+              attr.each do |field_name, translator|
+                create_method(field_name, translator)
               end
+            else
+              create_method(attr, lambda { |x| x })
             end
           end
         end
 
         def cached_attrs
           @cached_attrs ||= {}
+        end
+
+        def create_method(field_name, translator)
+          cached_attrs[field_name.to_sym] = translator
+          define_method(field_name) do
+            ivar = :"@#{field_name}"
+            if instance_variable_defined?(ivar)
+              instance_variable_get(ivar)
+            else
+              instance_variable_set(ivar, translator.call(values[field_name.to_sym]))
+            end
+          end
         end
       end
 

@@ -11,7 +11,7 @@ RSpec.describe SleeperRb::Resources::Avatar do
   let(:file) { File.read(File.expand_path("../../fixtures/test_image.png", File.dirname(__FILE__))) }
   let(:file_response) { RESPONSE.new("200", file) }
 
-  subject { described_class.new(avatar_id) }
+  subject { described_class.new(avatar_id: avatar_id) }
 
   describe "#retrieve_values!" do
     it "should set all proper values" do

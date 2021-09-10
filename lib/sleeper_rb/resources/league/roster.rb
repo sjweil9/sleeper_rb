@@ -1,12 +1,16 @@
+# frozen_string_literal: true
+
 require_relative 'roster/settings'
 
 module SleeperRb
   module Resources
     class League
+      ##
+      # A roster belonging to a specific user in a specific league.
       class Roster
         include SleeperRb::Utilities::Cache
 
-        PLAYER_LAMBDA = lambda { |array| array.map { |player_id| Resources::Player.new(player_id: player_id) } }
+        PLAYER_LAMBDA = lambda { |array| array&.map { |player_id| Resources::Player.new(player_id: player_id) } }
 
         cached_attr :roster_id, :owner_id, :league_id,
                     settings: lambda { |settings| Roster::Settings.new(settings) },
@@ -14,6 +18,8 @@ module SleeperRb
                     players: PLAYER_LAMBDA,
                     reserve: PLAYER_LAMBDA
 
+        ##
+        # @return [{SleeperRb::Resources::User}[rdoc-ref:SleeperRb::Resources::User]]
         def owner
           @owner ||= Resources::User.new(user_id: owner_id)
         end

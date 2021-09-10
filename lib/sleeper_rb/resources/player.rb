@@ -5,6 +5,8 @@ module SleeperRb
       include SleeperRb::Utilities::Cache
 
       class << self
+        ##
+        # Ensuring there is one source of players so the heavy endpoint need not be called frequently.
         def players
           @players ||= player_hashes.reduce([]) do |array, (key, value)|
             array << new(value.merge(player_id: key))
@@ -28,6 +30,8 @@ module SleeperRb
                   fantasy_positions: lambda { |array| array&.map { |pos| League::RosterPosition.new(pos) } },
                   position: lambda { |pos| League::RosterPosition.new(pos) }
 
+      ##
+      # @return [String] Combined first and last name
       def full_name
         [first_name, last_name].join(" ")
       end

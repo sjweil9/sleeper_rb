@@ -23,6 +23,8 @@ module SleeperRb
         define_method(pos) { roster_positions.select(&:"#{pos}?").size }
       end
 
+      ##
+      # @return [Array<SleeperRb::Resources::League::Roster>]
       def rosters
         @rosters ||= retrieve_rosters!
       end

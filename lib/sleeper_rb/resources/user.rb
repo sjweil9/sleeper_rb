@@ -8,7 +8,8 @@ module SleeperRb
       include SleeperRb::Utilities::Request
       include SleeperRb::Utilities::Cache
 
-      cached_attr :user_id, :username, :display_name, avatar: lambda { |id| Resources::Avatar.new(avatar_id: id) }
+      cached_attr :user_id, :username, :display_name,
+                  avatar: lambda { |id| id ? Resources::Avatar.new(avatar_id: id) : nil }
 
       ##
       # Initializes a user, with either username or user_id.

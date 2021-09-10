@@ -19,7 +19,8 @@ module SleeperRb
         thumb_file = download_file(thumb_url, "#{avatar_id}-thumb")
         {
           full_size: full_file,
-          thumbnail: thumb_file
+          thumbnail: thumb_file,
+          avatar_id: avatar_id
         }
       end
     end
