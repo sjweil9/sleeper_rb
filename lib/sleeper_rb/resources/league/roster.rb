@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'roster/settings'
+require_relative "roster/settings"
 
 module SleeperRb
   module Resources
@@ -10,10 +10,10 @@ module SleeperRb
       class Roster
         include SleeperRb::Utilities::Cache
 
-        PLAYER_LAMBDA = lambda { |array| array&.map { |player_id| Resources::Player.new(player_id: player_id) } }
+        PLAYER_LAMBDA = ->(array) { array&.map { |player_id| Resources::Player.new(player_id: player_id) } }
 
         cached_attr :roster_id, :owner_id, :league_id,
-                    settings: lambda { |settings| Roster::Settings.new(settings) },
+                    settings: ->(settings) { Roster::Settings.new(settings) },
                     starters: PLAYER_LAMBDA,
                     players: PLAYER_LAMBDA,
                     reserve: PLAYER_LAMBDA

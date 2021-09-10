@@ -47,7 +47,6 @@ RSpec.describe SleeperRb::Resources::League::Roster do
       expect(subject.players.map(&:player_id)).to match_array(player_ids)
       expect(subject.reserve).to all be_an_instance_of(SleeperRb::Resources::Player)
       expect(subject.reserve.map(&:player_id)).to match_array(reserve_ids)
-
     end
   end
 

@@ -9,7 +9,7 @@ module SleeperRb
       include SleeperRb::Utilities::Cache
 
       cached_attr :user_id, :username, :display_name,
-                  avatar: lambda { |id| id ? Resources::Avatar.new(avatar_id: id) : nil }
+                  avatar: ->(id) { id ? Resources::Avatar.new(avatar_id: id) : nil }
 
       ##
       # Initializes a user, with either username or user_id.
@@ -19,6 +19,7 @@ module SleeperRb
       # @param user_id [String] The numerical user_id
       def initialize(opts)
         raise ArgumentError, "must provide either user_id or username" unless opts[:user_id] || opts[:username]
+
         super
       end
 

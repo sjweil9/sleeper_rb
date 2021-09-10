@@ -10,7 +10,7 @@ module SleeperRb
           include SleeperRb::Utilities::Cache
 
           cached_attr :wins, :waiver_position, :waiver_budget_used, :total_moves, :ties, :losses, :fpts_decimal,
-                       :fpts_against_decimal, :fpts_against, :fpts
+                      :fpts_against_decimal, :fpts_against, :fpts
 
           ##
           # @return [Float] All points scored by the roster
@@ -27,9 +27,9 @@ module SleeperRb
           ##
           # @return [Float] Percentage of games won by the roster
           def win_pct
-            return 0.0 unless [wins, ties, losses].any? { |count| count > 0 }
+            return 0.0 unless [wins, ties, losses].any?(&:positive?)
 
-            ((wins.to_f / (wins + ties + losses).to_f) * 100.0).round(2)
+            ((wins.to_f / (wins + ties + losses)) * 100.0).round(2)
           end
 
           ##

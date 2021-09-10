@@ -20,7 +20,7 @@ module SleeperRb
                 create_method(field_name, translator)
               end
             else
-              create_method(attr, lambda { |x| x })
+              create_method(attr, ->(x) { x })
             end
           end
         end
