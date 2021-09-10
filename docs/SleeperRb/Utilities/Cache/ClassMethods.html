@@ -70,6 +70,10 @@
     
     <li ><a href="#method-i-cached_attr">#cached_attr</a>
     
+    <li ><a href="#method-i-cached_attrs">#cached_attrs</a>
+    
+    <li ><a href="#method-i-create_method">#create_method</a>
+    
   </ul>
 </div>
 
@@ -121,7 +125,7 @@
 
 <h1 id="method-i-cached_attr-label-Example">Example<span><a href="#method-i-cached_attr-label-Example">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>+cached_attr :display_name, :username+</p>
+<p>+cached_attr :display_name, :username, foo: lambda { |x| x + 3 }+</p>
           
           
 
@@ -130,13 +134,86 @@
             <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cached_attr</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">attrs</span>)
   <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">attr</span>) <span class="ruby-keyword">do</span>
-      <span class="ruby-identifier">ivar</span> = <span class="ruby-value">:&quot;@#{attr}&quot;</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">instance_variable_defined?</span>(<span class="ruby-identifier">ivar</span>)
-        <span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-identifier">ivar</span>)
-      <span class="ruby-keyword">else</span>
-        <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">ivar</span>, <span class="ruby-identifier">values</span>[<span class="ruby-identifier">attr</span>.<span class="ruby-identifier">to_sym</span>])
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+      <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">field_name</span>, <span class="ruby-identifier">translator</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">create_method</span>(<span class="ruby-identifier">field_name</span>, <span class="ruby-identifier">translator</span>)
       <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">create_method</span>(<span class="ruby-identifier">attr</span>, <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span> })
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-cached_attrs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">cached_attrs</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="cached_attrs-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cached_attrs</span>
+  <span class="ruby-ivar">@cached_attrs</span> <span class="ruby-operator">||=</span> {}
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-create_method" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_method</span><span
+            class="method-args">(field_name, translator)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_method-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_method</span>(<span class="ruby-identifier">field_name</span>, <span class="ruby-identifier">translator</span>)
+  <span class="ruby-identifier">cached_attrs</span>[<span class="ruby-identifier">field_name</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">translator</span>
+  <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">field_name</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">ivar</span> = <span class="ruby-value">:&quot;@#{field_name}&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">instance_variable_defined?</span>(<span class="ruby-identifier">ivar</span>)
+      <span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-identifier">ivar</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">ivar</span>, <span class="ruby-identifier">translator</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">values</span>[<span class="ruby-identifier">field_name</span>.<span class="ruby-identifier">to_sym</span>]))
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>

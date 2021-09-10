@@ -90,7 +90,9 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-c-new">::new</a>
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-rosters">#rosters</a>
     
   </ul>
 </div>
@@ -116,20 +118,6 @@
     
 
     
-    <section class="constants-list">
-      <header>
-        <h3>Constants</h3>
-      </header>
-      <dl>
-      
-        <dt id="FIELDS">FIELDS
-        
-        <dd>
-        
-      
-      </dl>
-    </section>
-    
 
     
 
@@ -144,7 +132,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(opts)</span>
+            class="method-args">(opts = {})</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -156,16 +144,59 @@
           
           
           
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="../Utilities/Cache.html#method-c-new"><code>SleeperRb::Utilities::Cache::new</code></a>
+            </div>
+          
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 18</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">opts</span>)
-  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;must provide league_id&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:league_id</span>]
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">opts</span> = {})
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:league_id</span>]
+  <span class="ruby-keyword">super</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
 
-  <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-operator">*</span><span class="ruby-constant">FIELDS</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value">:&quot;@#{key}&quot;</span>, <span class="ruby-identifier">val</span>)
-  <span class="ruby-keyword">end</span>
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-rosters" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">rosters</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>@return [Array&lt;SleeperRb::Resources::League::Roster&gt;]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="rosters-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rosters</span>
+  <span class="ruby-ivar">@rosters</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">retrieve_rosters!</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

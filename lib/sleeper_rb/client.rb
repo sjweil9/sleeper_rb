@@ -53,7 +53,7 @@ module SleeperRb
     #
     # @return Array<{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]> Array of Player instances
     def players
-      Resources::Player.players
+      Resources::Player.all
     end
   end
 end

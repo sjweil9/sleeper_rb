@@ -7,10 +7,20 @@ module SleeperRb
       class << self
         ##
         # Ensuring there is one source of players so the heavy endpoint need not be called frequently.
-        def players
-          @players ||= player_hashes.reduce([]) do |array, (key, value)|
+        #
+        # @return [Array<{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]>]
+        def all
+          @all ||= player_hashes.reduce([]) do |array, (key, value)|
             array << new(value.merge(player_id: key))
           end
+        end
+
+        ##
+        # Retrieves a particular Player by ID.
+        #
+        # @return [SleeperRb::Resources::Player] The Player instance
+        def find(player_id)
+          new(player_hashes[player_id].merge(player_id: player_id))
         end
 
         def player_hashes

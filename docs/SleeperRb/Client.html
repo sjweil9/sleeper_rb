@@ -81,6 +81,8 @@
     
     <li ><a href="#method-i-nfl_state">#nfl_state</a>
     
+    <li ><a href="#method-i-players">#players</a>
+    
     <li ><a href="#method-i-user">#user</a>
     
   </ul>
@@ -142,7 +144,7 @@
           <div class="method-source-code" id="avatar-source">
             <pre><span class="ruby-comment"># File lib/sleeper_rb/client.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">avatar</span>(<span class="ruby-identifier">avatar_id</span>)
-  <span class="ruby-constant">Resources</span><span class="ruby-operator">::</span><span class="ruby-constant">Avatar</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">avatar_id</span>)
+  <span class="ruby-constant">Resources</span><span class="ruby-operator">::</span><span class="ruby-constant">Avatar</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">avatar_id:</span> <span class="ruby-identifier">avatar_id</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -215,6 +217,41 @@
             <pre><span class="ruby-comment"># File lib/sleeper_rb/client.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nfl_state</span>
   <span class="ruby-constant">Resources</span><span class="ruby-operator">::</span><span class="ruby-constant">NflState</span>.<span class="ruby-identifier">instance</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-players" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">players</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns all NFL players.</p>
+
+<p>@return Array&lt;<a href="Resources/Player.html"><code>SleeperRb::Resources::Player</code></a>&gt; Array of Player instances</p>
+          
+          
+
+          
+          <div class="method-source-code" id="players-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/client.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">players</span>
+  <span class="ruby-constant">Resources</span><span class="ruby-operator">::</span><span class="ruby-constant">Player</span>.<span class="ruby-identifier">all</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
