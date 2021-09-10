@@ -3,6 +3,7 @@
 require_relative "league/roster_position"
 require_relative "league/scoring_settings"
 require_relative "league/settings"
+require_relative "league/roster"
 
 module SleeperRb
   module Resources

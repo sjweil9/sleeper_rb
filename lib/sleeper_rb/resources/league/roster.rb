@@ -1,3 +1,5 @@
+require_relative 'roster/settings'
+
 module SleeperRb
   module Resources
     class League

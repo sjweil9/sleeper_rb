@@ -6,7 +6,13 @@ module SleeperRb
 
       class << self
         def players
-          @players ||= retrieve_players!
+          @players ||= player_hashes.reduce([]) do |array, (key, value)|
+            array << new(value.merge(player_id: key))
+          end
+        end
+
+        def player_hashes
+          @player_hashes ||= retrieve_players!
         end
 
         def retrieve_players!
@@ -19,7 +25,7 @@ module SleeperRb
                   :practice_participation, :sportradar_id, :team, :last_name, :college, :fantasy_data_id,
                   :injury_status, :player_id, :height, :age, :stats_id, :birth_country, :espn_id, :first_name,
                   :depth_chart_order, :years_exp, :rotowire_id, :rotoworld_id, :yahoo_id,
-                  fantasy_positions: lambda { |array| array.map { |pos| League::RosterPosition.new(pos) } },
+                  fantasy_positions: lambda { |array| array&.map { |pos| League::RosterPosition.new(pos) } },
                   position: lambda { |pos| League::RosterPosition.new(pos) }
 
       def full_name
@@ -29,7 +35,7 @@ module SleeperRb
       private
 
       def retrieve_values!
-        self.class.players[@player_id.to_sym]
+        self.class.player_hashes[@player_id.to_sym]
       end
     end
   end

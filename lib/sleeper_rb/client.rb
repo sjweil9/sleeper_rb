@@ -35,7 +35,7 @@ module SleeperRb
     #
     # @return {SleeperRb::Resources::Avatar}[rdoc-ref:SleeperRb::Resources::Avatar] The Avatar instance
     def avatar(avatar_id)
-      Resources::Avatar.new(avatar_id)
+      Resources::Avatar.new(avatar_id: avatar_id)
     end
 
     ##
@@ -46,6 +46,14 @@ module SleeperRb
     # @return {SleeperRb::Resources::League}[rdoc-ref:SleeperRb::Resources::League] The League instance
     def league(league_id)
       Resources::League.new(league_id: league_id)
+    end
+
+    ##
+    # Returns all NFL players.
+    #
+    # @return Array<{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]> Array of Player instances
+    def players
+      Resources::Player.players
     end
   end
 end
