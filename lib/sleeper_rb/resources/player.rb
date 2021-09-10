@@ -23,6 +23,8 @@ module SleeperRb
           new(player_hashes[player_id].merge(player_id: player_id))
         end
 
+        private
+
         def player_hashes
           @player_hashes ||= retrieve_players!
         end

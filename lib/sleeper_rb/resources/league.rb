@@ -24,7 +24,7 @@ module SleeperRb
       end
 
       ##
-      # @return [Array<SleeperRb::Resources::League::Roster>]
+      # @return [Array<{SleeperRb::Resources::League::Roster}[rdoc-ref:SleeperRb::Resources::League::Roster]>]
       def rosters
         @rosters ||= retrieve_rosters!
       end
