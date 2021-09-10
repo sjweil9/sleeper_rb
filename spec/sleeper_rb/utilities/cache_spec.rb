@@ -34,6 +34,16 @@ RSpec.describe SleeperRb::Utilities::Cache do
         expect(instance.instance_variable_get(:@foo)).to eq(123)
       end
     end
+
+    context "when provided attr is a key/value pair" do
+      before { subject.cached_attr(bar: lambda { |x| x.to_i + 3 }) }
+
+      it "should use the value as a translation for the key" do
+        instance.instance_variable_set(:@values, { bar: 3 })
+        expect(instance.bar).to eq(6)
+        expect(instance.instance_variable_get(:@bar)).to eq(6)
+      end
+    end
   end
 
   describe "#values" do

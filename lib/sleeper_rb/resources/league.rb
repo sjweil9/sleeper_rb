@@ -44,15 +44,25 @@ module SleeperRb
         define_method(pos) { roster_positions.select(&:"#{pos}?").size }
       end
 
+      def rosters
+        @rosters ||= retrieve_rosters!
+      end
+
       private
 
       def retrieve_values!
-        uri = URI("#{BASE_URL}/league/#{league_id}")
-        response = execute_request(uri)
+        url = "#{BASE_URL}/league/#{league_id}"
+        response = execute_request(url)
         TRANSLATED_FIELDS.each do |field, lambda|
           response[field] = lambda.call(response[field])
         end
         response
+      end
+
+      def retrieve_rosters!
+        url = "#{BASE_URL}/league/#{league_id}/rosters"
+        response = execute_request(url)
+        response.map { |hash| Roster.new(hash) }
       end
     end
   end

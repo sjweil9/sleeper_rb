@@ -15,12 +15,16 @@ module SleeperRb
         # +cached_attr :display_name, :username+
         def cached_attr(*attrs)
           attrs.each do |attr|
-            define_method(attr) do
-              ivar = :"@#{attr}"
+            field_name = attr.is_a?(Hash) ? attr.keys.first : attr
+            define_method(field_name) do
+              ivar = :"@#{field_name}"
               if instance_variable_defined?(ivar)
                 instance_variable_get(ivar)
+              elsif attr.is_a?(Hash)
+                translator = attr.values.first
+                instance_variable_set(ivar, translator.call(values[field_name.to_sym]))
               else
-                instance_variable_set(ivar, values[attr.to_sym])
+                instance_variable_set(ivar, values[field_name.to_sym])
               end
             end
           end
