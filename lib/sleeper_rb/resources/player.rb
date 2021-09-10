@@ -52,7 +52,7 @@ module SleeperRb
                   :injury_status, :player_id, :height, :age, :stats_id, :birth_country, :espn_id, :first_name, :active,
                   :depth_chart_order, :years_exp, :rotowire_id, :rotoworld_id, :yahoo_id, :pandascore_id, :news_updated,
                   :birth_city, :birth_date, :injury_notes, :gsis_id, :birth_state, :swish_id, :high_school, :metadata,
-                  :injury_body_part, :practice_description, 
+                  :injury_body_part, :practice_description,
                   fantasy_positions: ->(array) { array&.map { |pos| SleeperRb::Utilities::RosterPosition.new(pos) } },
                   position: ->(pos) { pos ? SleeperRb::Utilities::RosterPosition.new(pos) : nil }
 

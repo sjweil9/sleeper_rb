@@ -43,6 +43,7 @@ RSpec.describe SleeperRb::Resources::Player do
   describe "#initialize" do
     subject { described_class.new(player_params) }
 
+    # rubocop:disable Metrics/BlockLength
     let(:player_params) do
       {
         player_id: "3986",
@@ -54,13 +55,13 @@ RSpec.describe SleeperRb::Resources::Player do
         depth_chart_order: nil,
         last_name: "Richards",
         pandascore_id: nil,
-        news_updated: 1541280893950,
+        news_updated: 1_541_280_893_950,
         birth_city: nil,
         birth_date: "1991-01-03",
         depth_chart_position: nil,
         weight: "210",
         full_name: "Jeff Richards",
-        yahoo_id: 30093,
+        yahoo_id: 30_093,
         practice_participation: nil,
         status: "Inactive",
         years_exp: 3,
@@ -76,7 +77,7 @@ RSpec.describe SleeperRb::Resources::Player do
         hashtag: "#JeffRichards-NFL-FA-29",
         age: 29,
         rotoworld_id: nil,
-        espn_id: 4084949,
+        espn_id: 4_084_949,
         high_school: nil,
         injury_status: nil,
         team: nil,
@@ -84,13 +85,14 @@ RSpec.describe SleeperRb::Resources::Player do
         sportradar_id: "6775c8ae-1966-43c6-a61a-147ea5d112ff",
         active: true,
         injury_body_part: nil,
-        fantasy_data_id: 18821,
+        fantasy_data_id: 18_821,
         first_name: "Jeff",
         stats_id: nil,
-        rotowire_id: 11704,
+        rotowire_id: 11_704,
         practice_description: nil
       }
     end
+    # rubocop:enable Metrics/BlockLength
 
     let(:translated_keys) { %i[fantasy_positions position] }
 
