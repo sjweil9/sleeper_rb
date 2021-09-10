@@ -8,7 +8,7 @@ module SleeperRb
       include SleeperRb::Utilities::Request
       include SleeperRb::Utilities::Cache
 
-      cached_attr :user_id, :username, :display_name, :avatar
+      cached_attr :user_id, :username, :display_name, avatar: lambda { |id| Resources::Avatar.new(avatar_id: id) }
 
       ##
       # Initializes a user, with either username or user_id.
@@ -16,11 +16,9 @@ module SleeperRb
       # @param username [String] The current username
       #
       # @param user_id [String] The numerical user_id
-      def initialize(user_id: nil, username: nil)
-        raise ArgumentError, "must provide either user_id or username" unless user_id || username
-
-        @user_id = user_id if user_id
-        @username = username if username
+      def initialize(opts)
+        raise ArgumentError, "must provide either user_id or username" unless opts[:user_id] || opts[:username]
+        super
       end
 
       ##
@@ -47,9 +45,7 @@ module SleeperRb
 
       def retrieve_values!
         uri = URI("#{BASE_URL}/user/#{@user_id || @username}")
-        response = execute_request(uri)
-        response[:avatar] = Resources::Avatar.new(response.delete(:avatar))
-        response
+        execute_request(uri)
       end
 
       def retrieve_leagues!(season)

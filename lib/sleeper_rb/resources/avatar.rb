@@ -10,14 +10,6 @@ module SleeperRb
 
       cached_attr :full_size, :thumbnail, :avatar_id
 
-      ##
-      # Initializes an avatar using an avatar_id.
-      #
-      # @param avatar_id [String] The alphanumeric ID for the avatar
-      def initialize(avatar_id)
-        @avatar_id = avatar_id
-      end
-
       private
 
       def retrieve_values!

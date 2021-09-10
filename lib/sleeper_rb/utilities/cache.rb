@@ -12,10 +12,12 @@ module SleeperRb
         # Creates a memoized attribute reader for the named attributes.
         #
         # = Example
-        # +cached_attr :display_name, :username+
+        # +cached_attr :display_name, :username, foo: lambda { |x| x + 3 }+
         def cached_attr(*attrs)
           attrs.each do |attr|
             field_name = attr.is_a?(Hash) ? attr.keys.first : attr
+            translator = attr.is_a?(Hash) ? attr.values.first : lambda { |x| x }
+            cached_attrs[field_name.to_sym] = translator
             define_method(field_name) do
               ivar = :"@#{field_name}"
               if instance_variable_defined?(ivar)
@@ -29,10 +31,20 @@ module SleeperRb
             end
           end
         end
+
+        def cached_attrs
+          @cached_attrs ||= {}
+        end
       end
 
       def self.included(base)
         base.extend ClassMethods
+      end
+
+      def initialize(opts = {})
+        opts.slice(*cached_attrs.keys).each do |key, val|
+          instance_variable_set(:"@#{key}", cached_attrs[key].call(val))
+        end
       end
 
       ##
@@ -43,6 +55,10 @@ module SleeperRb
       end
 
       private
+
+      def cached_attrs
+        self.class.cached_attrs
+      end
 
       def values
         return @values if defined?(@values)

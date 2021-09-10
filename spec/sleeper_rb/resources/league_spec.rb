@@ -22,7 +22,7 @@ RSpec.describe SleeperRb::Resources::League do
 
   describe "#initialize" do
     context "when league_id is provided" do
-      let(:translated_keys) { %i[settings roster_positions scoring_settings] }
+      let(:translated_keys) { %i[settings roster_positions scoring_settings avatar] }
 
       it "should set all allowed values" do
         valid_opts.each do |key, value|
@@ -33,6 +33,8 @@ RSpec.describe SleeperRb::Resources::League do
         expect(subject.scoring_settings).to be_an_instance_of(SleeperRb::Resources::League::ScoringSettings)
         expect(subject.settings).to be_an_instance_of(SleeperRb::Resources::League::Settings)
         expect(subject.roster_positions).to all be_an_instance_of(SleeperRb::Resources::League::RosterPosition)
+        expect(subject.avatar).to be_an_instance_of(SleeperRb::Resources::Avatar)
+        expect(subject.avatar.avatar_id).to eq("ABC123CYZ")
       end
     end
 

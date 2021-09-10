@@ -4,12 +4,16 @@ module SleeperRb
       class Roster
         include SleeperRb::Utilities::Cache
 
-        FIELDS = %i[]
+        PLAYER_LAMBDA = lambda { |array| array.map { |player_id| Resources::Player.new(player_id: player_id) } }
 
-        def initialize(opts)
-          opts.slice(*FIELDS).each do |key, val|
-            instance_variable_set(:"@#{key}", val)
-          end
+        cached_attr :roster_id, :owner_id, :league_id,
+                    settings: lambda { |settings| Roster::Settings.new(settings) },
+                    starters: PLAYER_LAMBDA,
+                    players: PLAYER_LAMBDA,
+                    reserve: PLAYER_LAMBDA
+
+        def owner
+          @owner ||= Resources::User.new(user_id: owner_id)
         end
       end
     end
