@@ -20,7 +20,7 @@ module SleeperRb
 
         ##
         # @return [{SleeperRb::Resources::User}[rdoc-ref:SleeperRb::Resources::User]]
-        association(:owner) do
+        cached_association(:owner) do
           Resources::User.new(user_id: owner_id)
         end
       end

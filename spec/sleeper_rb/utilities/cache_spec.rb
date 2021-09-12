@@ -11,10 +11,10 @@ RSpec.describe SleeperRb::Utilities::Cache do
 
   before do
     subject.cached_attr(:foo)
-    subject.association(:bar) do
+    subject.cached_association(:bar) do
       BarAssociation.call
     end
-    subject.association(:qux) do |num|
+    subject.cached_association(:qux) do |num|
       QuxAssociation.call(num)
     end
   end
@@ -58,7 +58,7 @@ RSpec.describe SleeperRb::Utilities::Cache do
 
   describe "::association" do
     it "extends as a class method" do
-      expect(subject).to respond_to(:association)
+      expect(subject).to respond_to(:cached_association)
     end
 
     context "no arguments are provided" do
@@ -103,11 +103,11 @@ RSpec.describe SleeperRb::Utilities::Cache do
       expect(instance.refresh).to eq(instance)
     end
 
-    it "should reset associations" do
+    it "should reset cached_associations" do
       expect(instance).to receive(:retrieve_values!).and_return({})
-      instance.instance_variable_set(:@associations, { a: 2 })
+      instance.instance_variable_set(:@cached_associations, { a: 2 })
       expect(instance.refresh).to eq(instance)
-      expect(instance.instance_variable_get(:@associations)).to eq({})
+      expect(instance.instance_variable_get(:@cached_associations)).to eq({})
     end
   end
 end

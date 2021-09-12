@@ -22,13 +22,9 @@ module SleeperRb
                                                },
                              settings: ->(settings) { Settings.new(settings) }
 
-      SleeperRb::Utilities::RosterPosition::VALID_ROSTER_POSITIONS.each do |pos|
-        define_method(pos) { roster_positions.select(&:"#{pos}?").size }
-      end
-
       ##
       # @return [Array<{SleeperRb::Resources::League::Roster}[rdoc-ref:SleeperRb::Resources::League::Roster]>]
-      association(:rosters) do
+      cached_association(:rosters) do
         retrieve_rosters!
       end
 
@@ -36,6 +32,10 @@ module SleeperRb
         raise ArgumentError unless opts[:league_id]
 
         super
+      end
+
+      SleeperRb::Utilities::RosterPosition::VALID_ROSTER_POSITIONS.each do |pos|
+        define_method(pos) { roster_positions.select(&:"#{pos}?").size }
       end
 
       private

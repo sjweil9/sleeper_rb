@@ -12,6 +12,16 @@ module SleeperRb
                   avatar: ->(id) { id ? Resources::Avatar.new(avatar_id: id) : nil }
 
       ##
+      # Retrieves leagues for the user for the given season.
+      #
+      # @param season [String] The year in which the leagues were played
+      #
+      # @return [Array<{SleeperRb::Resources::League}[rdoc-ref:SleeperRb::Resources::League]>]
+      cached_association(:leagues) do |season|
+        retrieve_leagues!(season)
+      end
+
+      ##
       # Initializes a user, with either username or user_id.
       #
       # @param username [String] The current username
@@ -21,16 +31,6 @@ module SleeperRb
         raise ArgumentError, "must provide either user_id or username" unless opts[:user_id] || opts[:username]
 
         super
-      end
-
-      ##
-      # Retrieves leagues for the user for the given season.
-      #
-      # @param season [String] The year in which the leagues were played
-      #
-      # @return [Array<{SleeperRb::Resources::League}[rdoc-ref:SleeperRb::Resources::League]>]
-      association(:leagues) do |season|
-        retrieve_leagues!(season)
       end
 
       private

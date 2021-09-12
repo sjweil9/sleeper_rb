@@ -25,13 +25,13 @@ module SleeperRb
           end
         end
 
-        def association(name, &block)
+        def cached_association(name, &block)
           define_method(name) do |arg = nil|
             if arg
-              associations[name] ||= {}
-              associations[name][arg.to_s] ||= instance_exec(arg, &block)
+              cached_associations[name] ||= {}
+              cached_associations[name][arg.to_s] ||= instance_exec(arg, &block)
             else
-              associations[name] ||= instance_exec(&block)
+              cached_associations[name] ||= instance_exec(&block)
             end
           end
         end
@@ -73,7 +73,7 @@ module SleeperRb
       # Refreshes all associations and memoized values set by cached_attr.
       def refresh
         @values = retrieve_values!
-        @associations = {}
+        @cached_associations = {}
         self
       end
 
@@ -83,8 +83,8 @@ module SleeperRb
         self.class.instance_variable_get(:@cached_attrs)
       end
 
-      def associations
-        @associations ||= {}
+      def cached_associations
+        @cached_associations ||= {}
       end
 
       def values
