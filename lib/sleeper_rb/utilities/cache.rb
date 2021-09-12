@@ -26,8 +26,13 @@ module SleeperRb
         end
 
         def association(name, &block)
-          define_method(name) do |*args|
-            @associations[name] ||= block.call(args)
+          define_method(name) do |arg = nil|
+            if arg
+              associations[name] ||= {}
+              associations[name][arg.to_s] ||= instance_exec(arg, &block)
+            else
+              associations[name] ||= instance_exec(&block)
+            end
           end
         end
 

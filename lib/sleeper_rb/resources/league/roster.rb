@@ -20,8 +20,8 @@ module SleeperRb
 
         ##
         # @return [{SleeperRb::Resources::User}[rdoc-ref:SleeperRb::Resources::User]]
-        def owner
-          @owner ||= Resources::User.new(user_id: owner_id)
+        association(:owner) do
+          Resources::User.new(user_id: owner_id)
         end
       end
     end

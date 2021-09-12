@@ -29,18 +29,8 @@ module SleeperRb
       # @param season [String] The year in which the leagues were played
       #
       # @return [Array<{SleeperRb::Resources::League}[rdoc-ref:SleeperRb::Resources::League]>]
-      def leagues(season)
-        @leagues ||= {}
-        @leagues[season.to_s] ||= retrieve_leagues!(season)
-      end
-
-      ##
-      # Clears leagues for the user and returns itself.
-      #
-      # @return [self]
-      def refresh
-        @leagues = nil
-        super
+      association(:leagues) do |season|
+        retrieve_leagues!(season)
       end
 
       private

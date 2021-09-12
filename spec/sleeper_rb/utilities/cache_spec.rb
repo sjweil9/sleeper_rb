@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "../../helpers/associations"
+
 RSpec.describe SleeperRb::Utilities::Cache do
   subject do
     Class.new do
@@ -7,7 +9,15 @@ RSpec.describe SleeperRb::Utilities::Cache do
     end
   end
 
-  before { subject.cached_attr(:foo) }
+  before do
+    subject.cached_attr(:foo)
+    subject.association(:bar) do
+      BarAssociation.call
+    end
+    subject.association(:qux) do |num|
+      QuxAssociation.call(num)
+    end
+  end
   let(:instance) { subject.new }
 
   describe "::cached_attr" do
@@ -46,6 +56,27 @@ RSpec.describe SleeperRb::Utilities::Cache do
     end
   end
 
+  describe "::association" do
+    it "extends as a class method" do
+      expect(subject).to respond_to(:association)
+    end
+
+    context "no arguments are provided" do
+      it "memoizes the value returned by the block provided when defining the association" do
+        expect(BarAssociation).to receive(:call).once.and_call_original
+        2.times { expect(instance.bar).to eq(%w[A B C]) }
+      end
+    end
+
+    context "arguments are provided" do
+      it "memoizes the value by argument" do
+        expect(QuxAssociation).to receive(:call).twice.and_call_original
+        2.times { expect(instance.qux(5)).to eq(10) }
+        2.times { expect(instance.qux(2)).to eq(4) }
+      end
+    end
+  end
+
   describe "#values" do
     let(:values) { { "foo" => 123 } }
 
@@ -70,6 +101,13 @@ RSpec.describe SleeperRb::Utilities::Cache do
     it "should reset values and return the instance" do
       expect(instance).to receive(:retrieve_values!).and_return({})
       expect(instance.refresh).to eq(instance)
+    end
+
+    it "should reset associations" do
+      expect(instance).to receive(:retrieve_values!).and_return({})
+      instance.instance_variable_set(:@associations, { a: 2 })
+      expect(instance.refresh).to eq(instance)
+      expect(instance.instance_variable_get(:@associations)).to eq({})
     end
   end
 end
