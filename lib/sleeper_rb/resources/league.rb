@@ -28,8 +28,8 @@ module SleeperRb
 
       ##
       # @return [Array<{SleeperRb::Resources::League::Roster}[rdoc-ref:SleeperRb::Resources::League::Roster]>]
-      def rosters
-        @rosters ||= retrieve_rosters!
+      association(:rosters) do
+        retrieve_rosters!
       end
 
       def initialize(opts = {})

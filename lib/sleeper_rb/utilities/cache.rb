@@ -25,6 +25,14 @@ module SleeperRb
           end
         end
 
+        def association(name, &block)
+          define_method(name) do |*args|
+            @associations[name] ||= block.call(args)
+          end
+        end
+
+        private
+
         def cached_attrs
           @cached_attrs ||= {}
         end
@@ -46,6 +54,10 @@ module SleeperRb
         base.extend ClassMethods
       end
 
+      ##
+      # Sets up an object with values for any cached_attrs pre-initialized if provided.
+      #
+      # @param opts [Hash] Key/value pairs that can match any cached_attr.
       def initialize(opts = {})
         opts.slice(*cached_attrs.keys).each do |key, val|
           instance_variable_set(:"@#{key}", cached_attrs[key].call(val))
@@ -53,16 +65,21 @@ module SleeperRb
       end
 
       ##
-      # Refreshes all memoized values set by cached_attr.
+      # Refreshes all associations and memoized values set by cached_attr.
       def refresh
         @values = retrieve_values!
+        @associations = {}
         self
       end
 
       private
 
       def cached_attrs
-        self.class.cached_attrs
+        self.class.instance_variable_get(:@cached_attrs)
+      end
+
+      def associations
+        @associations ||= {}
       end
 
       def values
