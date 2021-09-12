@@ -28,6 +28,12 @@ module SleeperRb
         retrieve_rosters!
       end
 
+      ##
+      # @return [Array<{SleeperRb::Resources::User}[rdoc-ref:SleeperRb::Resources::User]>]
+      cached_association(:users) do
+        retrieve_users!
+      end
+
       def initialize(opts = {})
         raise ArgumentError unless opts[:league_id]
 
@@ -47,6 +53,12 @@ module SleeperRb
 
       def retrieve_rosters!
         url = "#{BASE_URL}/league/#{league_id}/rosters"
+        response = execute_request(url)
+        response.map { |hash| Roster.new(hash) }
+      end
+
+      def retrieve_users!
+        url = "#{BASE_URL}/league/#{league_id}/users"
         response = execute_request(url)
         response.map { |hash| Roster.new(hash) }
       end

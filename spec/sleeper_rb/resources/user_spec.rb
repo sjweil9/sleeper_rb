@@ -31,6 +31,10 @@ RSpec.describe SleeperRb::Resources::User do
       is_bot: false,
       email: nil,
       display_name: username,
+      metadata: {
+        team_name: "Foo Team"
+      },
+      is_owner: false,
       deleted: nil,
       data_updated: nil,
       currencies: nil,
@@ -51,6 +55,8 @@ RSpec.describe SleeperRb::Resources::User do
         expect(subject.avatar).to be_an_instance_of(SleeperRb::Resources::Avatar)
         expect(subject.avatar.avatar_id).to eq(avatar)
         expect(subject.display_name).to eq(username)
+        expect(subject.is_owner).to eq(false)
+        expect(subject.metadata.team_name).to eq("Foo Team")
       end
     end
 

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "user/metadata"
+
 module SleeperRb
   module Resources
     ##
@@ -8,7 +10,8 @@ module SleeperRb
       include SleeperRb::Utilities::Request
       include SleeperRb::Utilities::Cache
 
-      cached_attr :user_id, :username, :display_name,
+      cached_attr :user_id, :username, :display_name, :is_owner,
+                  metadata: ->(hash) { Metadata.new(hash) },
                   avatar: ->(id) { id ? Resources::Avatar.new(avatar_id: id) : nil }
 
       ##

@@ -52,4 +52,16 @@ RSpec.describe SleeperRb::Resources::League do
       end
     end
   end
+
+  describe "#users" do
+    it "should return all users for the league" do
+
+    end
+  end
+
+  describe "#rosters" do
+    it "should return all rosters for the league" do
+      
+    end
+  end
 end
