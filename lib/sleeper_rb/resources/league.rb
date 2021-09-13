@@ -60,7 +60,7 @@ module SleeperRb
       def retrieve_users!
         url = "#{BASE_URL}/league/#{league_id}/users"
         response = execute_request(url)
-        response.map { |hash| Roster.new(hash) }
+        response.map { |hash| User.new(hash) }
       end
     end
   end

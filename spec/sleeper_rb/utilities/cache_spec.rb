@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../../helpers/associations"
-
 RSpec.describe SleeperRb::Utilities::Cache do
   subject do
     Class.new do

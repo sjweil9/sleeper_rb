@@ -1,0 +1,108 @@
+[
+  {
+    "user_id": "374409574377324544",
+    "settings": null,
+    "metadata": {
+      "mention_pn": "on",
+      "allow_sms": "on",
+      "allow_pn": "on"
+    },
+    "league_id": "735284283123548160",
+    "is_owner": null,
+    "is_bot": false,
+    "display_name": "mindoflogic90",
+    "avatar": "c8de9e651b19331f6eae4f9f26164107"
+  },
+  {
+    "user_id": "469548265499521024",
+    "settings": null,
+    "metadata": {
+      "mention_pn": "on",
+      "allow_pn": "on"
+    },
+    "league_id": "735284283123548160",
+    "is_owner": null,
+    "is_bot": false,
+    "display_name": "RonnyMexMex",
+    "avatar": null
+  },
+  {
+    "user_id": "469586445502246912",
+    "settings": null,
+    "metadata": {
+      "team_name": "Best Ball Gives Me Woods",
+      "mention_pn": "on",
+      "allow_pn": "on"
+    },
+    "league_id": "735284283123548160",
+    "is_owner": true,
+    "is_bot": false,
+    "display_name": "lynchpin",
+    "avatar": null
+  },
+  {
+    "user_id": "469597487510843392",
+    "settings": null,
+    "metadata": {
+      "mention_pn": "on",
+      "allow_pn": "on"
+    },
+    "league_id": "735284283123548160",
+    "is_owner": null,
+    "is_bot": false,
+    "display_name": "adamkos101",
+    "avatar": null
+  },
+  {
+    "user_id": "470746948761022464",
+    "settings": null,
+    "metadata": {
+      "mention_pn": "on",
+      "allow_pn": "on"
+    },
+    "league_id": "735284283123548160",
+    "is_owner": null,
+    "is_bot": false,
+    "display_name": "ovi9",
+    "avatar": null
+  },
+  {
+    "user_id": "472100154690760704",
+    "settings": null,
+    "metadata": {
+      "mention_pn": "on",
+      "allow_pn": "on"
+    },
+    "league_id": "735284283123548160",
+    "is_owner": null,
+    "is_bot": false,
+    "display_name": "seidmang",
+    "avatar": "d8b367a9353d4a1b03b8714233ced278"
+  },
+  {
+    "user_id": "472209611479314432",
+    "settings": null,
+    "metadata": {
+      "mention_pn": "on",
+      "allow_pn": "on"
+    },
+    "league_id": "735284283123548160",
+    "is_owner": null,
+    "is_bot": false,
+    "display_name": "SENGHAS",
+    "avatar": null
+  },
+  {
+    "user_id": "473624636815306752",
+    "settings": null,
+    "metadata": {
+      "mention_pn": "on",
+      "allow_pn": "on"
+    },
+    "league_id": "735284283123548160",
+    "is_owner": null,
+    "is_bot": false,
+    "display_name": "chefben31",
+    "avatar": "4cd377c306da19621012531d8c7b0066"
+  }
+]

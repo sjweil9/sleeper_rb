@@ -8,8 +8,8 @@ end
 
 require "sleeper_rb"
 require "webmock/rspec"
-
-RESPONSE = Struct.new(:code, :body)
+require_relative "helpers/associations"
+require_relative "helpers/response"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

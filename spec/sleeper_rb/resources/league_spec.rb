@@ -3,7 +3,7 @@
 RSpec.describe SleeperRb::Resources::League do
   let(:valid_opts) do
     {
-      league_id: "ABC123",
+      league_id: league_id,
       status: "in_season",
       sport: "nfl",
       total_rosters: 10,
@@ -17,6 +17,8 @@ RSpec.describe SleeperRb::Resources::League do
       avatar: "ABC123CYZ"
     }
   end
+
+  let(:league_id) { "ABC123" }
 
   subject { described_class.new(valid_opts) }
 
@@ -54,14 +56,35 @@ RSpec.describe SleeperRb::Resources::League do
   end
 
   describe "#users" do
-    it "should return all users for the league" do
+    before do
+      stub_request(:get, "https://api.sleeper.app/v1/league/#{league_id}/users").to_return(body: users_response)
+    end
 
+    let(:users_response) do
+      File.read(File.expand_path("../../fixtures/users_response.json", File.dirname(__FILE__)))
+    end
+
+    it "should return all users for the league" do
+      expect(subject.users).to all be_an_instance_of(SleeperRb::Resources::User)
+      expect(subject.users.size).to eq(8)
+      expect(subject.users.first.user_id).to eq("374409574377324544")
+      expect(subject.users.last.user_id).to eq("473624636815306752")
     end
   end
 
   describe "#rosters" do
+    before do
+      stub_request(:get, "https://api.sleeper.app/v1/league/#{league_id}/rosters").to_return(body: rosters_response)
+    end
+
+    let(:rosters_response) do
+      File.read(File.expand_path("../../fixtures/rosters_response.json", File.dirname(__FILE__)))
+    end
+
     it "should return all rosters for the league" do
-      
+      expect(subject.rosters).to all be_an_instance_of(SleeperRb::Resources::League::Roster)
+      expect(subject.rosters.size).to eq(8)
+      expect(subject.rosters.first.owner_id).to eq("469586445502246912")
     end
   end
 end
