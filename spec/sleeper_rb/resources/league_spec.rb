@@ -87,4 +87,20 @@ RSpec.describe SleeperRb::Resources::League do
       expect(subject.rosters.first.owner_id).to eq("469586445502246912")
     end
   end
+
+  describe "#matchups" do
+    before do
+      stub_request(:get, "https://api.sleeper.app/v1/league/#{league_id}/matchups/1").to_return(body: matchups_response)
+    end
+
+    let(:matchups_response) do
+      File.read(File.expand_path("../../fixtures/matchups_response.json", File.dirname(__FILE__)))
+    end
+
+    it "should return all matchups for the league for that week" do
+      expect(subject.matchups(1)).to all be_an_instance_of(SleeperRb::Resources::League::Matchup)
+      expect(subject.matchups(1).size).to eq(8)
+      expect(subject.matchups(1).first.roster_id).to eq(1)
+    end
+  end
 end

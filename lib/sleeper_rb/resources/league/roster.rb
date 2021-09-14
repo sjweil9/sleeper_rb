@@ -18,6 +18,8 @@ module SleeperRb
                     players: PLAYER_LAMBDA,
                     reserve: PLAYER_LAMBDA
 
+        skip_refresh :all
+
         ##
         # @return [{SleeperRb::Resources::User}[rdoc-ref:SleeperRb::Resources::User]]
         cached_association(:owner) do

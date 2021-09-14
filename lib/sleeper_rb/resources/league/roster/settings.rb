@@ -12,6 +12,8 @@ module SleeperRb
           cached_attr :wins, :waiver_position, :waiver_budget_used, :total_moves, :ties, :losses, :fpts_decimal,
                       :fpts_against_decimal, :fpts_against, :fpts
 
+          skip_refresh :all
+
           ##
           # @return [Float] All points scored by the roster
           def total_points
@@ -36,12 +38,6 @@ module SleeperRb
           # @return [String] Record for the roster in W - L - T format
           def record_string
             "#{wins} - #{losses} - #{ties}"
-          end
-
-          private
-
-          def values
-            {}
           end
         end
       end

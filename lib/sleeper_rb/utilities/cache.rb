@@ -25,6 +25,8 @@ module SleeperRb
           end
         end
 
+        ##
+        # Creates a memoized association that returns another resource.
         def cached_association(name, &block)
           define_method(name) do |arg = nil|
             if arg
@@ -36,21 +38,34 @@ module SleeperRb
           end
         end
 
-        private
+        ##
+        # Takes in a list of fields which should be excluded from refresh. Use :all for models which do not have
+        # any endpoint but only retrieve their data from another object. These models have no API source to refresh
+        # themselves, but they still have associations.
+        def skip_refresh(*fields)
+          fields.any? { |field| field == :all } ? @skip_refresh_fields = :all : skip_refresh_fields.concat(fields)
+        end
 
+        ##
+        # The stored mapping of cached attribute names to their translator functions.
         def cached_attrs
           @cached_attrs ||= {}
         end
 
+        ##
+        # The stored list of fields which should be excluded from refresh.
+        def skip_refresh_fields
+          @skip_refresh_fields ||= []
+        end
+
+        private
+
         def create_method(field_name, translator)
           cached_attrs[field_name.to_sym] = translator
+          skip_refresh_fields << field_name.to_sym if field_name.to_s =~ /\w+_id/
           define_method(field_name) do
             ivar = :"@#{field_name}"
-            if instance_variable_defined?(ivar)
-              instance_variable_get(ivar)
-            else
-              instance_variable_set(ivar, translator.call(values[field_name.to_sym]))
-            end
+            instance_variable_get(ivar) || instance_variable_set(ivar, translator.call(values[field_name.to_sym]))
           end
         end
       end
@@ -72,7 +87,11 @@ module SleeperRb
       ##
       # Refreshes all associations and memoized values set by cached_attr.
       def refresh
-        @values = retrieve_values!
+        cached_attrs.keys.reject { |k| skip_refresh_fields == :all || skip_refresh_fields.include?(k) }.each do |attr|
+          ivar = :"@#{attr}"
+          instance_variable_set(ivar, nil)
+        end
+        @values = nil
         @cached_associations = {}
         self
       end
@@ -80,7 +99,11 @@ module SleeperRb
       private
 
       def cached_attrs
-        self.class.instance_variable_get(:@cached_attrs)
+        self.class.cached_attrs
+      end
+
+      def skip_refresh_fields
+        self.class.skip_refresh_fields
       end
 
       def cached_associations
@@ -88,13 +111,11 @@ module SleeperRb
       end
 
       def values
-        return @values if defined?(@values)
-
-        @values = retrieve_values!
+        @values ||= retrieve_values!
       end
 
       def retrieve_values!
-        raise NotImplementedError, "must implement retrieve_values! to use SleeperRb::Cache"
+        {}
       end
     end
   end

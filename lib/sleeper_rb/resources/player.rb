@@ -35,11 +35,11 @@ module SleeperRb
           self
         end
 
-        private
-
         def player_hashes
           @player_hashes ||= retrieve_players!
         end
+
+        private
 
         def retrieve_players!
           url = "#{BASE_URL}/players/nfl"

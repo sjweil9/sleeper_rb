@@ -6,6 +6,8 @@ module SleeperRb
       ##
       # Non-scoring settings for a League instance
       class Settings
+        include SleeperRb::Utilities::Cache
+
         FIELDS = %i[
           max_keepers draft_rounds trade_review_days reserve_allow_dnr capacity_override
           pick_trading disable_trades taxi_years taxi_allow_vets best_ball disable_adds waiver_type bench_lock
@@ -16,13 +18,9 @@ module SleeperRb
           playoff_type
         ].freeze
 
-        attr_reader(*FIELDS)
+        cached_attr(*FIELDS)
 
-        def initialize(opts)
-          opts.slice(*FIELDS).each do |key, val|
-            instance_variable_set(:"@#{key}", val)
-          end
-        end
+        skip_refresh :all
       end
     end
   end

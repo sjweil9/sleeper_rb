@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
+require_relative "league/matchup"
+require_relative "league/roster"
 require_relative "league/scoring_settings"
 require_relative "league/settings"
-require_relative "league/roster"
 
 module SleeperRb
   module Resources
@@ -34,6 +35,12 @@ module SleeperRb
         retrieve_users!
       end
 
+      ##
+      # @return [Array<{SleeperRb::Resources::League::Matchup}[rdoc-ref:SleeperRb::Resources::League::Matchup]>]
+      cached_association(:matchups) do |week|
+        retrieve_matchups!(week)
+      end
+
       def initialize(opts = {})
         raise ArgumentError unless opts[:league_id]
 
@@ -61,6 +68,12 @@ module SleeperRb
         url = "#{BASE_URL}/league/#{league_id}/users"
         response = execute_request(url)
         response.map { |hash| User.new(hash) }
+      end
+
+      def retrieve_matchups!(week)
+        url = "#{BASE_URL}/league/#{league_id}/matchups/#{week}"
+        response = execute_request(url)
+        response.map { |hash| Matchup.new(hash.merge(league: self)) }
       end
     end
   end

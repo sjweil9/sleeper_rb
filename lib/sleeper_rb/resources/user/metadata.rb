@@ -9,6 +9,8 @@ module SleeperRb
         include SleeperRb::Utilities::Cache
 
         cached_attr :team_name
+
+        skip_refresh :all
       end
     end
   end

@@ -23,18 +23,15 @@ RSpec.describe SleeperRb::Utilities::Cache do
       expect(subject).to respond_to(:cached_attr)
     end
 
-    context "when ivar is defined" do
+    context "when ivar is present" do
       it "returns the named ivar" do
         expect(instance).not_to receive(:values)
-        instance.instance_variable_set(:@foo, nil)
-        expect(instance.foo).to be_nil
-
         instance.instance_variable_set(:@foo, "abc")
         expect(instance.foo).to eq("abc")
       end
     end
 
-    context "when ivar is not defined" do
+    context "when ivar is not present" do
       it "sets the ivar from values" do
         expect(instance).to receive(:values).and_call_original
         instance.instance_variable_set(:@values, { foo: 123 })
@@ -54,7 +51,7 @@ RSpec.describe SleeperRb::Utilities::Cache do
     end
   end
 
-  describe "::association" do
+  describe "::cached_association" do
     it "extends as a class method" do
       expect(subject).to respond_to(:cached_association)
     end
@@ -71,6 +68,48 @@ RSpec.describe SleeperRb::Utilities::Cache do
         expect(QuxAssociation).to receive(:call).twice.and_call_original
         2.times { expect(instance.qux(5)).to eq(10) }
         2.times { expect(instance.qux(2)).to eq(4) }
+      end
+    end
+  end
+
+  describe "::skip_refresh" do
+    before do
+      subject.cached_attr(:baz, :qaz)
+      instance.instance_variable_set(:@foo, "foo")
+      instance.instance_variable_set(:@baz, "baz")
+      instance.instance_variable_set(:@qaz, "qaz")
+    end
+
+    context "specific field is provided" do
+      before { subject.skip_refresh(:baz) }
+
+      it "should exclude the specified field from refresh" do
+        instance.refresh
+        expect(instance.instance_variable_get(:@foo)).to be_nil
+        expect(instance.instance_variable_get(:@baz)).to eq("baz")
+        expect(instance.instance_variable_get(:@qaz)).to be_nil
+      end
+    end
+
+    context "multiple fields are provided" do
+      before { subject.skip_refresh(:foo, :baz) }
+
+      it "should exclude specified fields from refresh" do
+        instance.refresh
+        expect(instance.instance_variable_get(:@foo)).to eq("foo")
+        expect(instance.instance_variable_get(:@baz)).to eq("baz")
+        expect(instance.instance_variable_get(:@qaz)).to be_nil
+      end
+    end
+
+    context ":all is provided" do
+      before { subject.skip_refresh(:all) }
+
+      it "should exclude all fields from refresh" do
+        instance.refresh
+        expect(instance.instance_variable_get(:@foo)).to eq("foo")
+        expect(instance.instance_variable_get(:@baz)).to eq("baz")
+        expect(instance.instance_variable_get(:@qaz)).to eq("qaz")
       end
     end
   end
@@ -97,12 +136,14 @@ RSpec.describe SleeperRb::Utilities::Cache do
 
   describe "#refresh" do
     it "should reset values and return the instance" do
+      instance.instance_variable_set(:@foo, "abc")
       expect(instance).to receive(:retrieve_values!).and_return({})
       expect(instance.refresh).to eq(instance)
+      expect(instance.instance_variable_get(:@foo)).to be_nil
+      expect(instance.send(:values)).to eq({})
     end
 
     it "should reset cached_associations" do
-      expect(instance).to receive(:retrieve_values!).and_return({})
       instance.instance_variable_set(:@cached_associations, { a: 2 })
       expect(instance.refresh).to eq(instance)
       expect(instance.instance_variable_get(:@cached_associations)).to eq({})
