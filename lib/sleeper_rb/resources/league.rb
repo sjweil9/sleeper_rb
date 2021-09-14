@@ -14,6 +14,7 @@ module SleeperRb
       include SleeperRb::Utilities::Request
       include SleeperRb::Utilities::Cache
 
+      ##
       # :method: total_rosters
       # :method: status
       # :method: sport
@@ -60,8 +61,10 @@ module SleeperRb
       end
 
       ##
-      # :method: matchups(week_number)
+      # :method: matchups
       # Returns matchups for the League for the given week.
+      # :call-seq:
+      #   matchups(week_number)
       #
       # @return [Array<{SleeperRb::Resources::League::Matchup}[rdoc-ref:SleeperRb::Resources::League::Matchup]>]
       cached_association(:matchups) do |week|
