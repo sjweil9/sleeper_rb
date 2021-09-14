@@ -16,21 +16,49 @@ module SleeperRb
 
       ##
       # :method: total_rosters
+
+      ##
       # :method: status
+
+      ##
       # :method: sport
+
+      ##
       # :method: season_type
+
+      ##
       # :method: season
+
+      ##
       # :method: previous_league_id
+
+      ##
       # :method: name
+
+      ##
       # :method: league_id
+
+      ##
       # :method: draft_id
+
+      ##
       # :method: avatar
+      #
       # @return [{SleeperRb::Resources::Avatar}[rdoc-ref:SleeperRb::Resources::Avatar]]
+
+      ##
       # :method: scoring_settings
+      #
       # @return [{SleeperRb::Resources::League::ScoringSettings}[rdoc-ref:SleeperRb::Resources::League::ScoringSettings]]
+
+      ##
       # :method: roster_positions
+      #
       # @return [Array<{SleeperRb::Utilities::RosterPosition}[rdoc-ref:SleeperRb::Utilities::RosterPosition]>]
+
+      ##
       # :method: settings
+      #
       # @return [{SleeperRb::Resources::League::Settings}[rdoc-ref:SleeperRb::Resources::League::Settings]]
       cached_attr :total_rosters, :status, :sport, :season_type, :season, :previous_league_id, :name, :league_id,
                   :draft_id, avatar: ->(id) { Resources::Avatar.new(avatar_id: id) },
