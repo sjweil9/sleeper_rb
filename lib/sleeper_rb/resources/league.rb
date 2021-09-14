@@ -4,6 +4,7 @@ require_relative "league/matchup"
 require_relative "league/roster"
 require_relative "league/scoring_settings"
 require_relative "league/settings"
+require_relative "league/traded_pick"
 
 module SleeperRb
   module Resources
@@ -41,6 +42,12 @@ module SleeperRb
         retrieve_matchups!(week)
       end
 
+      ##
+      # @return [Array<{SleeperRb::Resources::League::TradedPick}[rdoc-ref:SleeperRb::Resources::League::TradedPick]>]
+      cached_association(:traded_picks) do
+        retrieve_traded_picks!
+      end
+
       def initialize(opts = {})
         raise ArgumentError unless opts[:league_id]
 
@@ -74,6 +81,12 @@ module SleeperRb
         url = "#{BASE_URL}/league/#{league_id}/matchups/#{week}"
         response = execute_request(url)
         response.map { |hash| Matchup.new(hash.merge(league: self)) }
+      end
+
+      def retrieve_traded_picks!
+        url = "#{BASE_URL}/league/#{league_id}/traded_picks"
+        response = execute_request(url)
+        response.map { |hash| TradedPick.new(hash.merge(league: self)) }
       end
     end
   end

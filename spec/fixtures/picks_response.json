@@ -1,0 +1,16 @@
+[
+  {
+    "season": "2019",
+    "round": 5,
+    "roster_id": 1,
+    "previous_owner_id": 1,
+    "owner_id": 2
+  },
+  {
+    "season": "2020",
+    "round": 3,
+    "roster_id": 2,
+    "previous_owner_id": 2,
+    "owner_id": 1
+  }
+]

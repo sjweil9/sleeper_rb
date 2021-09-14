@@ -103,4 +103,19 @@ RSpec.describe SleeperRb::Resources::League do
       expect(subject.matchups(1).first.roster_id).to eq(1)
     end
   end
+
+  describe "#traded_picks" do
+    before do
+      stub_request(:get, "https://api.sleeper.app/v1/league/#{league_id}/traded_picks").to_return(body: picks_response)
+    end
+
+    let(:picks_response) do
+      File.read(File.expand_path("../../fixtures/picks_response.json", File.dirname(__FILE__)))
+    end
+
+    it "should return all traded picks for the league" do
+      expect(subject.traded_picks).to all be_an_instance_of(SleeperRb::Resources::League::TradedPick)
+      expect(subject.traded_picks.first.previous_owner_id).to eq(1)
+    end
+  end
 end
