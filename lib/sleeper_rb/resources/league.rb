@@ -25,24 +25,36 @@ module SleeperRb
                              settings: ->(settings) { Settings.new(settings) }
 
       ##
+      # :method: rosters
+      # Retrieves rosters for the League.
+      #
       # @return [Array<{SleeperRb::Resources::League::Roster}[rdoc-ref:SleeperRb::Resources::League::Roster]>]
       cached_association(:rosters) do
         retrieve_rosters!
       end
 
       ##
+      # :method: users
+      # Retrieves users for the League.
+      #
       # @return [Array<{SleeperRb::Resources::User}[rdoc-ref:SleeperRb::Resources::User]>]
       cached_association(:users) do
         retrieve_users!
       end
 
       ##
+      # :method: matchups(week_number)
+      # Returns matchups for the League for the given week.
+      #
       # @return [Array<{SleeperRb::Resources::League::Matchup}[rdoc-ref:SleeperRb::Resources::League::Matchup]>]
       cached_association(:matchups) do |week|
         retrieve_matchups!(week)
       end
 
       ##
+      # :method: traded_picks
+      # Returns all traded draft picks for the League.
+      #
       # @return [Array<{SleeperRb::Resources::League::TradedPick}[rdoc-ref:SleeperRb::Resources::League::TradedPick]>]
       cached_association(:traded_picks) do
         retrieve_traded_picks!

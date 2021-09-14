@@ -92,7 +92,13 @@
     
     <li class="calls-super" ><a href="#method-c-new">::new</a>
     
-    <li ><a href="#method-i-unknown">#unknown</a>
+    <li ><a href="#method-i-matchups-28week_number-29">#matchups(week_number)</a>
+    
+    <li ><a href="#method-i-rosters">#rosters</a>
+    
+    <li ><a href="#method-i-traded_picks">#traded_picks</a>
+    
+    <li ><a href="#method-i-users">#users</a>
     
   </ul>
 </div>
@@ -152,7 +158,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 51</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">opts</span> = {})
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:league_id</span>]
 
@@ -176,10 +182,10 @@
        </header>
 
     
-      <div id="method-i-unknown" class="method-detail ">
+      <div id="method-i-matchups-28week_number-29" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">unknown</span><span
+          <span class="method-name">matchups(week_number)</span><span
             class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -189,15 +195,122 @@
 
         <div class="method-description">
           
-          <p>@return [Array&lt;<a href="League/Roster.html"><code>SleeperRb::Resources::League::Roster</code></a>&gt;]</p>
+          <p>Returns matchups for the <a href="League.html"><code>League</code></a> for the given week.</p>
+
+<p>@return [Array&lt;<a href="League/Matchup.html"><code>SleeperRb::Resources::League::Matchup</code></a>&gt;]</p>
           
           
 
           
-          <div class="method-source-code" id="unknown-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 29</span>
+          <div class="method-source-code" id="matchups-28week_number-29-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 50</span>
+<span class="ruby-identifier">cached_association</span>(<span class="ruby-value">:matchups</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">week</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">retrieve_matchups!</span>(<span class="ruby-identifier">week</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-rosters" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">rosters</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves rosters for the <a href="League.html"><code>League</code></a>.</p>
+
+<p>@return [Array&lt;<a href="League/Roster.html"><code>SleeperRb::Resources::League::Roster</code></a>&gt;]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="rosters-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 32</span>
 <span class="ruby-identifier">cached_association</span>(<span class="ruby-value">:rosters</span>) <span class="ruby-keyword">do</span>
   <span class="ruby-identifier">retrieve_rosters!</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-traded_picks" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">traded_picks</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns all traded draft picks for the <a href="League.html"><code>League</code></a>.</p>
+
+<p>@return [Array&lt;<a href="League/TradedPick.html"><code>SleeperRb::Resources::League::TradedPick</code></a>&gt;]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="traded_picks-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 59</span>
+<span class="ruby-identifier">cached_association</span>(<span class="ruby-value">:traded_picks</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">retrieve_traded_picks!</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-users" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">users</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves users for the <a href="League.html"><code>League</code></a>.</p>
+
+<p>@return [Array&lt;<a href="User.html"><code>SleeperRb::Resources::User</code></a>&gt;]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="users-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 41</span>
+<span class="ruby-identifier">cached_association</span>(<span class="ruby-value">:users</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">retrieve_users!</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
