@@ -101,6 +101,8 @@
     
     <li ><a href="#method-c-find">::find</a>
     
+    <li ><a href="#method-c-player_hashes">::player_hashes</a>
+    
     <li ><a href="#method-c-refresh">::refresh</a>
     
   </ul>
@@ -200,6 +202,39 @@
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">player_hashes</span>[<span class="ruby-identifier">player_id</span>.<span class="ruby-identifier">to_sym</span>]
 
   <span class="ruby-identifier">new</span>(<span class="ruby-identifier">player_hashes</span>[<span class="ruby-identifier">player_id</span>.<span class="ruby-identifier">to_sym</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-player_hashes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">player_hashes</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="player_hashes-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">player_hashes</span>
+  <span class="ruby-ivar">@player_hashes</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">retrieve_players!</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

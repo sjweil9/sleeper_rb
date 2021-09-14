@@ -92,9 +92,7 @@
     
     <li class="calls-super" ><a href="#method-c-new">::new</a>
     
-    <li ><a href="#method-i-leagues">#leagues</a>
-    
-    <li class="calls-super" ><a href="#method-i-refresh">#refresh</a>
+    <li ><a href="#method-i-unknown">#unknown</a>
     
   </ul>
 </div>
@@ -158,7 +156,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 20</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">opts</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;must provide either user_id or username&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:user_id</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:username</span>]
 
@@ -182,11 +180,11 @@
        </header>
 
     
-      <div id="method-i-leagues" class="method-detail ">
+      <div id="method-i-unknown" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">leagues</span><span
-            class="method-args">(season)</span>
+          <span class="method-name">unknown</span><span
+            class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -204,52 +202,10 @@
           
 
           
-          <div class="method-source-code" id="leagues-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 32</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">leagues</span>(<span class="ruby-identifier">season</span>)
-  <span class="ruby-ivar">@leagues</span> <span class="ruby-operator">||=</span> {}
-  <span class="ruby-ivar">@leagues</span>[<span class="ruby-identifier">season</span>.<span class="ruby-identifier">to_s</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">retrieve_leagues!</span>(<span class="ruby-identifier">season</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-refresh" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">refresh</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Clears leagues for the user and returns itself.</p>
-
-<p>@return [self]</p>
-          
-          
-            <div class="method-calls-super">
-              Calls superclass method
-              <a href="../Utilities/Cache.html#method-i-refresh"><code>SleeperRb::Utilities::Cache#refresh</code></a>
-            </div>
-          
-
-          
-          <div class="method-source-code" id="refresh-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 41</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">refresh</span>
-  <span class="ruby-ivar">@leagues</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-keyword">super</span>
+          <div class="method-source-code" id="unknown-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 23</span>
+<span class="ruby-identifier">cached_association</span>(<span class="ruby-value">:leagues</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">season</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">retrieve_leagues!</span>(<span class="ruby-identifier">season</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           

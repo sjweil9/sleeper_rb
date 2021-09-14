@@ -92,7 +92,7 @@
     
     <li class="calls-super" ><a href="#method-c-new">::new</a>
     
-    <li ><a href="#method-i-rosters">#rosters</a>
+    <li ><a href="#method-i-unknown">#unknown</a>
     
   </ul>
 </div>
@@ -152,7 +152,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 31</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">opts</span> = {})
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:league_id</span>]
 
@@ -176,10 +176,10 @@
        </header>
 
     
-      <div id="method-i-rosters" class="method-detail ">
+      <div id="method-i-unknown" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">rosters</span><span
+          <span class="method-name">unknown</span><span
             class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -194,10 +194,10 @@
           
 
           
-          <div class="method-source-code" id="rosters-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 27</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rosters</span>
-  <span class="ruby-ivar">@rosters</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">retrieve_rosters!</span>
+          <div class="method-source-code" id="unknown-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 29</span>
+<span class="ruby-identifier">cached_association</span>(<span class="ruby-value">:rosters</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">retrieve_rosters!</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

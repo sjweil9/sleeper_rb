@@ -147,7 +147,7 @@
 
           
           <div class="method-source-code" id="record_string-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 37</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">record_string</span>
   <span class="ruby-node">&quot;#{wins} - #{losses} - #{ties}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -180,7 +180,7 @@
 
           
           <div class="method-source-code" id="total_points-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 17</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">total_points</span>
   (<span class="ruby-identifier">fpts</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">fpts_decimal</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">0.01</span>)).<span class="ruby-identifier">round</span>(<span class="ruby-value">2</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -213,7 +213,7 @@
 
           
           <div class="method-source-code" id="total_points_against-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 23</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">total_points_against</span>
   (<span class="ruby-identifier">fpts_against</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">fpts_against_decimal</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">0.01</span>)).<span class="ruby-identifier">round</span>(<span class="ruby-value">2</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -246,7 +246,7 @@
 
           
           <div class="method-source-code" id="win_pct-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 29</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">win_pct</span>
   <span class="ruby-keyword">return</span> <span class="ruby-value">0.0</span> <span class="ruby-keyword">unless</span> [<span class="ruby-identifier">wins</span>, <span class="ruby-identifier">ties</span>, <span class="ruby-identifier">losses</span>].<span class="ruby-identifier">any?</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:positive?</span>)
 

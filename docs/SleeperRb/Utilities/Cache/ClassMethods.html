@@ -68,11 +68,15 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-cached_association">#cached_association</a>
+    
     <li ><a href="#method-i-cached_attr">#cached_attr</a>
     
     <li ><a href="#method-i-cached_attrs">#cached_attrs</a>
     
-    <li ><a href="#method-i-create_method">#create_method</a>
+    <li ><a href="#method-i-skip_refresh">#skip_refresh</a>
+    
+    <li ><a href="#method-i-skip_refresh_fields">#skip_refresh_fields</a>
     
   </ul>
 </div>
@@ -106,6 +110,46 @@
        <header>
          <h3>Public Instance Methods</h3>
        </header>
+
+    
+      <div id="method-i-cached_association" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">cached_association</span><span
+            class="method-args">(name, &amp;block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a memoized association that returns another resource.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="cached_association-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cached_association</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">name</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span> = <span class="ruby-keyword">nil</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">arg</span>
+      <span class="ruby-identifier">cached_associations</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">||=</span> {}
+      <span class="ruby-identifier">cached_associations</span>[<span class="ruby-identifier">name</span>][<span class="ruby-identifier">arg</span>.<span class="ruby-identifier">to_s</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">instance_exec</span>(<span class="ruby-identifier">arg</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">cached_associations</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">instance_exec</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
 
     
       <div id="method-i-cached_attr" class="method-detail ">
@@ -166,13 +210,13 @@
 
         <div class="method-description">
           
-          
+          <p>The stored mapping of cached attribute names to their translator functions.</p>
           
           
 
           
           <div class="method-source-code" id="cached_attrs-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 28</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cached_attrs</span>
   <span class="ruby-ivar">@cached_attrs</span> <span class="ruby-operator">||=</span> {}
 <span class="ruby-keyword">end</span></pre>
@@ -186,11 +230,11 @@
       </div>
 
     
-      <div id="method-i-create_method" class="method-detail ">
+      <div id="method-i-skip_refresh" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">create_method</span><span
-            class="method-args">(field_name, translator)</span>
+          <span class="method-name">skip_refresh</span><span
+            class="method-args">(*fields)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -199,23 +243,48 @@
 
         <div class="method-description">
           
-          
+          <p>Takes in a list of fields which should be excluded from refresh. Use :all for models which do not have any endpoint but only retrieve their data from another object. These models have no API source to refresh themselves, but they still have associations.</p>
           
           
 
           
-          <div class="method-source-code" id="create_method-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 32</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_method</span>(<span class="ruby-identifier">field_name</span>, <span class="ruby-identifier">translator</span>)
-  <span class="ruby-identifier">cached_attrs</span>[<span class="ruby-identifier">field_name</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">translator</span>
-  <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">field_name</span>) <span class="ruby-keyword">do</span>
-    <span class="ruby-identifier">ivar</span> = <span class="ruby-value">:&quot;@#{field_name}&quot;</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">instance_variable_defined?</span>(<span class="ruby-identifier">ivar</span>)
-      <span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-identifier">ivar</span>)
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">ivar</span>, <span class="ruby-identifier">translator</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">values</span>[<span class="ruby-identifier">field_name</span>.<span class="ruby-identifier">to_sym</span>]))
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
+          <div class="method-source-code" id="skip_refresh-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">skip_refresh</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">fields</span>)
+  <span class="ruby-identifier">fields</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">field</span><span class="ruby-operator">|</span> <span class="ruby-identifier">field</span> <span class="ruby-operator">==</span> <span class="ruby-value">:all</span> } <span class="ruby-operator">?</span> <span class="ruby-ivar">@skip_refresh_fields</span> = <span class="ruby-value">:all</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">skip_refresh_fields</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">fields</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-skip_refresh_fields" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">skip_refresh_fields</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The stored list of fields which should be excluded from refresh.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="skip_refresh_fields-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">skip_refresh_fields</span>
+  <span class="ruby-ivar">@skip_refresh_fields</span> <span class="ruby-operator">||=</span> []
 <span class="ruby-keyword">end</span></pre>
           </div>
           
