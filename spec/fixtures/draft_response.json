@@ -1,0 +1,67 @@
+{
+  "type": "auction",
+  "status": "complete",
+  "start_time": 1630270952918,
+  "sport": "nfl",
+  "slot_to_roster_id": {
+    "1": 7,
+    "2": 6,
+    "3": 4,
+    "4": 3,
+    "5": 5,
+    "6": 1,
+    "7": 2,
+    "8": 8
+  },
+  "settings": {
+    "teams": 8,
+    "slots_wr": 2,
+    "slots_te": 1,
+    "slots_rb": 2,
+    "slots_qb": 1,
+    "slots_flex": 2,
+    "slots_bn": 6,
+    "rounds": 14,
+    "reversal_round": 0,
+    "player_type": 0,
+    "pick_timer": 30,
+    "nomination_timer": 60,
+    "enforce_position_limits": 1,
+    "cpu_autopick": 1,
+    "budget": 200,
+    "alpha_sort": 0
+  },
+  "season_type": "regular",
+  "season": "2021",
+  "metadata": {
+    "scoring_type": "ppr",
+    "offering_user_id": "469548265499521024",
+    "offering_slot": "1",
+    "nominating_user_id": "469548265499521024",
+    "nominating_slot": "1",
+    "nominated_player_id": "7591",
+    "name": "WH Auction BBall 2",
+    "hovered_player_id": "7591",
+    "highest_offer": "1",
+    "description": ""
+  },
+  "league_id": "737785373232623616",
+  "last_picked": 1630277244543,
+  "last_message_time": 1630277244978,
+  "last_message_id": "737839879509037056",
+  "draft_order": {
+    "737182541722861568": 2,
+    "472209611479314432": 7,
+    "472100154690760704": 4,
+    "470746948761022464": 3,
+    "469597487510843392": 8,
+    "469586445502246912": 6,
+    "469548265499521024": 1,
+    "374409574377324544": 5
+  },
+  "draft_id": "737785377116553216",
+  "creators": [
+    "469586445502246912"
+  ],
+  "created": 1630264250590
+}

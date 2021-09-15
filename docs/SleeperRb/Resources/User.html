@@ -94,6 +94,8 @@
     
     <li ><a href="#method-i-avatar">#avatar</a>
     
+    <li ><a href="#method-i-drafts">#drafts</a>
+    
     <li ><a href="#method-i-leagues">#leagues</a>
     
     <li ><a href="#method-i-metadata">#metadata</a>
@@ -220,7 +222,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 63</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">opts</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;must provide either user_id or username&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:user_id</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:username</span>]
 
@@ -278,6 +280,46 @@
       </div>
 
     
+      <div id="method-i-drafts" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            drafts(season_year)
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves all drafts for the user for the given season</p>
+
+<p>@param season_year [String] The year in which the leagues were played</p>
+
+<p>@return [Array&lt;<a href="Draft.html"><code>SleeperRb::Resources::Draft</code></a>&gt;]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="drafts-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 66</span>
+<span class="ruby-identifier">cached_association</span>(<span class="ruby-value">:drafts</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">season_year</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">retrieve_drafts!</span>(<span class="ruby-identifier">season_year</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-leagues" class="method-detail ">
         
         
@@ -296,7 +338,7 @@
           
           <p>Retrieves leagues for the user for the given season.</p>
 
-<p>@param season [String] The year in which the leagues were played</p>
+<p>@param season_year [String] The year in which the leagues were played</p>
 
 <p>@return [Array&lt;<a href="League.html"><code>SleeperRb::Resources::League</code></a>&gt;]</p>
           
@@ -305,8 +347,8 @@
           
           <div class="method-source-code" id="leagues-source">
             <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 53</span>
-<span class="ruby-identifier">cached_association</span>(<span class="ruby-value">:leagues</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">season</span><span class="ruby-operator">|</span>
-  <span class="ruby-identifier">retrieve_leagues!</span>(<span class="ruby-identifier">season</span>)
+<span class="ruby-identifier">cached_association</span>(<span class="ruby-value">:leagues</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">season_year</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">retrieve_leagues!</span>(<span class="ruby-identifier">season_year</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           

@@ -29,6 +29,10 @@ module SleeperRb
           new(player_hashes[player_id.to_sym])
         end
 
+        ##
+        # Resets the values for all players.
+        #
+        # @return [self]
         def refresh
           @all = nil
           @player_hashes = nil

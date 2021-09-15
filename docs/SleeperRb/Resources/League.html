@@ -513,9 +513,9 @@
             <span class="ruby-value">:draft_id</span>, <span class="ruby-value">avatar:</span> <span class="ruby-operator">-&gt;</span>(<span class="ruby-identifier">id</span>) { <span class="ruby-constant">Resources</span><span class="ruby-operator">::</span><span class="ruby-constant">Avatar</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">avatar_id:</span> <span class="ruby-identifier">id</span>) },
                        <span class="ruby-value">scoring_settings:</span> <span class="ruby-operator">-&gt;</span>(<span class="ruby-identifier">settings</span>) { <span class="ruby-constant">ScoringSettings</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">settings</span>) },
                        <span class="ruby-value">roster_positions:</span> <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">array</span><span class="ruby-operator">|</span>
-                                           <span class="ruby-identifier">array</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pos</span><span class="ruby-operator">|</span>
-                                             <span class="ruby-constant">SleeperRb</span><span class="ruby-operator">::</span><span class="ruby-constant">Utilities</span><span class="ruby-operator">::</span><span class="ruby-constant">RosterPosition</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">pos</span>)
-                                           <span class="ruby-keyword">end</span></pre>
+                         <span class="ruby-identifier">array</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pos</span><span class="ruby-operator">|</span>
+                           <span class="ruby-constant">SleeperRb</span><span class="ruby-operator">::</span><span class="ruby-constant">Utilities</span><span class="ruby-operator">::</span><span class="ruby-constant">RosterPosition</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">pos</span>)
+                         <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>

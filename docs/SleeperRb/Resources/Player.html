@@ -751,7 +751,7 @@
 
           
           <div class="method-source-code" id="player_hashes-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 38</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">player_hashes</span>
   <span class="ruby-ivar">@player_hashes</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">retrieve_players!</span>
 <span class="ruby-keyword">end</span></pre>
@@ -778,13 +778,15 @@
 
         <div class="method-description">
           
-          
+          <p>Resets the values for all players.</p>
+
+<p>@return [self]</p>
           
           
 
           
           <div class="method-source-code" id="refresh-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 32</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">refresh</span>
   <span class="ruby-ivar">@all</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@player_hashes</span> = <span class="ruby-keyword">nil</span>
@@ -829,7 +831,7 @@
 
           
           <div class="method-source-code" id="fantasy_positions-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 168</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 172</span>
       </pre>
           </div>
           
@@ -862,7 +864,7 @@
 
           
           <div class="method-source-code" id="position-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 179</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 183</span>
 <span class="ruby-identifier">cached_attr</span> <span class="ruby-value">:hashtag</span>, <span class="ruby-value">:depth_chart_position</span>, <span class="ruby-value">:status</span>, <span class="ruby-value">:sport</span>, <span class="ruby-value">:number</span>, <span class="ruby-value">:injury_start_date</span>, <span class="ruby-value">:weight</span>,
             <span class="ruby-value">:practice_participation</span>, <span class="ruby-value">:sportradar_id</span>, <span class="ruby-value">:team</span>, <span class="ruby-value">:last_name</span>, <span class="ruby-value">:college</span>, <span class="ruby-value">:fantasy_data_id</span>, <span class="ruby-value">:full_name</span>,
             <span class="ruby-value">:injury_status</span>, <span class="ruby-value">:player_id</span>, <span class="ruby-value">:height</span>, <span class="ruby-value">:age</span>, <span class="ruby-value">:stats_id</span>, <span class="ruby-value">:birth_country</span>, <span class="ruby-value">:espn_id</span>, <span class="ruby-value">:first_name</span>, <span class="ruby-value">:active</span>,

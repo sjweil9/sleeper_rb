@@ -69,10 +69,10 @@ module SleeperRb
                   :draft_id, avatar: ->(id) { Resources::Avatar.new(avatar_id: id) },
                              scoring_settings: ->(settings) { ScoringSettings.new(settings) },
                              roster_positions: lambda { |array|
-                                                 array.map do |pos|
-                                                   SleeperRb::Utilities::RosterPosition.new(pos)
-                                                 end
-                                               },
+                               array.map do |pos|
+                                 SleeperRb::Utilities::RosterPosition.new(pos)
+                               end
+                             },
                              settings: ->(settings) { Settings.new(settings) }
 
       ##

@@ -12,7 +12,7 @@ module SleeperRb
         # Creates a memoized attribute reader for the named attributes.
         #
         # = Example
-        # +cached_attr :display_name, :username, foo: lambda { |x| x + 3 }+
+        # +cached_attr :display_name, :username, foo: ->(x) { x + 3 }+
         def cached_attr(*attrs)
           attrs.each do |attr|
             if attr.is_a?(Hash)
