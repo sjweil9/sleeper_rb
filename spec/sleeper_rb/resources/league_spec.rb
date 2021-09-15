@@ -68,7 +68,7 @@ RSpec.describe SleeperRb::Resources::League do
       expect(subject.users).to all be_an_instance_of(SleeperRb::Resources::User)
       expect(subject.users.size).to eq(8)
       expect(subject.users.first.user_id).to eq("374409574377324544")
-      expect(subject.users.last.user_id).to eq("473624636815306752")
+      expect(subject.users.last.user_id).to eq("737182541722861568")
     end
   end
 
@@ -110,7 +110,7 @@ RSpec.describe SleeperRb::Resources::League do
     end
 
     let(:picks_response) do
-      File.read(File.expand_path("../../fixtures/picks_response.json", File.dirname(__FILE__)))
+      File.read(File.expand_path("../../fixtures/traded_picks_response.json", File.dirname(__FILE__)))
     end
 
     it "should return all traded picks for the league" do

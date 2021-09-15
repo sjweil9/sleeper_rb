@@ -65,7 +65,7 @@ module SleeperRb
         #
         # @return [{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]]
         cached_association :nominated_player do
-          Player.find(nominated_player_id)
+          Player.new(player_id: nominated_player_id)
         end
 
         ##
@@ -73,7 +73,7 @@ module SleeperRb
         #
         # @return [{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]]
         cached_association :hovered_player do
-          Player.find(hovered_player_id)
+          Player.new(player_id: hovered_player_id)
         end
 
         skip_refresh :all

@@ -20,16 +20,6 @@ module SleeperRb
         end
 
         ##
-        # Retrieves a particular Player by ID.
-        #
-        # @return [{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]] The Player instance
-        def find(player_id)
-          return unless player_hashes[player_id.to_sym]
-
-          new(player_hashes[player_id.to_sym])
-        end
-
-        ##
         # Resets the values for all players.
         #
         # @return [self]

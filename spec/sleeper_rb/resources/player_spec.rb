@@ -22,16 +22,6 @@ RSpec.describe SleeperRb::Resources::Player do
     end
   end
 
-  describe "::find" do
-    let(:player_id) { "3986" }
-
-    it "should retrieve a player by ID" do
-      player = described_class.find(player_id)
-      expect(player).to be_an_instance_of(SleeperRb::Resources::Player)
-      expect(player.player_id).to eq(player_id)
-    end
-  end
-
   describe "::refresh" do
     it "should reset cached players" do
       described_class.all

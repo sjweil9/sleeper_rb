@@ -4,10 +4,9 @@
     "settings": null,
     "metadata": {
       "mention_pn": "on",
-      "allow_sms": "on",
       "allow_pn": "on"
     },
-    "league_id": "735284283123548160",
+    "league_id": "737785373232623616",
     "is_owner": null,
     "is_bot": false,
     "display_name": "mindoflogic90",
@@ -20,7 +19,7 @@
       "mention_pn": "on",
       "allow_pn": "on"
     },
-    "league_id": "735284283123548160",
+    "league_id": "737785373232623616",
     "is_owner": null,
     "is_bot": false,
     "display_name": "RonnyMexMex",
@@ -30,11 +29,11 @@
     "user_id": "469586445502246912",
     "settings": null,
     "metadata": {
-      "team_name": "Best Ball Gives Me Woods",
+      "team_name": "Six Bucks One Kupp",
       "mention_pn": "on",
       "allow_pn": "on"
     },
-    "league_id": "735284283123548160",
+    "league_id": "737785373232623616",
     "is_owner": true,
     "is_bot": false,
     "display_name": "lynchpin",
@@ -47,7 +46,7 @@
       "mention_pn": "on",
       "allow_pn": "on"
     },
-    "league_id": "735284283123548160",
+    "league_id": "737785373232623616",
     "is_owner": null,
     "is_bot": false,
     "display_name": "adamkos101",
@@ -60,7 +59,7 @@
       "mention_pn": "on",
       "allow_pn": "on"
     },
-    "league_id": "735284283123548160",
+    "league_id": "737785373232623616",
     "is_owner": null,
     "is_bot": false,
     "display_name": "ovi9",
@@ -73,7 +72,7 @@
       "mention_pn": "on",
       "allow_pn": "on"
     },
-    "league_id": "735284283123548160",
+    "league_id": "737785373232623616",
     "is_owner": null,
     "is_bot": false,
     "display_name": "seidmang",
@@ -86,23 +85,23 @@
       "mention_pn": "on",
       "allow_pn": "on"
     },
-    "league_id": "735284283123548160",
+    "league_id": "737785373232623616",
     "is_owner": null,
     "is_bot": false,
     "display_name": "SENGHAS",
     "avatar": null
   },
   {
-    "user_id": "473624636815306752",
+    "user_id": "737182541722861568",
     "settings": null,
     "metadata": {
       "mention_pn": "on",
       "allow_pn": "on"
     },
-    "league_id": "735284283123548160",
+    "league_id": "737785373232623616",
     "is_owner": null,
     "is_bot": false,
-    "display_name": "chefben31",
-    "avatar": "4cd377c306da19621012531d8c7b0066"
+    "display_name": "mzack220",
+    "avatar": "8eb8f8bf999945d523f2c4033f70473e"
   }
 ]

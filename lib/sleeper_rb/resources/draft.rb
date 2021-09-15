@@ -2,6 +2,7 @@
 
 require_relative "draft/metadata"
 require_relative "draft/settings"
+require_relative "draft/pick"
 
 module SleeperRb
   module Resources
@@ -84,6 +85,15 @@ module SleeperRb
         retrieve_traded_picks!
       end
 
+      ##
+      # :method: draft_picks
+      # All picks in the Draft.
+      #
+      # @return [Array<{SleeperRb::Resources::Draft::Pick}[rdoc-ref:SleeperRb::Resources::Draft::Pick]>]
+      cached_association :draft_picks do
+        retrieve_picks!
+      end
+
       private
 
       def retrieve_values!
@@ -95,6 +105,12 @@ module SleeperRb
         url = "#{SleeperRb::Utilities::Request::BASE_URL}/draft/#{@draft_id}/traded_picks"
         response = execute_request(url)
         response.map { |hash| TradedPick.new(hash) }
+      end
+
+      def retrieve_picks!
+        url = "#{SleeperRb::Utilities::Request::BASE_URL}/draft/#{@draft_id}/picks"
+        response = execute_request(url)
+        response.map { |hash| Pick.new(hash.merge(draft: self)) }
       end
     end
   end
