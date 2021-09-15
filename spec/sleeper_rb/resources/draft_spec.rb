@@ -12,9 +12,9 @@ RSpec.describe SleeperRb::Resources::Draft do
     stub_request(:get, "#{SleeperRb::Utilities::Request::BASE_URL}/draft/#{draft_id}").to_return(body: response_json)
   end
 
-  describe "#initialize" do
-    subject { described_class.new(valid_opts) }
+  subject { described_class.new(valid_opts) }
 
+  describe "#initialize" do
     it "should set the proper values" do
       valid_opts.reject { |key, _val| translated_keys.include?(key) }.each do |key, value|
         expect(subject.send(key)).to eq(value)
@@ -22,6 +22,20 @@ RSpec.describe SleeperRb::Resources::Draft do
 
       expect(subject.settings).to be_an_instance_of(SleeperRb::Resources::Draft::Settings)
       expect(subject.metadata).to be_an_instance_of(SleeperRb::Resources::Draft::Metadata)
+    end
+  end
+
+  describe "#traded_picks" do
+    before do
+      stub_request(:get, "#{SleeperRb::Utilities::Request::BASE_URL}/draft/#{draft_id}/traded_picks").to_return(body: picks_json)
+    end
+
+    let(:picks_json) do
+      File.read(File.expand_path("../../fixtures/picks_response.json", File.dirname(__FILE__)))
+    end
+
+    it "should return all traded picks for the Draft" do
+      expect(subject.traded_picks).to all be_an_instance_of(SleeperRb::Resources::TradedPick)
     end
   end
 

@@ -47,7 +47,7 @@ module SleeperRb
         #
         # @return [{SleeperRb::Resources::User}[rdoc-ref:SleeperRb::Resources::User]]
         cached_association :offering_user do
-          SleeperRb::Resources::User.new(user_id: offering_user_id)
+          User.new(user_id: offering_user_id)
         end
 
         ##
@@ -56,7 +56,7 @@ module SleeperRb
         #
         # @return [{SleeperRb::Resources::User}[rdoc-ref:SleeperRb::Resources::User]]
         cached_association :nominating_user do
-          SleeperRb::Resources::User.new(user_id: nominating_user_id)
+          User.new(user_id: nominating_user_id)
         end
 
         ##
@@ -65,7 +65,7 @@ module SleeperRb
         #
         # @return [{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]]
         cached_association :nominated_player do
-          SleeperRb::Resources::Player.find(nominated_player_id)
+          Player.find(nominated_player_id)
         end
 
         ##
@@ -73,7 +73,7 @@ module SleeperRb
         #
         # @return [{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]]
         cached_association :hovered_player do
-          SleeperRb::Resources::Player.find(hovered_player_id)
+          Player.find(hovered_player_id)
         end
 
         skip_refresh :all

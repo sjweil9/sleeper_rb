@@ -1,6 +1,6 @@
 # frozen-string-literal: true
 
-RSpec.describe SleeperRb::Resources::League::TradedPick do
+RSpec.describe SleeperRb::Resources::TradedPick do
   subject { described_class.new(valid_opts.merge(league: league)) }
 
   let(:league) { SleeperRb::Resources::League.new(league_id: league_id) }
@@ -29,7 +29,7 @@ RSpec.describe SleeperRb::Resources::League::TradedPick do
     end
 
     let(:rosters_response) do
-      File.read(File.expand_path("../../../fixtures/rosters_response.json", File.dirname(__FILE__)))
+      File.read(File.expand_path("../../fixtures/rosters_response.json", File.dirname(__FILE__)))
     end
 
     describe "#original_roster" do

@@ -4,7 +4,6 @@ require_relative "league/matchup"
 require_relative "league/roster"
 require_relative "league/scoring_settings"
 require_relative "league/settings"
-require_relative "league/traded_pick"
 
 module SleeperRb
   module Resources
@@ -108,7 +107,7 @@ module SleeperRb
       # :method: traded_picks
       # Returns all traded draft picks for the League.
       #
-      # @return [Array<{SleeperRb::Resources::League::TradedPick}[rdoc-ref:SleeperRb::Resources::League::TradedPick]>]
+      # @return [Array<{SleeperRb::Resources::TradedPick}[rdoc-ref:SleeperRb::Resources::League::TradedPick]>]
       cached_association :traded_picks do
         retrieve_traded_picks!
       end

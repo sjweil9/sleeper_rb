@@ -114,7 +114,7 @@ RSpec.describe SleeperRb::Resources::League do
     end
 
     it "should return all traded picks for the league" do
-      expect(subject.traded_picks).to all be_an_instance_of(SleeperRb::Resources::League::TradedPick)
+      expect(subject.traded_picks).to all be_an_instance_of(SleeperRb::Resources::TradedPick)
       expect(subject.traded_picks.first.previous_owner_id).to eq(1)
     end
   end

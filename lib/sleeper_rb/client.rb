@@ -8,6 +8,7 @@ require_relative "resources/draft"
 require_relative "resources/league"
 require_relative "resources/nfl_state"
 require_relative "resources/player"
+require_relative "resources/traded_pick"
 require_relative "resources/user"
 
 module SleeperRb
