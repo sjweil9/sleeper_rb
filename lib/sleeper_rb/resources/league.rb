@@ -80,7 +80,7 @@ module SleeperRb
       # Retrieves rosters for the League.
       #
       # @return [Array<{SleeperRb::Resources::League::Roster}[rdoc-ref:SleeperRb::Resources::League::Roster]>]
-      cached_association(:rosters) do
+      cached_association :rosters do
         retrieve_rosters!
       end
 
@@ -89,7 +89,7 @@ module SleeperRb
       # Retrieves users for the League.
       #
       # @return [Array<{SleeperRb::Resources::User}[rdoc-ref:SleeperRb::Resources::User]>]
-      cached_association(:users) do
+      cached_association :users do
         retrieve_users!
       end
 
@@ -100,7 +100,7 @@ module SleeperRb
       #   matchups(week_number)
       #
       # @return [Array<{SleeperRb::Resources::League::Matchup}[rdoc-ref:SleeperRb::Resources::League::Matchup]>]
-      cached_association(:matchups) do |week|
+      cached_association :matchups do |week|
         retrieve_matchups!(week)
       end
 
@@ -109,7 +109,7 @@ module SleeperRb
       # Returns all traded draft picks for the League.
       #
       # @return [Array<{SleeperRb::Resources::League::TradedPick}[rdoc-ref:SleeperRb::Resources::League::TradedPick]>]
-      cached_association(:traded_picks) do
+      cached_association :traded_picks do
         retrieve_traded_picks!
       end
 
@@ -118,7 +118,7 @@ module SleeperRb
       # Returns all drafts for the league
       #
       # @return [Array<{SleeperRb::Resources::Draft}[rdoc-ref:SleeperRb::Resources::Draft]>]
-      cached_association(:drafts) do
+      cached_association :drafts do
         retrieve_drafts!
       end
 

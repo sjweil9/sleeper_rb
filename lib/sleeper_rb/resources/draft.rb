@@ -9,6 +9,7 @@ module SleeperRb
     # Represents a draft for a given user.
     class Draft
       include SleeperRb::Utilities::Cache
+      include SleeperRb::Utilities::Request
 
       ##
       # :attr_reader: type
@@ -73,6 +74,13 @@ module SleeperRb
                   metadata: ->(hash) { Metadata.new(hash) }
 
       skip_refresh :all
+
+      private
+
+      def retrieve_values!
+        url = "#{SleeperRb::Utilities::Request::BASE_URL}/draft/#{@draft_id}"
+        execute_request(url)
+      end
     end
   end
 end

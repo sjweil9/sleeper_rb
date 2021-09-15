@@ -51,7 +51,7 @@ module SleeperRb
         # :method: roster
         #
         # @return [{SleeperRb::Resources::League::Roster}[rdoc-ref:SleeperRb::Resources::League::Roster]]
-        cached_association(:roster) do
+        cached_association :roster do
           retrieve_roster!
         end
 

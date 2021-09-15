@@ -38,4 +38,12 @@ RSpec.describe SleeperRb::Client do
       expect(result.league_id).to eq("ABC123")
     end
   end
+
+  describe "#draft" do
+    it "returns a Draft instance by ID" do
+      result = subject.draft("ABC123")
+      expect(result).to be_an_instance_of(SleeperRb::Resources::Draft)
+      expect(result.draft_id).to eq("ABC123")
+    end
+  end
 end

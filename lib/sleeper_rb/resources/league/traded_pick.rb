@@ -35,7 +35,7 @@ module SleeperRb
         # The roster which originally owned this pick.
         #
         # @return [{SleeperRb::Resources::League::Roster}[SleeperRb::Resources::league::Roster]]
-        cached_association(:original_roster) do
+        cached_association :original_roster do
           league.rosters.detect { |roster| roster.roster_id == roster_id }
         end
 
@@ -44,7 +44,7 @@ module SleeperRb
         # The last roster to have owned this pick before the current one (can be same as original_roster).
         #
         # @return [{SleeperRb::Resources::League::Roster}[SleeperRb::Resources::league::Roster]]
-        cached_association(:previous_roster) do
+        cached_association :previous_roster do
           league.rosters.detect { |roster| roster.roster_id == previous_owner_id }
         end
 
@@ -53,7 +53,7 @@ module SleeperRb
         # The roster which currently owns this pick.
         #
         # @return [{SleeperRb::Resources::League::Roster}[SleeperRb::Resources::league::Roster]]
-        cached_association(:current_roster) do
+        cached_association :current_roster do
           league.rosters.detect { |roster| roster.roster_id == owner_id }
         end
       end

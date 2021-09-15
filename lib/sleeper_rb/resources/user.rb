@@ -50,7 +50,7 @@ module SleeperRb
       # @param season_year [String] The year in which the leagues were played
       #
       # @return [Array<{SleeperRb::Resources::League}[rdoc-ref:SleeperRb::Resources::League]>]
-      cached_association(:leagues) do |season_year|
+      cached_association :leagues do |season_year|
         retrieve_leagues!(season_year)
       end
 
@@ -63,7 +63,7 @@ module SleeperRb
       # @param season_year [String] The year in which the leagues were played
       #
       # @return [Array<{SleeperRb::Resources::Draft}[rdoc-ref:SleeperRb::Resources::Draft]>]
-      cached_association(:drafts) do |season_year|
+      cached_association :drafts do |season_year|
         retrieve_drafts!(season_year)
       end
 

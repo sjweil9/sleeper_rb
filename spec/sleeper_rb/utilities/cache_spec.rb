@@ -9,10 +9,10 @@ RSpec.describe SleeperRb::Utilities::Cache do
 
   before do
     subject.cached_attr(:foo)
-    subject.cached_association(:bar) do
+    subject.cached_association :bar do
       BarAssociation.call
     end
-    subject.cached_association(:qux) do |num|
+    subject.cached_association :qux do |num|
       QuxAssociation.call(num)
     end
   end

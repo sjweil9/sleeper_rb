@@ -77,6 +77,8 @@
     
     <li ><a href="#method-i-avatar">#avatar</a>
     
+    <li ><a href="#method-i-draft">#draft</a>
+    
     <li ><a href="#method-i-league">#league</a>
     
     <li ><a href="#method-i-nfl_state">#nfl_state</a>
@@ -136,7 +138,7 @@
 
 <p>@param avatar_id [String] The ID for the avatar</p>
 
-<p>@return <a href="Resources/Avatar.html"><code>SleeperRb::Resources::Avatar</code></a> The Avatar instance</p>
+<p>@return <a href="Resources/Avatar.html"><code>SleeperRb::Resources::Avatar</code></a></p>
           
           
 
@@ -145,6 +147,41 @@
             <pre><span class="ruby-comment"># File lib/sleeper_rb/client.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">avatar</span>(<span class="ruby-identifier">avatar_id</span>)
   <span class="ruby-constant">Resources</span><span class="ruby-operator">::</span><span class="ruby-constant">Avatar</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">avatar_id:</span> <span class="ruby-identifier">avatar_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-draft" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">draft</span><span
+            class="method-args">(draft_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a specific Draft.</p>
+
+<p>@return [<a href="Resources/Draft.html"><code>SleeperRb::Resources::Draft</code></a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="draft-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/client.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draft</span>(<span class="ruby-identifier">draft_id</span>)
+  <span class="ruby-constant">Resources</span><span class="ruby-operator">::</span><span class="ruby-constant">Draft</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">draft_id:</span> <span class="ruby-identifier">draft_id</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -173,7 +210,7 @@
 
 <p>@param league_id [String] The ID for the League</p>
 
-<p>@return <a href="Resources/League.html"><code>SleeperRb::Resources::League</code></a> The League instance</p>
+<p>@return <a href="Resources/League.html"><code>SleeperRb::Resources::League</code></a></p>
           
           
 
@@ -243,7 +280,7 @@
           
           <p>Returns all NFL players.</p>
 
-<p>@return Array&lt;<a href="Resources/Player.html"><code>SleeperRb::Resources::Player</code></a>&gt; Array of Player instances</p>
+<p>@return Array&lt;<a href="Resources/Player.html"><code>SleeperRb::Resources::Player</code></a>&gt;</p>
           
           
 
@@ -282,7 +319,7 @@
 
 <p>@param user_id [String] The numerical user_id</p>
 
-<p>@return <a href="Resources/User.html"><code>SleeperRb::Resources::User</code></a> The User instance</p>
+<p>@return <a href="Resources/User.html"><code>SleeperRb::Resources::User</code></a></p>
           
           
 
