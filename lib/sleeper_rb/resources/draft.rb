@@ -32,6 +32,9 @@ module SleeperRb
       # :attr_reader: league_id
 
       ##
+      # :attr_reader: league
+
+      ##
       # :attr_reader: last_picked
 
       ##
@@ -64,7 +67,7 @@ module SleeperRb
       #
       # @return [{SleeperRb::Resources::Draft::Metadata}[rdoc-ref:SleeperRb::Resources::Draft::Metadata]]
 
-      cached_attr :type, :status, :start_time, :sport, :season_type, :season, :league_id, :last_picked,
+      cached_attr :type, :status, :start_time, :sport, :season_type, :season, :league_id, :last_picked, :league,
                   :last_message_time, :last_message_id, :draft_order, :draft_id, :creators, :created, :slot_to_roster_id,
                   settings: ->(hash) { Settings.new(hash) },
                   metadata: ->(hash) { Metadata.new(hash) }

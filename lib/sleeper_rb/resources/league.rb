@@ -113,6 +113,15 @@ module SleeperRb
         retrieve_traded_picks!
       end
 
+      ##
+      # :method: drafts
+      # Returns all drafts for the league
+      #
+      # @return [Array<{SleeperRb::Resources::Draft}[rdoc-ref:SleeperRb::Resources::Draft]>]
+      cached_association(:drafts) do
+        retrieve_drafts!
+      end
+
       def initialize(opts = {})
         raise ArgumentError unless opts[:league_id]
 
@@ -152,6 +161,12 @@ module SleeperRb
         url = "#{BASE_URL}/league/#{league_id}/traded_picks"
         response = execute_request(url)
         response.map { |hash| TradedPick.new(hash.merge(league: self)) }
+      end
+
+      def retrieve_drafts!
+        url = "#{BASE_URL}/league/#{league_id}/drafts"
+        response = execute_request(url)
+        response.map { |hash| Draft.new(hash.merge(league: self)) }
       end
     end
   end

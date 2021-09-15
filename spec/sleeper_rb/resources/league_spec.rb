@@ -118,4 +118,20 @@ RSpec.describe SleeperRb::Resources::League do
       expect(subject.traded_picks.first.previous_owner_id).to eq(1)
     end
   end
+
+  describe "#drafts" do
+    before do
+      stub_request(:get, "#{SleeperRb::Utilities::Request::BASE_URL}/league/#{league_id}/drafts").to_return(body: drafts_response)
+    end
+
+    let(:drafts_response) do
+      File.read(File.expand_path("../../fixtures/drafts_response.json", File.dirname(__FILE__)))
+    end
+
+    it "should return all drafts for the league" do
+      expect(subject.drafts).to all be_an_instance_of(SleeperRb::Resources::Draft)
+      expect(subject.drafts.first.draft_id).to eq("737785377116553216")
+      expect(subject.drafts.last.draft_id).to eq("735284283798888448")
+    end
+  end
 end
