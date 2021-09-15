@@ -57,7 +57,7 @@ RSpec.describe SleeperRb::Resources::League do
 
   describe "#users" do
     before do
-      stub_request(:get, "https://api.sleeper.app/v1/league/#{league_id}/users").to_return(body: users_response)
+      stub_request(:get, "#{SleeperRb::Utilities::Request::BASE_URL}/league/#{league_id}/users").to_return(body: users_response)
     end
 
     let(:users_response) do
@@ -74,7 +74,7 @@ RSpec.describe SleeperRb::Resources::League do
 
   describe "#rosters" do
     before do
-      stub_request(:get, "https://api.sleeper.app/v1/league/#{league_id}/rosters").to_return(body: rosters_response)
+      stub_request(:get, "#{SleeperRb::Utilities::Request::BASE_URL}/league/#{league_id}/rosters").to_return(body: rosters_response)
     end
 
     let(:rosters_response) do
@@ -90,7 +90,7 @@ RSpec.describe SleeperRb::Resources::League do
 
   describe "#matchups" do
     before do
-      stub_request(:get, "https://api.sleeper.app/v1/league/#{league_id}/matchups/1").to_return(body: matchups_response)
+      stub_request(:get, "#{SleeperRb::Utilities::Request::BASE_URL}/league/#{league_id}/matchups/1").to_return(body: matchups_response)
     end
 
     let(:matchups_response) do
@@ -106,7 +106,7 @@ RSpec.describe SleeperRb::Resources::League do
 
   describe "#traded_picks" do
     before do
-      stub_request(:get, "https://api.sleeper.app/v1/league/#{league_id}/traded_picks").to_return(body: picks_response)
+      stub_request(:get, "#{SleeperRb::Utilities::Request::BASE_URL}/league/#{league_id}/traded_picks").to_return(body: picks_response)
     end
 
     let(:picks_response) do

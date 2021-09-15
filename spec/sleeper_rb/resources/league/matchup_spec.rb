@@ -26,7 +26,7 @@ RSpec.describe SleeperRb::Resources::League::Matchup do
 
   describe "#roster" do
     before do
-      stub_request(:get, "https://api.sleeper.app/v1/league/#{league_id}/rosters").to_return(body: rosters_response)
+      stub_request(:get, "#{SleeperRb::Utilities::Request::BASE_URL}/league/#{league_id}/rosters").to_return(body: rosters_response)
     end
 
     let(:rosters_response) do

@@ -6,7 +6,7 @@ RSpec.describe SleeperRb::Resources::Player do
     described_class.refresh
   end
 
-  let(:player_url) { "https://api.sleeper.app/v1/players/nfl" }
+  let(:player_url) { "#{SleeperRb::Utilities::Request::BASE_URL}/players/nfl" }
   let(:player_response) do
     File.read(File.expand_path("../../fixtures/player_response.json", File.dirname(__FILE__)))
   end

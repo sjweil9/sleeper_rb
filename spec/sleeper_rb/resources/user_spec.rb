@@ -73,4 +73,23 @@ RSpec.describe SleeperRb::Resources::User do
       expect(leagues.last.league_id).to eq("735284283123548160")
     end
   end
+
+  describe "#drafts" do
+    before { stub_request(:get, drafts_url).to_return(body: drafts_response) }
+    let(:drafts_url) { "#{SleeperRb::Utilities::Request::BASE_URL}/user/#{user_id}/drafts/nfl/#{year}" }
+    let(:year) { 2021 }
+
+    let(:drafts_response) do
+      File.read(File.expand_path("../../fixtures/drafts_response.json", File.dirname(__FILE__)))
+    end
+
+    subject { described_class.new(user_id: user_id) }
+
+    it "should return all drafts for a user by season" do
+      drafts = subject.drafts(year)
+      expect(drafts).to all be_an_instance_of(SleeperRb::Resources::Draft)
+      expect(drafts.first.draft_id).to eq("737785377116553216")
+      expect(drafts.last.draft_id).to eq("735284283798888448")
+    end
+  end
 end
