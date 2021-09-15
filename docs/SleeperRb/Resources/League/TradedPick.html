@@ -80,7 +80,21 @@
 </div>
 
     
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-current_roster">#current_roster</a>
+    
+    <li ><a href="#method-i-original_roster">#original_roster</a>
+    
+    <li ><a href="#method-i-previous_roster">#previous_roster</a>
+    
+  </ul>
+</div>
+
   </div>
 </nav>
 
@@ -104,8 +118,207 @@
     
 
     
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-league" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">league</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-owner_id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">owner_id</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-previous_owner_id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">previous_owner_id</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-roster_id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">roster_id</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-round" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">round</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-season" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">season</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
 
     
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-current_roster" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">current_roster</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The roster which currently owns this pick.</p>
+
+<p>@return [<a href="SleeperRb::Resources::league::Roster">:Resources::League::Roster</a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="current_roster-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/traded_pick.rb, line 56</span>
+<span class="ruby-identifier">cached_association</span>(<span class="ruby-value">:current_roster</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">league</span>.<span class="ruby-identifier">rosters</span>.<span class="ruby-identifier">detect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">roster</span><span class="ruby-operator">|</span> <span class="ruby-identifier">roster</span>.<span class="ruby-identifier">roster_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">owner_id</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-original_roster" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">original_roster</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The roster which originally owned this pick.</p>
+
+<p>@return [<a href="SleeperRb::Resources::league::Roster">:Resources::League::Roster</a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="original_roster-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/traded_pick.rb, line 38</span>
+<span class="ruby-identifier">cached_association</span>(<span class="ruby-value">:original_roster</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">league</span>.<span class="ruby-identifier">rosters</span>.<span class="ruby-identifier">detect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">roster</span><span class="ruby-operator">|</span> <span class="ruby-identifier">roster</span>.<span class="ruby-identifier">roster_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">roster_id</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-previous_roster" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">previous_roster</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The last roster to have owned this pick before the current one (can be same as <a href="TradedPick.html#method-i-original_roster"><code>original_roster</code></a>).</p>
+
+<p>@return [<a href="SleeperRb::Resources::league::Roster">:Resources::League::Roster</a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="previous_roster-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/traded_pick.rb, line 47</span>
+<span class="ruby-identifier">cached_association</span>(<span class="ruby-value">:previous_roster</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">league</span>.<span class="ruby-identifier">rosters</span>.<span class="ruby-identifier">detect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">roster</span><span class="ruby-operator">|</span> <span class="ruby-identifier">roster</span>.<span class="ruby-identifier">roster_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">previous_owner_id</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
   </section>
 
 </main>

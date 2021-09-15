@@ -10,12 +10,42 @@ module SleeperRb
       include SleeperRb::Utilities::Request
       include SleeperRb::Utilities::Cache
 
+      ##
+      # :attr_reader: user_id
+
+      ##
+      # :attr_reader: username
+
+      ##
+      # :attr_reader: display_name
+
+      ##
+      # :attr_reader: is_owner
+
+      ##
+      # :method: metadata
+      #
+      # @return [{SleeperRb::Resources::User::Metadata}[rdoc-ref:SleeperRb::Resources::User::Metadata]]
+
+      ##
+      # :method: metadata
+      #
+      # @return [{SleeperRb::Resources::User::Metadata}[rdoc-ref:SleeperRb::Resources::User::Metadata]]
+
+      ##
+      # :method: avatar
+      #
+      # @return [{SleeperRb::Resources::Avatar}[rdoc-ref:SleeperRb::Resources::Avatar]]
+
       cached_attr :user_id, :username, :display_name, :is_owner,
                   metadata: ->(hash) { Metadata.new(hash) },
                   avatar: ->(id) { id ? Resources::Avatar.new(avatar_id: id) : nil }
 
       ##
+      # :method: leagues
       # Retrieves leagues for the user for the given season.
+      # :call-seq:
+      #   leagues(season_year)
       #
       # @param season [String] The year in which the leagues were played
       #

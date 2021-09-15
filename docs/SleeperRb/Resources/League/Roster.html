@@ -86,7 +86,17 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-unknown">#unknown</a>
+    <li ><a href="#method-i-league">#league</a>
+    
+    <li ><a href="#method-i-owner">#owner</a>
+    
+    <li ><a href="#method-i-players">#players</a>
+    
+    <li ><a href="#method-i-reserve">#reserve</a>
+    
+    <li ><a href="#method-i-settings">#settings</a>
+    
+    <li ><a href="#method-i-starters">#starters</a>
     
   </ul>
 </div>
@@ -128,6 +138,53 @@
     
 
     
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-league_id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">league_id</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-owner_id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">owner_id</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-roster_id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">roster_id</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
 
     
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
@@ -136,10 +193,43 @@
        </header>
 
     
-      <div id="method-i-unknown" class="method-detail ">
+      <div id="method-i-league" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">unknown</span><span
+          <span class="method-name">league</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The league to which the roster belongs</p>
+
+<p>@return [<a href="../League.html"><code>SleeperRb::Resources::League</code></a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="league-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster.rb, line 25</span>
+        </pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-owner" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">owner</span><span
             class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -154,11 +244,146 @@
           
 
           
-          <div class="method-source-code" id="unknown-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster.rb, line 25</span>
+          <div class="method-source-code" id="owner-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster.rb, line 65</span>
 <span class="ruby-identifier">cached_association</span>(<span class="ruby-value">:owner</span>) <span class="ruby-keyword">do</span>
   <span class="ruby-constant">Resources</span><span class="ruby-operator">::</span><span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">user_id:</span> <span class="ruby-identifier">owner_id</span>)
 <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-players" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">players</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The players currently currently on the roster.</p>
+
+<p>@return [Array&lt;<a href="../Player.html"><code>SleeperRb::Resources::Player</code></a>&gt;]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="players-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster.rb, line 42</span>
+        </pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-reserve" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reserve</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The players currently on the reserve for this roster.</p>
+
+<p>@return [Array&lt;<a href="../Player.html"><code>SleeperRb::Resources::Player</code></a>&gt;]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="reserve-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster.rb, line 53</span>
+<span class="ruby-identifier">cached_attr</span> <span class="ruby-value">:roster_id</span>, <span class="ruby-value">:owner_id</span>, <span class="ruby-value">:league_id</span>, <span class="ruby-value">:league</span>,
+            <span class="ruby-value">settings:</span> <span class="ruby-operator">-&gt;</span>(<span class="ruby-identifier">settings</span>) { <span class="ruby-constant">Roster</span><span class="ruby-operator">::</span><span class="ruby-constant">Settings</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">settings</span>) },
+            <span class="ruby-value">starters:</span> <span class="ruby-constant">PLAYER_LAMBDA</span>,
+            <span class="ruby-value">players:</span> <span class="ruby-constant">PLAYER_LAMBDA</span>,
+            <span class="ruby-value">reserve:</span> <span class="ruby-constant">PLAYER_LAMBDA</span>
+</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-settings" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">settings</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>@return [<a href="Roster/Settings.html"><code>SleeperRb::Resources::League::Roster::Settings</code></a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="settings-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster.rb, line 31</span>
+        </pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-starters" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">starters</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The players currently starting for this roster.</p>
+
+<p>@return [Array&lt;<a href="../Player.html"><code>SleeperRb::Resources::Player</code></a>&gt;]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="starters-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster.rb, line 36</span>
+        </pre>
           </div>
           
         </div>

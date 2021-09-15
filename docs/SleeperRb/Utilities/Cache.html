@@ -132,13 +132,13 @@
 
         <div class="method-description">
           
-          
+          <p>Ensures that <a href="Cache/ClassMethods.html"><code>ClassMethods</code></a> are extended into the base class when including.</p>
           
           
 
           
           <div class="method-source-code" id="included-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 73</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 75</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">included</span>(<span class="ruby-identifier">base</span>)
   <span class="ruby-identifier">base</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">ClassMethods</span>
 <span class="ruby-keyword">end</span></pre>
@@ -173,7 +173,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 81</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 83</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">opts</span> = {})
   <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">cached_attrs</span>.<span class="ruby-identifier">keys</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value">:&quot;@#{key}&quot;</span>, <span class="ruby-identifier">cached_attrs</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">call</span>(<span class="ruby-identifier">val</span>))
@@ -211,12 +211,14 @@
         <div class="method-description">
           
           <p>Refreshes all associations and memoized values set by cached_attr.</p>
+
+<p>@return [self]</p>
           
           
 
           
           <div class="method-source-code" id="refresh-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 89</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 93</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">refresh</span>
   <span class="ruby-identifier">cached_attrs</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">reject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">skip_refresh_fields</span> <span class="ruby-operator">==</span> <span class="ruby-value">:all</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">skip_refresh_fields</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">k</span>) }.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">ivar</span> = <span class="ruby-value">:&quot;@#{attr}&quot;</span>

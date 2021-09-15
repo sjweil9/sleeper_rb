@@ -8,6 +8,9 @@ module SleeperRb
       class Metadata
         include SleeperRb::Utilities::Cache
 
+        ##
+        # :attr_reader: team_name
+
         cached_attr :team_name
 
         skip_refresh :all

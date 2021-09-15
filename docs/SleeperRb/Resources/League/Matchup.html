@@ -86,7 +86,13 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-unknown">#unknown</a>
+    <li ><a href="#method-i-league">#league</a>
+    
+    <li ><a href="#method-i-players">#players</a>
+    
+    <li ><a href="#method-i-roster">#roster</a>
+    
+    <li ><a href="#method-i-starters">#starters</a>
     
   </ul>
 </div>
@@ -101,7 +107,7 @@
 
   <section class="description">
     
-<p>Represents a matchup for a specific team in a specific week. Two records with the same matchup_id are paired against each other.</p>
+<p>Represents a matchup for a specific team in a specific week. Two records with the same <a href="Matchup.html#attribute-i-matchup_id"><code>matchup_id</code></a> are paired against each other.</p>
 
   </section>
 
@@ -114,6 +120,79 @@
     
 
     
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-custom_points" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">custom_points</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-matchup_id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">matchup_id</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-points" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">points</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-roster_id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">roster_id</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-starters_points" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">starters_points</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
 
     
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
@@ -122,10 +201,77 @@
        </header>
 
     
-      <div id="method-i-unknown" class="method-detail ">
+      <div id="method-i-league" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">unknown</span><span
+          <span class="method-name">league</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>@return [<a href="../League.html"><code>SleeperRb::Resources::League</code></a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="league-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/matchup.rb, line 28</span>
+        </pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-players" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">players</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>All players on the roster for this matchup.</p>
+
+<p>@return [<a href="../Player.html"><code>SleeperRb::Resources::Player</code></a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="players-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/matchup.rb, line 44</span>
+<span class="ruby-identifier">cached_attr</span> <span class="ruby-value">:starters_points</span>, <span class="ruby-value">:roster_id</span>, <span class="ruby-value">:points</span>, <span class="ruby-value">:matchup_id</span>, <span class="ruby-value">:custom_points</span>, <span class="ruby-value">:league</span>,
+            <span class="ruby-value">starters:</span> <span class="ruby-operator">-&gt;</span>(<span class="ruby-identifier">array</span>) { <span class="ruby-identifier">array</span>&amp;.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span> <span class="ruby-constant">Player</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">player_id:</span> <span class="ruby-identifier">id</span>) } },
+            <span class="ruby-value">players:</span> <span class="ruby-operator">-&gt;</span>(<span class="ruby-identifier">array</span>) { <span class="ruby-identifier">array</span>&amp;.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span> <span class="ruby-constant">Player</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">player_id:</span> <span class="ruby-identifier">id</span>) } }
+</pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-roster" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">roster</span><span
             class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -140,11 +286,44 @@
           
 
           
-          <div class="method-source-code" id="unknown-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/matchup.rb, line 20</span>
+          <div class="method-source-code" id="roster-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/matchup.rb, line 54</span>
 <span class="ruby-identifier">cached_association</span>(<span class="ruby-value">:roster</span>) <span class="ruby-keyword">do</span>
   <span class="ruby-identifier">retrieve_roster!</span>
 <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-starters" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">starters</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>All players starting on the roster for this matchup.</p>
+
+<p>@return [<a href="../Player.html"><code>SleeperRb::Resources::Player</code></a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="starters-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/matchup.rb, line 33</span>
+        </pre>
           </div>
           
         </div>

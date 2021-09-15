@@ -10,54 +10,59 @@ module SleeperRb
   module Resources
     ##
     # This class represents a Fantasy Football League and is the access point for associated resources.
+    # All attributes are lazily loaded and cache their value based on the API response.
     class League
       include SleeperRb::Utilities::Request
       include SleeperRb::Utilities::Cache
 
       ##
-      # :method: total_rosters
+      # :attr_reader: total_rosters
 
       ##
-      # :method: status
+      # :attr_reader: status
 
       ##
-      # :method: sport
+      # :attr_reader: sport
 
       ##
-      # :method: season_type
+      # :attr_reader: season_type
 
       ##
-      # :method: season
+      # :attr_reader: season
 
       ##
-      # :method: previous_league_id
+      # :attr_reader: previous_league_id
 
       ##
-      # :method: name
+      # :attr_reader: name
 
       ##
-      # :method: league_id
+      # :attr_reader: league_id
 
       ##
-      # :method: draft_id
+      # :attr_reader: draft_id
 
       ##
       # :method: avatar
+      # Retrieves the Avatar instance for the league.
       #
       # @return [{SleeperRb::Resources::Avatar}[rdoc-ref:SleeperRb::Resources::Avatar]]
 
       ##
       # :method: scoring_settings
+      # Retrieves the scoring settings for the league.
       #
       # @return [{SleeperRb::Resources::League::ScoringSettings}[rdoc-ref:SleeperRb::Resources::League::ScoringSettings]]
 
       ##
       # :method: roster_positions
+      # Retrieves the available roster positions for the league.
       #
       # @return [Array<{SleeperRb::Utilities::RosterPosition}[rdoc-ref:SleeperRb::Utilities::RosterPosition]>]
 
       ##
       # :method: settings
+      # Returns the non-scoring settings for the league.
       #
       # @return [{SleeperRb::Resources::League::Settings}[rdoc-ref:SleeperRb::Resources::League::Settings]]
       cached_attr :total_rosters, :status, :sport, :season_type, :season, :previous_league_id, :name, :league_id,
@@ -128,7 +133,7 @@ module SleeperRb
       def retrieve_rosters!
         url = "#{BASE_URL}/league/#{league_id}/rosters"
         response = execute_request(url)
-        response.map { |hash| Roster.new(hash) }
+        response.map { |hash| Roster.new(hash.merge(league: self)) }
       end
 
       def retrieve_users!

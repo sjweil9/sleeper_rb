@@ -120,6 +120,144 @@
     
 
     
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-fpts" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">fpts</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-fpts_against" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">fpts_against</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-fpts_against_decimal" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">fpts_against_decimal</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-fpts_decimal" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">fpts_decimal</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-losses" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">losses</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-ties" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">ties</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-total_moves" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">total_moves</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-waiver_budget_used" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">waiver_budget_used</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-waiver_position" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">waiver_position</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-wins" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">wins</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
 
     
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
@@ -147,7 +285,7 @@
 
           
           <div class="method-source-code" id="record_string-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 39</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">record_string</span>
   <span class="ruby-node">&quot;#{wins} - #{losses} - #{ties}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -180,7 +318,7 @@
 
           
           <div class="method-source-code" id="total_points-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">total_points</span>
   (<span class="ruby-identifier">fpts</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">fpts_decimal</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">0.01</span>)).<span class="ruby-identifier">round</span>(<span class="ruby-value">2</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -213,7 +351,7 @@
 
           
           <div class="method-source-code" id="total_points_against-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 25</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">total_points_against</span>
   (<span class="ruby-identifier">fpts_against</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">fpts_against_decimal</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">0.01</span>)).<span class="ruby-identifier">round</span>(<span class="ruby-value">2</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -246,7 +384,7 @@
 
           
           <div class="method-source-code" id="win_pct-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 31</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/roster/settings.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">win_pct</span>
   <span class="ruby-keyword">return</span> <span class="ruby-value">0.0</span> <span class="ruby-keyword">unless</span> [<span class="ruby-identifier">wins</span>, <span class="ruby-identifier">ties</span>, <span class="ruby-identifier">losses</span>].<span class="ruby-identifier">any?</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:positive?</span>)
 

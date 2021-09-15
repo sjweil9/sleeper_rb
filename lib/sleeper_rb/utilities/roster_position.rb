@@ -4,6 +4,7 @@ module SleeperRb
   module Utilities
     ##
     # A string representing a roster position. See VALID_ROSTER_POSITIONS.
+    # For every possible position in VALID_ROSTER_POSITIONS, there is a corresponding predicate method (e.g. `qb?`).
     class RosterPosition
       attr_reader :position
 

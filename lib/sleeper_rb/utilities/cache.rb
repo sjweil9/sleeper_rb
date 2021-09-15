@@ -70,6 +70,8 @@ module SleeperRb
         end
       end
 
+      ##
+      # Ensures that ClassMethods are extended into the base class when including.
       def self.included(base)
         base.extend ClassMethods
       end
@@ -86,6 +88,8 @@ module SleeperRb
 
       ##
       # Refreshes all associations and memoized values set by cached_attr.
+      #
+      # @return [self]
       def refresh
         cached_attrs.keys.reject { |k| skip_refresh_fields == :all || skip_refresh_fields.include?(k) }.each do |attr|
           ivar = :"@#{attr}"

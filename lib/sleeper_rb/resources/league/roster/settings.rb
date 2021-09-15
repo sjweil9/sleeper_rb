@@ -9,6 +9,36 @@ module SleeperRb
         class Settings
           include SleeperRb::Utilities::Cache
 
+          ##
+          # :attr_reader: wins
+
+          ##
+          # :attr_reader: waiver_position
+
+          ##
+          # :attr_reader: waiver_budget_used
+
+          ##
+          # :attr_reader: total_moves
+
+          ##
+          # :attr_reader: ties
+
+          ##
+          # :attr_reader: losses
+
+          ##
+          # :attr_reader: fpts_decimal
+
+          ##
+          # :attr_reader: fpts_against_decimal
+
+          ##
+          # :attr_reader: fpts_against
+
+          ##
+          # :attr_reader: fpts
+
           cached_attr :wins, :waiver_position, :waiver_budget_used, :total_moves, :ties, :losses, :fpts_decimal,
                       :fpts_against_decimal, :fpts_against, :fpts
 

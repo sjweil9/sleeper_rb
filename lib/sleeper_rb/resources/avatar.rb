@@ -8,6 +8,21 @@ module SleeperRb
       include SleeperRb::Utilities::Request
       include SleeperRb::Utilities::Cache
 
+      ##
+      # :attr_reader: avatar_id
+
+      ##
+      # :method: full_size
+      # Returns the full size image for the Avatar
+      #
+      # @return [Tempfile]
+
+      ##
+      # :method: thumbnail
+      # Returns the full size image for the Avatar
+      #
+      # @return [Tempfile]
+
       cached_attr :full_size, :thumbnail, :avatar_id
 
       private
