@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "utilities/request"
+require_relative "utilities/array_proxy"
 require_relative "utilities/cache"
+require_relative "utilities/request"
 require_relative "utilities/roster_position"
 require_relative "resources/avatar"
 require_relative "resources/draft"
