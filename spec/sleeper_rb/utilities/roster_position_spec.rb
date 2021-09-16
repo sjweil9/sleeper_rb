@@ -9,4 +9,14 @@ RSpec.describe SleeperRb::Utilities::RosterPosition do
       expect(subject.send("#{position}?")).to eq(false)
     end
   end
+
+  describe "==" do
+    it "should compare itself against raw strings" do
+      expect(subject).to eq("qb")
+    end
+
+    it "should compare itself against other RosterPosition objects" do
+      expect(subject).to eq(described_class.new("QB"))
+    end
+  end
 end

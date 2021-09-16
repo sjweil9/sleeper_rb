@@ -80,7 +80,7 @@ module SleeperRb
       # :method: traded_picks
       # All picks in the Draft that were traded.
       #
-      # @return [Array<{SleeperRb::Resources::TradedPick}[rdoc-ref:SleeperRb::Resources::TradedPick]>]
+      # @return [{SleeperRb::Resources::TradedPickArray}[rdoc-ref:SleeperRb::Resources::TradedPickArray]]
       cached_association :traded_picks do
         retrieve_traded_picks!
       end
@@ -104,7 +104,7 @@ module SleeperRb
       def retrieve_traded_picks!
         url = "#{SleeperRb::Utilities::Request::BASE_URL}/draft/#{@draft_id}/traded_picks"
         response = execute_request(url)
-        response.map { |hash| TradedPick.new(hash) }
+        TradedPickArray.new(response.map { |hash| TradedPick.new(hash) })
       end
 
       def retrieve_picks!

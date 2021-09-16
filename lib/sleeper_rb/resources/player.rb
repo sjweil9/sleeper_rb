@@ -14,9 +14,9 @@ module SleeperRb
         #
         # @return [Array<{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]>]
         def all
-          @all ||= player_hashes.reduce([]) do |array, (_player_id, player_hash)|
+          @all ||= PlayerArray.new(player_hashes.reduce([]) do |array, (_player_id, player_hash)|
             array << new(player_hash)
-          end
+          end)
         end
 
         ##

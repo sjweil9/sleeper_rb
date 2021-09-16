@@ -87,7 +87,7 @@ module SleeperRb
       # :method: users
       # Retrieves users for the League.
       #
-      # @return [Array<{SleeperRb::Resources::User}[rdoc-ref:SleeperRb::Resources::User]>]
+      # @return [{SleeperRb::Resources::UserArray}[rdoc-ref:SleeperRb::Resources::UserArray]]
       cached_association :users do
         retrieve_users!
       end
@@ -107,7 +107,7 @@ module SleeperRb
       # :method: traded_picks
       # Returns all traded draft picks for the League.
       #
-      # @return [Array<{SleeperRb::Resources::TradedPick}[rdoc-ref:SleeperRb::Resources::League::TradedPick]>]
+      # @return [{SleeperRb::Resources::TradedPickArray}[rdoc-ref:SleeperRb::Resources::League::TradedPickArray]]
       cached_association :traded_picks do
         retrieve_traded_picks!
       end
@@ -147,7 +147,7 @@ module SleeperRb
       def retrieve_users!
         url = "#{BASE_URL}/league/#{league_id}/users"
         response = execute_request(url)
-        response.map { |hash| User.new(hash) }
+        UserArray.new(response.map { |hash| User.new(hash) })
       end
 
       def retrieve_matchups!(week)
@@ -159,7 +159,7 @@ module SleeperRb
       def retrieve_traded_picks!
         url = "#{BASE_URL}/league/#{league_id}/traded_picks"
         response = execute_request(url)
-        response.map { |hash| TradedPick.new(hash.merge(league: self)) }
+        TradedPickArray.new(response.map { |hash| TradedPick.new(hash.merge(league: self)) })
       end
 
       def retrieve_drafts!

@@ -13,11 +13,17 @@ module SleeperRb
       end
 
       VALID_ROSTER_POSITIONS = %w[
-        qb rb wr te k dst flex bn ir super_flex ol dl de lb olb mlb fs ss db cb nb c rg lg lt rt
+        qb rb wr te k dst flex bn ir super_flex ol dl de lb olb mlb fs ss db cb nb c rg lg lt rt ot g
       ].freeze
 
       VALID_ROSTER_POSITIONS.each do |position_key|
         define_method("#{position_key}?") { position == position_key.upcase }
+      end
+
+      def ==(other)
+        return position == other.position.upcase if other.respond_to?(:position)
+
+        position == other.upcase
       end
     end
   end

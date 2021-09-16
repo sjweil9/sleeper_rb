@@ -65,6 +65,7 @@ RSpec.describe SleeperRb::Resources::League do
     end
 
     it "should return all users for the league" do
+      expect(subject.users).to be_an_instance_of(SleeperRb::Resources::UserArray)
       expect(subject.users).to all be_an_instance_of(SleeperRb::Resources::User)
       expect(subject.users.size).to eq(8)
       expect(subject.users.first.user_id).to eq("374409574377324544")
@@ -114,6 +115,7 @@ RSpec.describe SleeperRb::Resources::League do
     end
 
     it "should return all traded picks for the league" do
+      expect(subject.traded_picks).to be_an_instance_of(SleeperRb::Resources::TradedPickArray)
       expect(subject.traded_picks).to all be_an_instance_of(SleeperRb::Resources::TradedPick)
       expect(subject.traded_picks.first.previous_owner_id).to eq(1)
     end

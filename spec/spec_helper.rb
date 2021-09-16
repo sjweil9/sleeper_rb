@@ -9,6 +9,7 @@ end
 require "sleeper_rb"
 require "webmock/rspec"
 require_relative "helpers/associations"
+require_relative "helpers/mocks"
 require_relative "helpers/response"
 
 RSpec.configure do |config|

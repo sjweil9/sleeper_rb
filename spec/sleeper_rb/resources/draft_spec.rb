@@ -35,6 +35,7 @@ RSpec.describe SleeperRb::Resources::Draft do
     end
 
     it "should return all traded picks for the Draft" do
+      expect(subject.traded_picks).to be_an_instance_of(SleeperRb::Resources::TradedPickArray)
       expect(subject.traded_picks).to all be_an_instance_of(SleeperRb::Resources::TradedPick)
     end
   end

@@ -1,15 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe SleeperRb::Resources::Player do
-  before do
-    stub_request(:get, player_url).to_return(body: player_response)
-    described_class.refresh
-  end
-
   let(:player_url) { "#{SleeperRb::Utilities::Request::BASE_URL}/players/nfl" }
-  let(:player_response) do
-    File.read(File.expand_path("../../fixtures/player_response.json", File.dirname(__FILE__)))
-  end
+
+  before { described_class.refresh }
 
   describe "::all" do
     it "should return all player instances" do
