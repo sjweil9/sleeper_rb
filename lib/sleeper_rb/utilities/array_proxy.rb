@@ -6,6 +6,7 @@ module SleeperRb
   module Utilities
     ##
     # A wrapper for arrays of various SleeperRb::Resources that implements a light ActiveRecord-inspired syntax.
+    # Valid operators for use in #where are: `gt, gte, lt, lte, not`.
     class ArrayProxy < SimpleDelegator
       VALID_OPERATORS = {
         gt: ->(element, comparison) { element > comparison },

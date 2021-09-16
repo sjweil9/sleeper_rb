@@ -90,7 +90,7 @@
 
   <section class="description">
     
-<p>A wrapper for arrays of various <a href="../Resources.html"><code>SleeperRb::Resources</code></a> that implements a light ActiveRecord-inspired syntax.</p>
+<p>A wrapper for arrays of various <a href="../Resources.html"><code>SleeperRb::Resources</code></a> that implements a light ActiveRecord-inspired syntax. Valid operators for use in <a href="ArrayProxy.html#method-i-where"><code>where</code></a> are: `gt, gte, lt, lte, not`.</p>
 
   </section>
 
@@ -144,7 +144,7 @@
 
           
           <div class="method-source-code" id="where-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/array_proxy.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/array_proxy.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">where</span>(<span class="ruby-identifier">options</span> = {})
   <span class="ruby-identifier">filtered</span> = <span class="ruby-identifier">__getobj__</span>.<span class="ruby-identifier">dup</span>
   <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">field</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>

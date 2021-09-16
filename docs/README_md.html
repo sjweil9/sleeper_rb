@@ -161,9 +161,21 @@
 <span class="ruby-operator">=&gt;</span>
 </pre>
 
-<p>From a given resource access its attributes or associated resources. No actual web requests will be made until one of the attributes is accessed.</p>
+<p>From a given resource access its attributes or associated resources. No API requests will be made until one of the attributes is accessed.</p>
 
 <pre class="ruby"><span class="ruby-identifier">user</span>.<span class="ruby-identifier">user_id</span>
+<span class="ruby-operator">=&gt;</span>
+</pre>
+
+<p>Some resources also have associations to other types of resources.</p>
+
+<pre class="ruby"><span class="ruby-identifier">roster</span>.<span class="ruby-identifier">players</span>
+<span class="ruby-operator">=&gt;</span>
+</pre>
+
+<p>Any resources returned as an array implement a ResourceArray variation that enables a light ActiveRecord-inspired syntax for filtering the collection.</p>
+
+<pre class="ruby"><span class="ruby-identifier">roster</span>.<span class="ruby-identifier">players</span>.<span class="ruby-identifier">class</span>
 <span class="ruby-operator">=&gt;</span>
 </pre>
 
