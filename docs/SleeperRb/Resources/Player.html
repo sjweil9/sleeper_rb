@@ -99,8 +99,6 @@
     
     <li ><a href="#method-c-all">::all</a>
     
-    <li ><a href="#method-c-find">::find</a>
-    
     <li ><a href="#method-c-player_hashes">::player_hashes</a>
     
     <li ><a href="#method-c-refresh">::refresh</a>
@@ -673,7 +671,7 @@
           
           <p>Ensuring there is one source of players so the heavy endpoint need not be called frequently.</p>
 
-<p>@return [Array&lt;<a href="Player.html"><code>SleeperRb::Resources::Player</code></a>&gt;]</p>
+<p>@return [<a href="PlayerArray.html"><code>SleeperRb::Resources::PlayerArray</code></a>]</p>
           
           
 
@@ -681,46 +679,9 @@
           <div class="method-source-code" id="all-source">
             <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>
-  <span class="ruby-ivar">@all</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">player_hashes</span>.<span class="ruby-identifier">reduce</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">array</span>, (<span class="ruby-identifier">_player_id</span>, <span class="ruby-identifier">player_hash</span>)<span class="ruby-operator">|</span>
+  <span class="ruby-ivar">@all</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">PlayerArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">player_hashes</span>.<span class="ruby-identifier">reduce</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">array</span>, (<span class="ruby-identifier">_player_id</span>, <span class="ruby-identifier">player_hash</span>)<span class="ruby-operator">|</span>
     <span class="ruby-identifier">array</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new</span>(<span class="ruby-identifier">player_hash</span>)
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-c-find" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">find</span><span
-            class="method-args">(player_id)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Retrieves a particular <a href="Player.html"><code>Player</code></a> by ID.</p>
-
-<p>@return [<a href="Player.html"><code>SleeperRb::Resources::Player</code></a>] The <a href="Player.html"><code>Player</code></a> instance</p>
-          
-          
-
-          
-          <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 26</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">find</span>(<span class="ruby-identifier">player_id</span>)
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">player_hashes</span>[<span class="ruby-identifier">player_id</span>.<span class="ruby-identifier">to_sym</span>]
-
-  <span class="ruby-identifier">new</span>(<span class="ruby-identifier">player_hashes</span>[<span class="ruby-identifier">player_id</span>.<span class="ruby-identifier">to_sym</span>])
+  <span class="ruby-keyword">end</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -751,7 +712,7 @@
 
           
           <div class="method-source-code" id="player_hashes-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 42</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">player_hashes</span>
   <span class="ruby-ivar">@player_hashes</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">retrieve_players!</span>
 <span class="ruby-keyword">end</span></pre>
@@ -786,7 +747,7 @@
 
           
           <div class="method-source-code" id="refresh-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 36</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">refresh</span>
   <span class="ruby-ivar">@all</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@player_hashes</span> = <span class="ruby-keyword">nil</span>
@@ -831,7 +792,7 @@
 
           
           <div class="method-source-code" id="fantasy_positions-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 172</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 162</span>
       </pre>
           </div>
           
@@ -864,7 +825,7 @@
 
           
           <div class="method-source-code" id="position-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 183</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/player.rb, line 173</span>
 <span class="ruby-identifier">cached_attr</span> <span class="ruby-value">:hashtag</span>, <span class="ruby-value">:depth_chart_position</span>, <span class="ruby-value">:status</span>, <span class="ruby-value">:sport</span>, <span class="ruby-value">:number</span>, <span class="ruby-value">:injury_start_date</span>, <span class="ruby-value">:weight</span>,
             <span class="ruby-value">:practice_participation</span>, <span class="ruby-value">:sportradar_id</span>, <span class="ruby-value">:team</span>, <span class="ruby-value">:last_name</span>, <span class="ruby-value">:college</span>, <span class="ruby-value">:fantasy_data_id</span>, <span class="ruby-value">:full_name</span>,
             <span class="ruby-value">:injury_status</span>, <span class="ruby-value">:player_id</span>, <span class="ruby-value">:height</span>, <span class="ruby-value">:age</span>, <span class="ruby-value">:stats_id</span>, <span class="ruby-value">:birth_country</span>, <span class="ruby-value">:espn_id</span>, <span class="ruby-value">:first_name</span>, <span class="ruby-value">:active</span>,

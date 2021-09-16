@@ -90,9 +90,13 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-draft_picks">#draft_picks</a>
+    
     <li ><a href="#method-i-metadata">#metadata</a>
     
     <li ><a href="#method-i-settings">#settings</a>
+    
+    <li ><a href="#method-i-traded_picks">#traded_picks</a>
     
   </ul>
 </div>
@@ -331,6 +335,41 @@
        </header>
 
     
+      <div id="method-i-draft_picks" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">draft_picks</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>All picks in the <a href="Draft.html"><code>Draft</code></a>.</p>
+
+<p>@return [Array&lt;<a href="Draft/Pick.html"><code>SleeperRb::Resources::Draft::Pick</code></a>&gt;]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="draft_picks-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft.rb, line 93</span>
+<span class="ruby-identifier">cached_association</span> <span class="ruby-value">:draft_picks</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">retrieve_picks!</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-metadata" class="method-detail ">
         
         <div class="method-heading">
@@ -352,7 +391,7 @@
 
           
           <div class="method-source-code" id="metadata-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft.rb, line 71</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft.rb, line 72</span>
 <span class="ruby-identifier">cached_attr</span> <span class="ruby-value">:type</span>, <span class="ruby-value">:status</span>, <span class="ruby-value">:start_time</span>, <span class="ruby-value">:sport</span>, <span class="ruby-value">:season_type</span>, <span class="ruby-value">:season</span>, <span class="ruby-value">:league_id</span>, <span class="ruby-value">:last_picked</span>, <span class="ruby-value">:league</span>,
             <span class="ruby-value">:last_message_time</span>, <span class="ruby-value">:last_message_id</span>, <span class="ruby-value">:draft_order</span>, <span class="ruby-value">:draft_id</span>, <span class="ruby-value">:creators</span>, <span class="ruby-value">:created</span>, <span class="ruby-value">:slot_to_roster_id</span>,
             <span class="ruby-value">settings:</span> <span class="ruby-operator">-&gt;</span>(<span class="ruby-identifier">hash</span>) { <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">hash</span>) },
@@ -389,8 +428,43 @@
 
           
           <div class="method-source-code" id="settings-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft.rb, line 60</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft.rb, line 61</span>
       </pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-traded_picks" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">traded_picks</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>All picks in the <a href="Draft.html"><code>Draft</code></a> that were traded.</p>
+
+<p>@return [<a href="TradedPickArray.html"><code>SleeperRb::Resources::TradedPickArray</code></a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="traded_picks-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft.rb, line 84</span>
+<span class="ruby-identifier">cached_association</span> <span class="ruby-value">:traded_picks</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">retrieve_traded_picks!</span>
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
