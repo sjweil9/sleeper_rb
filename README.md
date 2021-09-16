@@ -39,8 +39,8 @@ user = client.user(username: "foo")
 => #<SleeperRb::Resources::User:0x000056084a0c3d40 @username="foo">
 ```
 
-From a given resource access its attributes or associated resources. No actual
-web requests will be made until one of the attributes is accessed.
+From a given resource access its attributes or associated resources. No
+API requests will be made until one of the attributes is accessed.
 
 ```ruby
 user.user_id
@@ -50,6 +50,25 @@ user.display_name
 # explicitly trigger a refresh to get, for example, an updated display_name
 user.refresh.display_name
 => "newbar"
+```
+
+Some resources also have associations to other types of resources.
+
+```ruby
+roster.players
+=> [#<SleeperRb::Resources::Player:0x00005588808d2c60 @player_id="1479">,...]
+```
+
+Any resources returned as an array implement a ResourceArray variation that enables
+a light ActiveRecord-inspired syntax for filtering the collection.
+
+```ruby
+roster.players.class
+=> SleeperRb::Resources::PlayerArray
+roster.players.where(position: "rb")
+=> [#<SleeperRb::Resources::Player:0x00005588808d2828 @player_id="2431", @values=...]
+roster.players.where(age: { lt: 25 })
+=> [#<SleeperRb::Resources::Player:0x00005588808d2828 @player_id="2431", @values=...]
 ```
 
 Check the [complete
