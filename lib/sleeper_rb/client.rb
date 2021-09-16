@@ -62,9 +62,9 @@ module SleeperRb
     ##
     # Returns all NFL players.
     #
-    # @return Array<{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]>
+    # @return [{SleeperRb::Resources::PlayerArray}[rdoc-ref:SleeperRb::Resources::PlayerArray]]
     def players
-      Resources::Player.all
+      Resources::PlayerArray.new(Resources::Player.all)
     end
 
     ##

@@ -12,7 +12,7 @@ module SleeperRb
         ##
         # Ensuring there is one source of players so the heavy endpoint need not be called frequently.
         #
-        # @return [Array<{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]>]
+        # @return [{SleeperRb::Resources::PlayerArray}[rdoc-ref:SleeperRb::Resources::PlayerArray]]
         def all
           @all ||= PlayerArray.new(player_hashes.reduce([]) do |array, (_player_id, player_hash)|
             array << new(player_hash)

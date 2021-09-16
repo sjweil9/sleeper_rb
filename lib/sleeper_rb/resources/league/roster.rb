@@ -10,7 +10,7 @@ module SleeperRb
       class Roster
         include SleeperRb::Utilities::Cache
 
-        PLAYER_LAMBDA = ->(array) { array&.map { |player_id| Resources::Player.new(player_id: player_id) } }
+        PLAYER_LAMBDA = ->(array) { PlayerArray.new(array&.map { |player_id| Player.new(player_id: player_id) }) }
 
         ##
         # :attr_reader: roster_id
@@ -36,19 +36,19 @@ module SleeperRb
         # :method: starters
         # The players currently starting for this roster.
         #
-        # @return [Array<{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]>]
+        # @return [{SleeperRb::Resources::PlayerArray}[rdoc-ref:SleeperRb::Resources::PlayerArray]]
 
         ##
         # :method: players
         # The players currently currently on the roster.
         #
-        # @return [Array<{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]>]
+        # @return [{SleeperRb::Resources::PlayerArray}[rdoc-ref:SleeperRb::Resources::PlayerArray]]
 
         ##
         # :method: reserve
         # The players currently on the reserve for this roster.
         #
-        # @return [Array<{SleeperRb::Resources::Player}[rdoc-ref:SleeperRb::Resources::Player]>]
+        # @return [{SleeperRb::Resources::PlayerArray}[rdoc-ref:SleeperRb::Resources::PlayerArray]]
 
         cached_attr :roster_id, :owner_id, :league_id, :league,
                     settings: ->(settings) { Roster::Settings.new(settings) },
