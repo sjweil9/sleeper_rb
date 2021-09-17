@@ -111,7 +111,7 @@ module SleeperRb
       # :method: traded_picks
       # Returns all traded draft picks for the League.
       #
-      # @return [{SleeperRb::Resources::TradedPickArray}[rdoc-ref:SleeperRb::Resources::League::TradedPickArray]]
+      # @return [{SleeperRb::Resources::TradedPickArray}[rdoc-ref:SleeperRb::Resources::TradedPickArray]]
       cached_association :traded_picks do
         retrieve_traded_picks!
       end
@@ -120,7 +120,7 @@ module SleeperRb
       # :method: drafts
       # Returns all drafts for the league
       #
-      # @return [Array<{SleeperRb::Resources::Draft}[rdoc-ref:SleeperRb::Resources::Draft]>]
+      # @return [{SleeperRb::Resources::DraftArray}[rdoc-ref:SleeperRb::Resources::DraftArray]]
       cached_association :drafts do
         retrieve_drafts!
       end
@@ -169,7 +169,7 @@ module SleeperRb
       def retrieve_drafts!
         url = "#{BASE_URL}/league/#{league_id}/drafts"
         response = execute_request(url)
-        response.map { |hash| Draft.new(hash.merge(league: self)) }
+        DraftArray.new(response.map { |hash| Draft.new(hash.merge(league: self)) })
       end
     end
   end

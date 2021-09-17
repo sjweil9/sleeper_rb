@@ -62,7 +62,7 @@ module SleeperRb
       #
       # @param season_year [String] The year in which the leagues were played
       #
-      # @return [Array<{SleeperRb::Resources::Draft}[rdoc-ref:SleeperRb::Resources::Draft]>]
+      # @return [{SleeperRb::Resources::DraftArray}[rdoc-ref:SleeperRb::Resources::DraftArray]]
       cached_association :drafts do |season_year|
         retrieve_drafts!(season_year)
       end
@@ -95,7 +95,7 @@ module SleeperRb
       def retrieve_drafts!(season_year)
         uri = URI("#{BASE_URL}/user/#{user_id}/drafts/nfl/#{season_year}")
         response = execute_request(uri)
-        response.map { |hash| Resources::Draft.new(hash) }
+        DraftArray.new(response.map { |hash| Resources::Draft.new(hash) })
       end
     end
   end

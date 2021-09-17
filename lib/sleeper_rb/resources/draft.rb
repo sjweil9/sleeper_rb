@@ -97,6 +97,14 @@ module SleeperRb
         retrieve_picks!
       end
 
+      def auction?
+        type == "auction"
+      end
+
+      def snake?
+        type == "snake"
+      end
+
       private
 
       def retrieve_values!

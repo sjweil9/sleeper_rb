@@ -8,7 +8,7 @@ module SleeperRb
     # A wrapper for arrays of various SleeperRb::Resources that implements a light ActiveRecord-inspired syntax
     # for filtering the underlying collection.
     #
-    # Valid operators for use in #where are: +gt, gte, lt, lte, not+.
+    # Valid operators for use in #where are: gt, gte, lt, lte, not.
     class ArrayProxy < SimpleDelegator
       VALID_OPERATORS = {
         gt: ->(element, comparison) { element > comparison },
