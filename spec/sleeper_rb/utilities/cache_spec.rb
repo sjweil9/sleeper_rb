@@ -70,6 +70,17 @@ RSpec.describe SleeperRb::Utilities::Cache do
         expect(instance.bar).to eq(float_value.round(2))
       end
     end
+
+    context "when value is :timestamp" do
+      before { subject.cached_attr(bar: :timestamp) }
+
+      let(:epoch) { 1_631_920_216_549 }
+
+      it "should convert to a Time in UTC" do
+        instance.instance_variable_set(:@values, { bar: epoch })
+        expect(instance.bar).to eq(Time.at(epoch / 1000).utc)
+      end
+    end
   end
 
   describe "::cached_association" do

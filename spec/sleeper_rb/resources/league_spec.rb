@@ -136,4 +136,26 @@ RSpec.describe SleeperRb::Resources::League do
       expect(subject.drafts.last.draft_id).to eq("735284283798888448")
     end
   end
+
+  describe "#transactions" do
+    before do
+      stub_request(
+        :get,
+        "#{SleeperRb::Utilities::Request::BASE_URL}/league/#{league_id}/transactions/#{week_number}"
+      ).to_return(
+        body: transactions_response
+      )
+    end
+
+    let(:week_number) { 1 }
+    let(:transactions_response) do
+      File.read(File.expand_path("../../fixtures/transactions_response.json", File.dirname(__FILE__)))
+    end
+
+    it "should return all transactions for the league for a week" do
+      expect(subject.transactions(week_number)).to be_an_instance_of(SleeperRb::Resources::League::TransactionArray)
+      expect(subject.transactions(week_number)).to all be_an_instance_of(SleeperRb::Resources::League::Transaction)
+      expect(subject.transactions(week_number).first.transaction_id).to eq("434852362033561600")
+    end
+  end
 end

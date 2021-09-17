@@ -222,7 +222,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 76</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">opts</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;must provide either user_id or username&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:user_id</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:username</span>]
 
@@ -300,13 +300,13 @@
 
 <p>@param season_year [String] The year in which the leagues were played</p>
 
-<p>@return [Array&lt;<a href="Draft.html"><code>SleeperRb::Resources::Draft</code></a>&gt;]</p>
+<p>@return [<a href="DraftArray.html"><code>SleeperRb::Resources::DraftArray</code></a>]</p>
           
           
 
           
           <div class="method-source-code" id="drafts-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 66</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 68</span>
 <span class="ruby-identifier">cached_association</span> <span class="ruby-value">:drafts</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">season_year</span><span class="ruby-operator">|</span>
   <span class="ruby-identifier">retrieve_drafts!</span>(<span class="ruby-identifier">season_year</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -346,7 +346,7 @@
 
           
           <div class="method-source-code" id="leagues-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 53</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/user.rb, line 55</span>
 <span class="ruby-identifier">cached_association</span> <span class="ruby-value">:leagues</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">season_year</span><span class="ruby-operator">|</span>
   <span class="ruby-identifier">retrieve_leagues!</span>(<span class="ruby-identifier">season_year</span>)
 <span class="ruby-keyword">end</span></pre>

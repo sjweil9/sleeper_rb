@@ -1,0 +1,61 @@
+[
+  {
+    "type": "trade",
+    "transaction_id": "434852362033561600",
+    "status_updated": 1558039402803,
+    "status": "complete",
+    "settings": null,
+    "roster_ids": [2, 1],
+    "metadata": null,
+    "leg": 1,
+    "drops": null,
+    "draft_picks": [
+      {
+        "season": "2019",
+        "round": 5,
+        "roster_id": 1,
+        "previous_owner_id": 1,
+        "owner_id": 2
+      },
+      {
+        "season": "2019",
+        "round": 3,
+        "roster_id": 2,
+        "previous_owner_id": 2,
+        "owner_id": 1
+      }
+    ],
+    "creator": "160000000000000000",
+    "created": 1558039391576,
+    "consenter_ids": [2, 1],
+    "adds": null,
+    "waiver_budget": [
+      {
+        "sender": 2,
+        "receiver": 3,
+        "amount": 55
+      }
+    ]
+  },
+  {
+    "type": "free_agent",
+    "transaction_id": "434890120798142464",
+    "status_updated": 1558048393967,
+    "status": "complete",
+    "settings": null,
+    "roster_ids": [1],
+    "metadata": null,
+    "leg": 1,
+    "drops": {
+      "1736": 1
+    },
+    "draft_picks": [],
+    "creator": "160000000000000000",
+    "created": 1558048393967,
+    "consenter_ids": [1],
+    "adds": {
+      "2315": 1
+    },
+    "waiver_budget": []
+  }
+]

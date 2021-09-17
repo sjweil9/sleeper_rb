@@ -42,7 +42,7 @@ RSpec.describe SleeperRb::Utilities::ArrayProxy do
       end
     end
 
-    context "with an lt operator" do
+    context "with an gt operator" do
       it "returns all elements that match" do
         result = subject.where(bar: { gt: 3 })
         expect(result).to be_an_instance_of(described_class)
@@ -50,7 +50,7 @@ RSpec.describe SleeperRb::Utilities::ArrayProxy do
       end
     end
 
-    context "with an lt operator" do
+    context "with an gte operator" do
       it "returns all elements that match" do
         result = subject.where(bar: { gte: 3 })
         expect(result).to be_an_instance_of(described_class)
@@ -58,11 +58,20 @@ RSpec.describe SleeperRb::Utilities::ArrayProxy do
       end
     end
 
-    context "with an lt operator" do
+    context "with an not operator" do
       it "returns all elements that match" do
         result = subject.where(bar: { not: 3 })
         expect(result).to be_an_instance_of(described_class)
         expect(result.all? { |el| el.bar != 3 }).to eq(true)
+      end
+    end
+
+    context "with an in operator" do
+      it "returns all elements that match" do
+        result = subject.where(bar: { in: [2, 3] })
+        expect(result).to be_an_instance_of(described_class)
+        expect(result.size).to eq(2)
+        expect(result.map(&:bar).sort).to eq([2, 3])
       end
     end
 

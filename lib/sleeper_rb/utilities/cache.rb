@@ -10,7 +10,8 @@ module SleeperRb
       module ClassMethods
         DEFAULT_TRANSLATORS = {
           int_to_bool: ->(int) { int == 1 },
-          float: ->(float) { float.to_f.round(2) }
+          float: ->(float) { float.to_f.round(2) },
+          timestamp: ->(epoch_string) { Time.at(epoch_string.to_i / 1000).utc }
         }.freeze
         ##
         # Creates a memoized attribute reader for the named attributes.

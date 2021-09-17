@@ -145,7 +145,7 @@
 
           
           <div class="method-source-code" id="cached_association-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 35</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cached_association</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">name</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span> = <span class="ruby-keyword">nil</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">arg</span>
@@ -189,7 +189,7 @@
 
           
           <div class="method-source-code" id="cached_attr-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 20</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cached_attr</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">attrs</span>)
   <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
@@ -231,7 +231,7 @@
 
           
           <div class="method-source-code" id="cached_attrs-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 56</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cached_attrs</span>
   <span class="ruby-ivar">@cached_attrs</span> <span class="ruby-operator">||=</span> {}
 <span class="ruby-keyword">end</span></pre>
@@ -264,7 +264,7 @@
 
           
           <div class="method-source-code" id="skip_refresh-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 50</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">skip_refresh</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">fields</span>)
   <span class="ruby-identifier">fields</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">field</span><span class="ruby-operator">|</span> <span class="ruby-identifier">field</span> <span class="ruby-operator">==</span> <span class="ruby-value">:all</span> } <span class="ruby-operator">?</span> <span class="ruby-ivar">@skip_refresh_fields</span> = <span class="ruby-value">:all</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">skip_refresh_fields</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">fields</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -297,7 +297,7 @@
 
           
           <div class="method-source-code" id="skip_refresh_fields-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 62</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/utilities/cache.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">skip_refresh_fields</span>
   <span class="ruby-ivar">@skip_refresh_fields</span> <span class="ruby-operator">||=</span> []
 <span class="ruby-keyword">end</span></pre>

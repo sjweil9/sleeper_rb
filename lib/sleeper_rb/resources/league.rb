@@ -6,6 +6,8 @@ require_relative "league/roster"
 require_relative "league/roster_array"
 require_relative "league/scoring_settings"
 require_relative "league/settings"
+require_relative "league/transaction"
+require_relative "league/transaction_array"
 
 module SleeperRb
   module Resources
@@ -127,6 +129,17 @@ module SleeperRb
         retrieve_drafts!
       end
 
+      ##
+      # :method: transactions
+      # Returns all transactions for the League for a given week.
+      # :call-seq:
+      #   transactions(week_number)
+      #
+      # @return [{SleeperRb::Resources::League::TransactionArray}[rdoc-ref:SleeperRb::Resources::League::TransactionArray]]
+      cached_association :transactions do |week|
+        retrieve_transactions!(week)
+      end
+
       def initialize(opts = {})
         raise ArgumentError unless opts[:league_id]
 
@@ -172,6 +185,12 @@ module SleeperRb
         url = "#{BASE_URL}/league/#{league_id}/drafts"
         response = execute_request(url)
         DraftArray.new(response.map { |hash| Draft.new(hash.merge(league: self)) })
+      end
+
+      def retrieve_transactions!(week)
+        url = "#{BASE_URL}/league/#{league_id}/transactions/#{week}"
+        response = execute_request(url)
+        TransactionArray.new(response.map { |hash| Transaction.new(hash.merge(league: self)) })
       end
     end
   end

@@ -16,7 +16,8 @@ module SleeperRb
         lt: ->(element, comparison) { element < comparison },
         lte: ->(element, comparison) { element <= comparison },
         not: ->(element, comparison) { element != comparison },
-        eq: ->(element, comparison) { element == comparison }
+        eq: ->(element, comparison) { element == comparison },
+        in: ->(element, comparison) { comparison.include?(element) }
       }.freeze
 
       def where(options = {})
