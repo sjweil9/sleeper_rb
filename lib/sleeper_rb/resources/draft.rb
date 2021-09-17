@@ -3,6 +3,7 @@
 require_relative "draft/metadata"
 require_relative "draft/settings"
 require_relative "draft/pick"
+require_relative "draft/pick_array"
 
 module SleeperRb
   module Resources

@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 require_relative "league/matchup"
+require_relative "league/matchup_array"
 require_relative "league/roster"
+require_relative "league/roster_array"
 require_relative "league/scoring_settings"
 require_relative "league/settings"
 
