@@ -41,6 +41,8 @@ module SleeperRb
                   metadata: ->(hash) { Metadata.new(hash) },
                   avatar: ->(id) { id ? Resources::Avatar.new(avatar_id: id) : nil }
 
+      delegate(*Metadata.cached_attrs.keys, to: :metadata)
+
       ##
       # :method: leagues
       # Retrieves leagues for the user for the given season.

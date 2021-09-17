@@ -82,7 +82,7 @@ module SleeperRb
       # :method: rosters
       # Retrieves rosters for the League.
       #
-      # @return [Array<{SleeperRb::Resources::League::Roster}[rdoc-ref:SleeperRb::Resources::League::Roster]>]
+      # @return [{SleeperRb::Resources::League::RosterArray}[rdoc-ref:SleeperRb::Resources::League::RosterArray]]
       cached_association :rosters do
         retrieve_rosters!
       end
@@ -102,7 +102,7 @@ module SleeperRb
       # :call-seq:
       #   matchups(week_number)
       #
-      # @return [Array<{SleeperRb::Resources::League::Matchup}[rdoc-ref:SleeperRb::Resources::League::Matchup]>]
+      # @return [{SleeperRb::Resources::League::MatchupArray}[rdoc-ref:SleeperRb::Resources::League::MatchupArray]]
       cached_association :matchups do |week|
         retrieve_matchups!(week)
       end
@@ -145,7 +145,7 @@ module SleeperRb
       def retrieve_rosters!
         url = "#{BASE_URL}/league/#{league_id}/rosters"
         response = execute_request(url)
-        response.map { |hash| Roster.new(hash.merge(league: self)) }
+        RosterArray.new(response.map { |hash| Roster.new(hash.merge(league: self)) })
       end
 
       def retrieve_users!
@@ -157,7 +157,7 @@ module SleeperRb
       def retrieve_matchups!(week)
         url = "#{BASE_URL}/league/#{league_id}/matchups/#{week}"
         response = execute_request(url)
-        response.map { |hash| Matchup.new(hash.merge(league: self)) }
+        MatchupArray.new(response.map { |hash| Matchup.new(hash.merge(league: self)) })
       end
 
       def retrieve_traded_picks!

@@ -92,7 +92,7 @@ module SleeperRb
       # :method: draft_picks
       # All picks in the Draft.
       #
-      # @return [Array<{SleeperRb::Resources::Draft::Pick}[rdoc-ref:SleeperRb::Resources::Draft::Pick]>]
+      # @return [{SleeperRb::Resources::Draft::Pick}[rdoc-ref:SleeperRb::Resources::Draft::Pick]]
       cached_association :draft_picks do
         retrieve_picks!
       end
@@ -121,7 +121,7 @@ module SleeperRb
       def retrieve_picks!
         url = "#{SleeperRb::Utilities::Request::BASE_URL}/draft/#{@draft_id}/picks"
         response = execute_request(url)
-        response.map { |hash| Pick.new(hash.merge(draft: self)) }
+        PickArray.new(response.map { |hash| Pick.new(hash.merge(draft: self)) })
       end
     end
   end
