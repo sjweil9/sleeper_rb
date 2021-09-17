@@ -74,6 +74,9 @@ module SleeperRb
                   settings: ->(hash) { Settings.new(hash) },
                   metadata: ->(hash) { Metadata.new(hash) }
 
+      delegate(*Settings.cached_attrs.keys, to: :settings)
+      delegate(*Metadata.cached_attrs.keys, to: :metadata)
+
       skip_refresh :all
 
       ##

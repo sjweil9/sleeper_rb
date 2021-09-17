@@ -129,16 +129,17 @@ module SleeperRb
         # :attr_reader: playoff_type
 
         FIELDS = %i[
-          max_keepers draft_rounds trade_review_days reserve_allow_dnr capacity_override
-          pick_trading disable_trades taxi_years taxi_allow_vets best_ball disable_adds waiver_type bench_lock
-          reserve_allow_sus type reserve_allow_cov waiver_clear_days daily_waivers_last_ran waiver_day_of_week
-          start_week playoff_teams num_teams reserve_slots playoff_round_type daily_waivers_hour waiver_budget
-          reserve_allow_out offseason_adds playoff_seed_type daily_waivers playoff_week_start daily_waivers_days
-          league_average_match leg trade_deadline reserve_allow_doubtful taxi_deadline reserve_allow_na taxi_slots
-          playoff_type
+          max_keepers draft_rounds trade_review_days reserve_allow_dnr capacity_override taxi_years waiver_type
+          bench_lock type waiver_clear_days daily_waivers_last_ran waiver_day_of_week start_week playoff_teams
+          num_teams reserve_slots playoff_round_type daily_waivers_hour waiver_budget playoff_type taxi_slots
+          reserve_allow_out playoff_seed_type daily_waivers playoff_week_start daily_waivers_days taxi_deadline
+          league_average_match leg trade_deadline
         ].freeze
 
-        cached_attr(*FIELDS)
+        cached_attr(*FIELDS, best_ball: :int_to_bool, pick_trading: :int_to_bool, disable_trades: :int_to_bool,
+                             taxi_allow_vets: :int_to_bool, disable_adds: :int_to_bool, reserve_allow_sus: :int_to_bool,
+                             reserve_allow_cov: :int_to_bool, offseason_adds: :int_to_bool, reserve_allow_doubtful: :int_to_bool,
+                             reserve_allow_na: :int_to_bool)
 
         skip_refresh :all
       end

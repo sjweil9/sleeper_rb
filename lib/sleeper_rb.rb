@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "active_support/core_ext/module/delegation"
 require_relative "sleeper_rb/version"
 require_relative "sleeper_rb/client"
 

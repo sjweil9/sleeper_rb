@@ -18,7 +18,7 @@ RSpec.describe SleeperRb::Resources::League::Settings do
 
   it "should set all valid fields as instance variables" do
     valid_settings.each do |key, val|
-      expect(subject.send(key)).to eq(val)
+      expect(subject.send(key)).to eq(subject.send(:cached_attrs)[key].call(val))
     end
   end
 end

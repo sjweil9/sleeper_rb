@@ -8,6 +8,10 @@ module SleeperRb
       ##
       # Methods to be extended into the class when included.
       module ClassMethods
+        DEFAULT_TRANSLATORS = {
+          int_to_bool: ->(int) { int == 1 },
+          float: ->(float) { float.to_f.round(2) }
+        }.freeze
         ##
         # Creates a memoized attribute reader for the named attributes.
         #
@@ -17,6 +21,7 @@ module SleeperRb
           attrs.each do |attr|
             if attr.is_a?(Hash)
               attr.each do |field_name, translator|
+                translator = DEFAULT_TRANSLATORS[translator] if translator.is_a?(Symbol)
                 create_method(field_name, translator)
               end
             else

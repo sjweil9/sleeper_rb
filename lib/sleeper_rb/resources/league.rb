@@ -74,6 +74,10 @@ module SleeperRb
                              },
                              settings: ->(settings) { Settings.new(settings) }
 
+      delegate(*Settings.cached_attrs.keys, to: :settings)
+      delegate(*ScoringSettings.cached_attrs.keys, to: :scoring_settings)
+      delegate :ppr?, :half_ppr?, :standard?, to: :scoring_settings
+
       ##
       # :method: rosters
       # Retrieves rosters for the League.

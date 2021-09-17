@@ -123,14 +123,24 @@ specs:
 
 <pre>remote: https://rubygems.org/
 specs:
+  activesupport (6.1.4.1)
+    concurrent-ruby (~&gt; 1.0, &gt;= 1.0.2)
+    i18n (&gt;= 1.6, &lt; 2)
+    minitest (&gt;= 5.1)
+    tzinfo (~&gt; 2.0)
+    zeitwerk (~&gt; 2.3)
   addressable (2.8.0)
     public_suffix (&gt;= 2.0.2, &lt; 5.0)
   ast (2.4.2)
+  concurrent-ruby (1.1.9)
   crack (0.4.5)
     rexml
   diff-lcs (1.4.4)
   docile (1.4.0)
   hashdiff (1.0.1)
+  i18n (1.8.10)
+    concurrent-ruby (~&gt; 1.0)
+  minitest (5.14.4)
   parallel (1.20.1)
   parser (3.0.2.0)
     ast (~&gt; 2.4.1)
@@ -170,11 +180,14 @@ specs:
     simplecov_json_formatter (~&gt; 0.1)
   simplecov-html (0.12.3)
   simplecov_json_formatter (0.1.3)
+  tzinfo (2.0.4)
+    concurrent-ruby (~&gt; 1.0)
   unicode-display_width (2.0.0)
   webmock (3.14.0)
     addressable (&gt;= 2.8.0)
     crack (&gt;= 0.3.2)
-    hashdiff (&gt;= 0.4.0, &lt; 2.0.0)</pre>
+    hashdiff (&gt;= 0.4.0, &lt; 2.0.0)
+  zeitwerk (2.4.2)</pre>
 
 <p>PLATFORMS</p>
 
@@ -183,7 +196,8 @@ specs:
 
 <p>DEPENDENCIES</p>
 
-<pre>rake (~&gt; 13.0)
+<pre>activesupport (~&gt; 6.0)
+rake (~&gt; 13.0)
 rspec (~&gt; 3.0)
 rubocop (~&gt; 1.7)
 simplecov (~&gt; 0.21)

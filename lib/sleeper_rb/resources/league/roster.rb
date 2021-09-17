@@ -51,10 +51,12 @@ module SleeperRb
         # @return [{SleeperRb::Resources::PlayerArray}[rdoc-ref:SleeperRb::Resources::PlayerArray]]
 
         cached_attr :roster_id, :owner_id, :league_id, :league,
-                    settings: ->(settings) { Roster::Settings.new(settings) },
+                    settings: ->(settings) { Settings.new(settings) },
                     starters: PLAYER_LAMBDA,
                     players: PLAYER_LAMBDA,
                     reserve: PLAYER_LAMBDA
+
+        delegate(*Settings.cached_attrs.keys, to: :settings)
 
         skip_refresh :all
 

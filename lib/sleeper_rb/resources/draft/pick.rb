@@ -49,6 +49,8 @@ module SleeperRb
         cached_attr :round, :roster_id, :player_id, :picked_by, :pick_no, :is_keeper, :draft_slot, :draft_id, :draft,
                     metadata: ->(hash) { Metadata.new(hash) }
 
+        delegate(*Metadata.cached_attrs.keys, to: :metadata)
+
         skip_refresh :all
 
         ##

@@ -49,6 +49,27 @@ RSpec.describe SleeperRb::Utilities::Cache do
         expect(instance.instance_variable_get(:@bar)).to eq(6)
       end
     end
+
+    context "when value is :int_to_bool" do
+      before { subject.cached_attr(bar: :int_to_bool, foo: :int_to_bool) }
+
+      it "should convert to boolean" do
+        instance.instance_variable_set(:@values, { bar: 0, foo: 1 })
+        expect(instance.bar).to eq(false)
+        expect(instance.foo).to eq(true)
+      end
+    end
+
+    context "when value is :float" do
+      before { subject.cached_attr(bar: :float) }
+
+      let(:float_value) { 10.45215 }
+
+      it "should round to 2 places" do
+        instance.instance_variable_set(:@values, { bar: float_value })
+        expect(instance.bar).to eq(float_value.round(2))
+      end
+    end
   end
 
   describe "::cached_association" do

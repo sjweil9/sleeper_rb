@@ -331,7 +331,7 @@
 
           
           <div class="method-source-code" id="player-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft/pick.rb, line 59</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft/pick.rb, line 61</span>
 <span class="ruby-identifier">cached_association</span> <span class="ruby-value">:player</span> <span class="ruby-keyword">do</span>
   <span class="ruby-constant">Player</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">player_id:</span> <span class="ruby-identifier">player_id</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -366,7 +366,7 @@
 
           
           <div class="method-source-code" id="roster-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft/pick.rb, line 68</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft/pick.rb, line 70</span>
 <span class="ruby-identifier">cached_association</span> <span class="ruby-value">:roster</span> <span class="ruby-keyword">do</span>
   <span class="ruby-identifier">draft</span>.<span class="ruby-identifier">league</span>.<span class="ruby-identifier">rosters</span>.<span class="ruby-identifier">detect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">roster</span><span class="ruby-operator">|</span> <span class="ruby-identifier">roster</span>.<span class="ruby-identifier">roster_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">roster_id</span> }
 <span class="ruby-keyword">end</span></pre>
@@ -401,7 +401,7 @@
 
           
           <div class="method-source-code" id="user-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft/pick.rb, line 77</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft/pick.rb, line 79</span>
 <span class="ruby-identifier">cached_association</span> <span class="ruby-value">:user</span> <span class="ruby-keyword">do</span>
   <span class="ruby-identifier">draft</span>.<span class="ruby-identifier">league</span>.<span class="ruby-identifier">users</span>.<span class="ruby-identifier">detect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">user_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">picked_by</span> }
 <span class="ruby-keyword">end</span></pre>

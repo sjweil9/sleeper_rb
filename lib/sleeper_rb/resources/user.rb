@@ -49,7 +49,7 @@ module SleeperRb
       #
       # @param season_year [String] The year in which the leagues were played
       #
-      # @return [Array<{SleeperRb::Resources::League}[rdoc-ref:SleeperRb::Resources::League]>]
+      # @return [{SleeperRb::Resources::LeagueArray}[rdoc-ref:SleeperRb::Resources::LeagueArray]]
       cached_association :leagues do |season_year|
         retrieve_leagues!(season_year)
       end
@@ -89,7 +89,7 @@ module SleeperRb
       def retrieve_leagues!(season_year)
         uri = URI("#{BASE_URL}/user/#{user_id}/leagues/nfl/#{season_year}")
         response = execute_request(uri)
-        response.map { |hash| Resources::League.new(hash) }
+        LeagueArray.new(response.map { |hash| Resources::League.new(hash) })
       end
 
       def retrieve_drafts!(season_year)

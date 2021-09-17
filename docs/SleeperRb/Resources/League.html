@@ -293,7 +293,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 124</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 128</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">opts</span> = {})
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:league_id</span>]
 
@@ -371,7 +371,7 @@
 
           
           <div class="method-source-code" id="drafts-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 120</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 124</span>
 <span class="ruby-identifier">cached_association</span> <span class="ruby-value">:drafts</span> <span class="ruby-keyword">do</span>
   <span class="ruby-identifier">retrieve_drafts!</span>
 <span class="ruby-keyword">end</span></pre>
@@ -409,7 +409,7 @@
 
           
           <div class="method-source-code" id="matchups-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 102</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 106</span>
 <span class="ruby-identifier">cached_association</span> <span class="ruby-value">:matchups</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">week</span><span class="ruby-operator">|</span>
   <span class="ruby-identifier">retrieve_matchups!</span>(<span class="ruby-identifier">week</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -477,7 +477,7 @@
 
           
           <div class="method-source-code" id="rosters-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 82</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 86</span>
 <span class="ruby-identifier">cached_association</span> <span class="ruby-value">:rosters</span> <span class="ruby-keyword">do</span>
   <span class="ruby-identifier">retrieve_rosters!</span>
 <span class="ruby-keyword">end</span></pre>
@@ -584,7 +584,7 @@
 
           
           <div class="method-source-code" id="traded_picks-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 111</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 115</span>
 <span class="ruby-identifier">cached_association</span> <span class="ruby-value">:traded_picks</span> <span class="ruby-keyword">do</span>
   <span class="ruby-identifier">retrieve_traded_picks!</span>
 <span class="ruby-keyword">end</span></pre>
@@ -619,7 +619,7 @@
 
           
           <div class="method-source-code" id="users-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 91</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league.rb, line 95</span>
 <span class="ruby-identifier">cached_association</span> <span class="ruby-value">:users</span> <span class="ruby-keyword">do</span>
   <span class="ruby-identifier">retrieve_users!</span>
 <span class="ruby-keyword">end</span></pre>

@@ -6,6 +6,8 @@ module SleeperRb
       ##
       # Scoring settings for a League instance
       class ScoringSettings
+        include SleeperRb::Utilities::Cache
+
         ##
         # :attr_reader: pass_2pt
 
@@ -141,13 +143,11 @@ module SleeperRb
         ].freeze
         # rubocop:enable Naming/VariableNumber
 
-        attr_reader(*FIELDS)
-
-        def initialize(opts)
-          opts.slice(*FIELDS).each do |key, val|
-            instance_variable_set(:"@#{key}", val.to_f.round(2))
-          end
+        FIELDS.each do |field|
+          cached_attr field => :float
         end
+
+        skip_refresh :all
 
         ##
         # @return [Boolean] If league uses PPR scoring
@@ -164,7 +164,7 @@ module SleeperRb
         ##
         # @return [Boolean] If league uses Standard (0 PPR) scoring
         def standard?
-          rec.to_i.zero?
+          rec.zero?
         end
       end
     end
