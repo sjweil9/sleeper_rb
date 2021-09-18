@@ -78,8 +78,8 @@ module SleeperRb
         cached_attr :league, :transaction_id, :type, :status, :roster_ids, :leg, :drops, :creator, :consenter_ids,
                     :adds, created: :timestamp, status_updated: :timestamp,
                            waiver_budget: ->(array) { array&.map { |hash| WaiverBudget.new(hash.merge(transaction: self)) } },
-                           settings: ->(hash) { hash ? Settings.new(hash) : nil },
-                           metadata: ->(hash) { hash ? Metadata.new(hash) : nil },
+                           settings: ->(hash) { Settings.new(hash || {}) },
+                           metadata: ->(hash) { Metadata.new(hash || {}) },
                            draft_picks: ->(array) { TradedPickArray.new(array&.map { |hash| TradedPick.new(hash) }) }
 
         delegate(*Settings.cached_attrs.keys, to: :settings)
@@ -96,6 +96,38 @@ module SleeperRb
         # @return [{SleeperRb::Resources::League::RosterArray}[rdoc-ref:SleeperRb::Resources::League::RosterArray]]
         cached_association :rosters do
           league.rosters.select { |roster| roster_ids.include?(roster.roster_id) }
+        end
+
+        ##
+        # Returns true if the transaction is a trade.
+        #
+        # @return [Boolean]
+        def trade?
+          type == "trade"
+        end
+
+        ##
+        # Returns true if the transaction is for a free agent.
+        #
+        # @return [Boolean]
+        def free_agent?
+          type == "free_agent"
+        end
+
+        ##
+        # Returns true if the transaction is for a free agent acquired with FAAB.
+        #
+        # @return [Boolean]
+        def faab?
+          free_agent? && waiver_bid
+        end
+
+        ##
+        # Returns true if the transaction is for a free agent acquired via the waiver wire.
+        #
+        # @return [Boolean]
+        def waiver?
+          free_agent? && !waiver_bid
         end
       end
     end
