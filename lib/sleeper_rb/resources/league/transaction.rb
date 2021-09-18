@@ -119,7 +119,7 @@ module SleeperRb
         #
         # @return [Boolean]
         def faab?
-          free_agent? && waiver_bid
+          free_agent? && !waiver_bid.nil?
         end
 
         ##
