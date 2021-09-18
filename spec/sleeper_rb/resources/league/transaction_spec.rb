@@ -81,6 +81,21 @@ RSpec.describe SleeperRb::Resources::League::Transaction do
     end
   end
 
+  describe "#consenting_rosters" do
+    before do
+      stub_request(:get, "#{SleeperRb::Utilities::Request::BASE_URL}/league/#{league_id}/rosters").to_return(body: rosters_response)
+    end
+
+    let(:rosters_response) do
+      File.read(File.expand_path("../../../fixtures/rosters_response.json", File.dirname(__FILE__)))
+    end
+
+    it "should return all rosters associated with the transaction" do
+      expect(subject.consenting_rosters).to be_an_instance_of(SleeperRb::Resources::League::RosterArray)
+      expect(subject.consenting_rosters.map(&:roster_id).sort).to eq(subject.consenter_ids.sort)
+    end
+  end
+
   describe "#user" do
     before do
       stub_request(:get, "#{SleeperRb::Utilities::Request::BASE_URL}/league/#{league_id}/users").to_return(body: users_response)

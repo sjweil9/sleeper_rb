@@ -108,6 +108,15 @@ module SleeperRb
         end
 
         ##
+        # :method: consenting_rosters
+        # Returns the rosters who consented to this transaction.
+        #
+        # @return [{SleeperRb::Resources::League::RosterArray}[rdoc-ref:SleeperRb::Resources::League::RosterArray]]
+        cached_association :consenting_rosters do
+          league.rosters.where(roster_id: { in: consenter_ids })
+        end
+
+        ##
         # Returns true if the transaction is a trade.
         #
         # @return [Boolean]
