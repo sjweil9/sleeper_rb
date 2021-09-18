@@ -95,7 +95,16 @@ module SleeperRb
         #
         # @return [{SleeperRb::Resources::League::RosterArray}[rdoc-ref:SleeperRb::Resources::League::RosterArray]]
         cached_association :rosters do
-          league.rosters.select { |roster| roster_ids.include?(roster.roster_id) }
+          league.rosters.where(roster_id: { in: roster_ids })
+        end
+
+        ##
+        # :method: user
+        # Returns the User who created this transaction.
+        #
+        # @return [{SleeperRb::Resources::User}[rdoc-ref:SleeperRb::Resources::User]]
+        cached_association :user do
+          league.users.detect { |user| user.user_id == creator }
         end
 
         ##

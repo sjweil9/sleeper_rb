@@ -1,10 +1,12 @@
 # frozen-string-literal: true
 
 RSpec.describe SleeperRb::Resources::League::Transaction do
-  let(:trade) { described_class.new(trade_opts) }
-  let(:faab) { described_class.new(faab_opts) }
-  let(:waiver) { described_class.new(waiver_opts) }
+  let(:trade) { described_class.new(trade_opts.merge(league: league)) }
+  let(:faab) { described_class.new(faab_opts.merge(league: league)) }
+  let(:waiver) { described_class.new(waiver_opts.merge(league: league)) }
 
+  let(:league) { SleeperRb::Resources::League.new(league_id: league_id) }
+  let(:league_id) { "735284283123548160" }
   let(:trade_opts) do
     parsed_transactions.detect { |hash| hash[:type] == "trade" }
   end
@@ -18,6 +20,8 @@ RSpec.describe SleeperRb::Resources::League::Transaction do
     json = File.read(File.expand_path("../../../fixtures/transactions_response.json", File.dirname(__FILE__)))
     JSON.parse(json, symbolize_names: true)
   end
+
+  subject { trade }
 
   describe "#initialize" do
     let(:translated_keys) { %i[settings metadata draft_picks waiver_budget] }
@@ -63,6 +67,33 @@ RSpec.describe SleeperRb::Resources::League::Transaction do
   end
 
   describe "#rosters" do
+    before do
+      stub_request(:get, "#{SleeperRb::Utilities::Request::BASE_URL}/league/#{league_id}/rosters").to_return(body: rosters_response)
+    end
+
+    let(:rosters_response) do
+      File.read(File.expand_path("../../../fixtures/rosters_response.json", File.dirname(__FILE__)))
+    end
+
+    it "should return all rosters associated with the transaction" do
+      expect(subject.rosters).to be_an_instance_of(SleeperRb::Resources::League::RosterArray)
+      expect(subject.rosters.map(&:roster_id).sort).to eq(subject.roster_ids.sort)
+    end
+  end
+
+  describe "#user" do
+    before do
+      stub_request(:get, "#{SleeperRb::Utilities::Request::BASE_URL}/league/#{league_id}/users").to_return(body: users_response)
+    end
+
+    let(:users_response) do
+      File.read(File.expand_path("../../../fixtures/users_response.json", File.dirname(__FILE__)))
+    end
+
+    it "should return the user who created the league" do
+      expect(subject.user).to be_an_instance_of(SleeperRb::Resources::User)
+      expect(subject.user.user_id).to eq(subject.creator)
+    end
   end
 
   describe "#trade?" do
