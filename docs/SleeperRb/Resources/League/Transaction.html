@@ -63,7 +63,7 @@
   <h3>Parent</h3>
 
   
-  <p class="link"><a href="../../../Object.html">Object</a>
+  <p class="link">Object
   
 </div>
 
@@ -86,13 +86,25 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-consenting_rosters">#consenting_rosters</a>
+    
     <li ><a href="#method-i-draft_picks">#draft_picks</a>
+    
+    <li ><a href="#method-i-faab-3F">#faab?</a>
+    
+    <li ><a href="#method-i-free_agent-3F">#free_agent?</a>
     
     <li ><a href="#method-i-metadata">#metadata</a>
     
     <li ><a href="#method-i-rosters">#rosters</a>
     
     <li ><a href="#method-i-settings">#settings</a>
+    
+    <li ><a href="#method-i-trade-3F">#trade?</a>
+    
+    <li ><a href="#method-i-user">#user</a>
+    
+    <li ><a href="#method-i-waiver-3F">#waiver?</a>
     
     <li ><a href="#method-i-waiver_budget">#waiver_budget</a>
     
@@ -281,6 +293,41 @@
        </header>
 
     
+      <div id="method-i-consenting_rosters" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">consenting_rosters</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the rosters who consented to this transaction.</p>
+
+<p>@return [<a href="RosterArray.html"><code>SleeperRb::Resources::League::RosterArray</code></a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="consenting_rosters-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 115</span>
+<span class="ruby-identifier">cached_association</span> <span class="ruby-value">:consenting_rosters</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">league</span>.<span class="ruby-identifier">rosters</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">roster_id:</span> { <span class="ruby-value">in:</span> <span class="ruby-identifier">consenter_ids</span> })
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-draft_picks" class="method-detail ">
         
         <div class="method-heading">
@@ -296,20 +343,84 @@
           
           <p>Any draft picks traded as part of this transaction.</p>
 
-<p>@return [SleeperRb::Resources::TradedPickArray]</p>
+<p>@return [<a href="../TradedPickArray.html"><code>SleeperRb::Resources::TradedPickArray</code></a>]</p>
           
           
 
           
           <div class="method-source-code" id="draft_picks-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 74</span>
-<span class="ruby-identifier">cached_attr</span> <span class="ruby-value">:league</span>, <span class="ruby-value">:transaction_id</span>, <span class="ruby-value">:type</span>, <span class="ruby-value">:status</span>, <span class="ruby-value">:roster_ids</span>, <span class="ruby-value">:leg</span>, <span class="ruby-value">:drops</span>, <span class="ruby-value">:creator</span>, <span class="ruby-value">:consenter_ids</span>,
-            <span class="ruby-value">:adds</span>, <span class="ruby-value">created:</span> <span class="ruby-value">:timestamp</span>, <span class="ruby-value">status_updated:</span> <span class="ruby-value">:timestamp</span>,
-                   <span class="ruby-value">waiver_budget:</span> <span class="ruby-operator">-&gt;</span>(<span class="ruby-identifier">array</span>) { <span class="ruby-identifier">array</span>&amp;.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span><span class="ruby-operator">|</span> <span class="ruby-constant">WaiverBudget</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">hash</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">transaction:</span> <span class="ruby-keyword">self</span>)) } },
-                   <span class="ruby-value">settings:</span> <span class="ruby-operator">-&gt;</span>(<span class="ruby-identifier">hash</span>) { <span class="ruby-identifier">hash</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">hash</span>) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span> },
-                   <span class="ruby-value">metadata:</span> <span class="ruby-operator">-&gt;</span>(<span class="ruby-identifier">hash</span>) { <span class="ruby-identifier">hash</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Metadata</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">hash</span>) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span> },
-                   <span class="ruby-value">draft_picks:</span> <span class="ruby-operator">-&gt;</span>(<span class="ruby-identifier">array</span>) { <span class="ruby-constant">TradedPickArray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">array</span>&amp;.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span><span class="ruby-operator">|</span> <span class="ruby-constant">TradedPick</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">hash</span>) }) }
-</pre>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 71</span>
+        </pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-faab-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">faab?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns true if the transaction is for a free agent acquired with FAAB.</p>
+
+<p>@return [Boolean]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="faab-3F-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">faab?</span>
+  <span class="ruby-identifier">free_agent?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">waiver_bid</span>.<span class="ruby-identifier">nil?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-free_agent-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">free_agent?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns true if the transaction is for a free agent.</p>
+
+<p>@return [Boolean]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="free_agent-3F-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 131</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">free_agent?</span>
+  <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;free_agent&quot;</span>
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -333,13 +444,13 @@
 
         <div class="method-description">
           
-          <p>@return [SleeperRb::Resources::League::Transaction::Metadata]</p>
+          <p>@return [<a href="Transaction/Metadata.html"><code>SleeperRb::Resources::League::Transaction::Metadata</code></a>]</p>
           
           
 
           
           <div class="method-source-code" id="metadata-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 59</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 61</span>
         </pre>
           </div>
           
@@ -372,9 +483,9 @@
 
           
           <div class="method-source-code" id="rosters-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 93</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 97</span>
 <span class="ruby-identifier">cached_association</span> <span class="ruby-value">:rosters</span> <span class="ruby-keyword">do</span>
-  <span class="ruby-identifier">league</span>.<span class="ruby-identifier">rosters</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">roster</span><span class="ruby-operator">|</span> <span class="ruby-identifier">roster_ids</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">roster</span>.<span class="ruby-identifier">roster_id</span>) }
+  <span class="ruby-identifier">league</span>.<span class="ruby-identifier">rosters</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">roster_id:</span> { <span class="ruby-value">in:</span> <span class="ruby-identifier">roster_ids</span> })
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -399,14 +510,119 @@
 
         <div class="method-description">
           
-          <p>@return [SleeperRb::Resources::League::Transaction::Settings]</p>
+          <p>@return [<a href="Transaction/Settings.html"><code>SleeperRb::Resources::League::Transaction::Settings</code></a>]</p>
           
           
 
           
           <div class="method-source-code" id="settings-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 54</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 56</span>
         </pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-trade-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">trade?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns true if the transaction is a trade.</p>
+
+<p>@return [Boolean]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="trade-3F-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 123</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">trade?</span>
+  <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;trade&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-user" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">user</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the <a href="../User.html"><code>User</code></a> who created this transaction.</p>
+
+<p>@return [<a href="../User.html"><code>SleeperRb::Resources::User</code></a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="user-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 106</span>
+<span class="ruby-identifier">cached_association</span> <span class="ruby-value">:user</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">league</span>.<span class="ruby-identifier">users</span>.<span class="ruby-identifier">detect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">user_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">creator</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-waiver-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">waiver?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns true if the transaction is for a free agent acquired via the waiver wire.</p>
+
+<p>@return [Boolean]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="waiver-3F-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 147</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">waiver?</span>
+  <span class="ruby-identifier">free_agent?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">waiver_bid</span>
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -430,13 +646,13 @@
 
         <div class="method-description">
           
-          <p>@return [Array&lt;SleeperRb::Resources::League::Transaction::WaiverBudget&gt;]</p>
+          <p>@return [Array&lt;<a href="Transaction/WaiverBudget.html"><code>SleeperRb::Resources::League::Transaction::WaiverBudget</code></a>&gt;]</p>
           
           
 
           
           <div class="method-source-code" id="waiver_budget-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 49</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction.rb, line 51</span>
         </pre>
           </div>
           

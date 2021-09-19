@@ -15,6 +15,10 @@ RDoc::Task.new(
   rdoc: "rdoc",
   clobber_rdoc: "rdoc:clean",
   rerdoc: "rdoc:force"
-)
+) do |rdoc|
+  rdoc.main = "Client.rb"
+  rdoc.rdoc_dir = "docs/"
+  rdoc.rdoc_files.include("lib/**/*.rb")
+end
 
 task default: %i[spec rubocop rdoc]

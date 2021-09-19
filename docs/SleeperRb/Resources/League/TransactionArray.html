@@ -75,9 +75,13 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-faab">#faab</a>
+    
     <li ><a href="#method-i-free_agent">#free_agent</a>
     
     <li ><a href="#method-i-trade">#trade</a>
+    
+    <li ><a href="#method-i-waiver">#waiver</a>
     
   </ul>
 </div>
@@ -113,6 +117,41 @@
        </header>
 
     
+      <div id="method-i-faab" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">faab</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns transactions which are free agent acquisitions made with FAAB.</p>
+
+<p>@return [<a href="TransactionArray.html"><code>SleeperRb::Resources::League::TransactionArray</code></a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="faab-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction_array.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">faab</span>
+  <span class="ruby-identifier">where</span>(<span class="ruby-value">type:</span> <span class="ruby-string">&quot;free_agent&quot;</span>, <span class="ruby-value">waiver_bid:</span> { <span class="ruby-value">not:</span> <span class="ruby-keyword">nil</span> })
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-free_agent" class="method-detail ">
         
         <div class="method-heading">
@@ -126,14 +165,18 @@
 
         <div class="method-description">
           
-          
+          <p>Returns transactions which are free agent acquisitions.</p>
+
+<p>@return [<a href="TransactionArray.html"><code>SleeperRb::Resources::League::TransactionArray</code></a>]</p>
           
           
 
           
           <div class="method-source-code" id="free_agent-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction_array.rb, line 11</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">free_agent</span>; <span class="ruby-keyword">end</span></pre>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction_array.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">free_agent</span>
+  <span class="ruby-identifier">where</span>(<span class="ruby-value">type:</span> <span class="ruby-string">&quot;free_agent&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -157,14 +200,53 @@
 
         <div class="method-description">
           
-          
+          <p>Returns transactions which are trades.</p>
+
+<p>@return [<a href="TransactionArray.html"><code>SleeperRb::Resources::League::TransactionArray</code></a>]</p>
           
           
 
           
           <div class="method-source-code" id="trade-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction_array.rb, line 9</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">trade</span>; <span class="ruby-keyword">end</span></pre>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction_array.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">trade</span>
+  <span class="ruby-identifier">where</span>(<span class="ruby-value">type:</span> <span class="ruby-string">&quot;trade&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-waiver" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">waiver</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns transactions which are free agent acquisitions made via the waiver wire.</p>
+
+<p>@return [<a href="TransactionArray.html"><code>SleeperRb::Resources::League::TransactionArray</code></a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="waiver-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction_array.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">waiver</span>
+  <span class="ruby-identifier">where</span>(<span class="ruby-value">type:</span> <span class="ruby-string">&quot;free_agent&quot;</span>, <span class="ruby-value">waiver_bid:</span> <span class="ruby-keyword">nil</span>)
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
