@@ -86,6 +86,10 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-receiving_roster">#receiving_roster</a>
+    
+    <li ><a href="#method-i-sending_roster">#sending_roster</a>
+    
     <li ><a href="#method-i-transaction">#transaction</a>
     
   </ul>
@@ -167,6 +171,76 @@
        <header>
          <h3>Public Instance Methods</h3>
        </header>
+
+    
+      <div id="method-i-receiving_roster" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">receiving_roster</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the roster object that received the <a href="WaiverBudget.html"><code>WaiverBudget</code></a> in this transaction.</p>
+
+<p>@return [<a href="../Roster.html"><code>SleeperRb::Resources::League::Roster</code></a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="receiving_roster-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction/waiver_budget.rb, line 45</span>
+<span class="ruby-identifier">cached_association</span> <span class="ruby-value">:receiving_roster</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">transaction</span>.<span class="ruby-identifier">league</span>.<span class="ruby-identifier">rosters</span>.<span class="ruby-identifier">detect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">roster</span><span class="ruby-operator">|</span> <span class="ruby-identifier">roster</span>.<span class="ruby-identifier">roster_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">receiver</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sending_roster" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sending_roster</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the roster object that sent the <a href="WaiverBudget.html"><code>WaiverBudget</code></a> in this transaction.</p>
+
+<p>@return [<a href="../Roster.html"><code>SleeperRb::Resources::League::Roster</code></a>]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="sending_roster-source">
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/league/transaction/waiver_budget.rb, line 36</span>
+<span class="ruby-identifier">cached_association</span> <span class="ruby-value">:sending_roster</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">transaction</span>.<span class="ruby-identifier">league</span>.<span class="ruby-identifier">rosters</span>.<span class="ruby-identifier">detect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">roster</span><span class="ruby-operator">|</span> <span class="ruby-identifier">roster</span>.<span class="ruby-identifier">roster_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sender</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
 
     
       <div id="method-i-transaction" class="method-detail ">

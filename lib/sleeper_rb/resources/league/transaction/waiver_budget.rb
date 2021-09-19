@@ -27,6 +27,24 @@ module SleeperRb
           cached_attr :sender, :receiver, :amount, :transaction
 
           skip_refresh :all
+
+          ##
+          # :method: sending_roster
+          # Returns the roster object that sent the WaiverBudget in this transaction.
+          #
+          # @return [{SleeperRb::Resources::League::Roster}[rdoc-ref:SleeperRb::Resources::League::Roster]]
+          cached_association :sending_roster do
+            transaction.league.rosters.detect { |roster| roster.roster_id == sender }
+          end
+
+          ##
+          # :method: receiving_roster
+          # Returns the roster object that received the WaiverBudget in this transaction.
+          #
+          # @return [{SleeperRb::Resources::League::Roster}[rdoc-ref:SleeperRb::Resources::League::Roster]]
+          cached_association :receiving_roster do
+            transaction.league.rosters.detect { |roster| roster.roster_id == receiver }
+          end
         end
       end
     end

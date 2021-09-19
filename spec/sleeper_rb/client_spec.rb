@@ -46,4 +46,11 @@ RSpec.describe SleeperRb::Client do
       expect(result.draft_id).to eq("ABC123")
     end
   end
+
+  describe "#players" do
+    it "should return a PlayerArray with all players" do
+      expect(subject.players).to be_an_instance_of(SleeperRb::Resources::PlayerArray)
+      expect(subject.players.map(&:player_id).sort).to eq(SleeperRb::Resources::Player.all.map(&:player_id).sort)
+    end
+  end
 end

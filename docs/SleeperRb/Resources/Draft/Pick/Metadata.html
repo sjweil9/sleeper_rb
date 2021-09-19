@@ -283,7 +283,7 @@
 
           
           <div class="method-source-code" id="full_name-source">
-            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft/pick/metadata.rb, line 56</span>
+            <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft/pick/metadata.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">full_name</span>
   [<span class="ruby-identifier">first_name</span>, <span class="ruby-identifier">last_name</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot; &quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -317,8 +317,9 @@
           
           <div class="method-source-code" id="position-source">
             <pre><span class="ruby-comment"># File lib/sleeper_rb/resources/draft/pick/metadata.rb, line 47</span>
-<span class="ruby-identifier">cached_attr</span> <span class="ruby-value">:years_exp</span>, <span class="ruby-value">:team</span>, <span class="ruby-value">:status</span>, <span class="ruby-value">:sport</span>, <span class="ruby-value">:player_id</span>, <span class="ruby-value">:number</span>, <span class="ruby-value">:news_updated</span>, <span class="ruby-value">:last_name</span>,
-            <span class="ruby-value">:injury_status</span>, <span class="ruby-value">:first_name</span>, <span class="ruby-value">position:</span> <span class="ruby-operator">-&gt;</span>(<span class="ruby-identifier">position</span>) { <span class="ruby-constant">SleeperRb</span><span class="ruby-operator">::</span><span class="ruby-constant">Utilities</span><span class="ruby-operator">::</span><span class="ruby-constant">RosterPosition</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">position</span>) }
+<span class="ruby-identifier">cached_attr</span> <span class="ruby-value">:years_exp</span>, <span class="ruby-value">:team</span>, <span class="ruby-value">:status</span>, <span class="ruby-value">:sport</span>, <span class="ruby-value">:player_id</span>, <span class="ruby-value">:number</span>, <span class="ruby-value">:last_name</span>, <span class="ruby-value">:injury_status</span>,
+            <span class="ruby-value">:first_name</span>, <span class="ruby-value">position:</span> <span class="ruby-operator">-&gt;</span>(<span class="ruby-identifier">position</span>) { <span class="ruby-constant">SleeperRb</span><span class="ruby-operator">::</span><span class="ruby-constant">Utilities</span><span class="ruby-operator">::</span><span class="ruby-constant">RosterPosition</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">position</span>) },
+                         <span class="ruby-value">news_updated:</span> <span class="ruby-value">:timestamp</span>
 </pre>
           </div>
           
