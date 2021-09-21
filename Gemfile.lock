@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sleeper_rb (0.1.0)
+    sleeper_rb (0.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -24,7 +24,7 @@ GEM
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     minitest (5.14.4)
-    parallel (1.20.1)
+    parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
     public_suffix (4.0.6)
@@ -45,7 +45,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-support (3.10.2)
-    rubocop (1.20.0)
+    rubocop (1.21.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
@@ -67,7 +67,7 @@ GEM
     simplecov_json_formatter (0.1.3)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    unicode-display_width (2.0.0)
+    unicode-display_width (2.1.0)
     webmock (3.14.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
