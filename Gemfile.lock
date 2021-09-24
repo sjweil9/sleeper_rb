@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sleeper_rb (0.2.0)
+    sleeper_rb (0.2.1)
 
 GEM
   remote: https://rubygems.org/

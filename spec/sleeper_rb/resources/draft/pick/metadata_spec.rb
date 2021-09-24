@@ -15,7 +15,8 @@ RSpec.describe SleeperRb::Resources::Draft::Pick::Metadata do
       news_updated: "1629591331715",
       last_name: "Cook",
       injury_status: "",
-      first_name: "Dalvin"
+      first_name: "Dalvin",
+      amount: "60"
     }
   end
 

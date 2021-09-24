@@ -50,6 +50,7 @@ module SleeperRb
                     metadata: ->(hash) { Metadata.new(hash) }
 
         delegate(*Metadata.cached_attrs.keys, to: :metadata)
+        delegate :auction?, :snake?, to: :draft
 
         skip_refresh :all
 

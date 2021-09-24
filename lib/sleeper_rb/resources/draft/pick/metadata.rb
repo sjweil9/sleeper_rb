@@ -40,13 +40,17 @@ module SleeperRb
           # :attr_reader: first_name
 
           ##
+          # :attr_reader: amount
+
+          ##
           # :method: position
           #
           # @return [{SleeperRb::Utilities::RosterPosition}[rdoc-ref:SleeperRb::Utilities::RosterPosition]]
 
           cached_attr :years_exp, :team, :status, :sport, :player_id, :number, :last_name, :injury_status,
-                      :first_name, position: ->(position) { SleeperRb::Utilities::RosterPosition.new(position) },
-                                   news_updated: :timestamp
+                      :first_name, :amount,
+                      position: ->(position) { SleeperRb::Utilities::RosterPosition.new(position) },
+                      news_updated: :timestamp
 
           skip_refresh :all
 
